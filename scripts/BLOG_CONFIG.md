@@ -5,7 +5,7 @@
 |-------|-------------|----------|
 | 09:00 | Series post (①②③) | Mon=OWUW Beat, Tue=BlackJyong, Wed=OWUW Beat, Thu=BlackJyong, Fri=AI Book |
 | 15:00 | Evergreen post (⑤⑥⑦) | Mon=Industry, Tue=OrgMgmt, Wed=Startup, Thu=Industry, Fri=OrgMgmt, Sat=Startup |
-| 22:00 | Daily trading log (④) | Every day |
+| 22:00 | Daily trading log (④) — FULL company view | Every day |
 | Sun 10:00 | Weekly news roundup (⑧) | Weekly |
 
 ## Series Tracker
@@ -31,7 +31,7 @@
 
 ## Content Rules
 - Language: English
-- Length: 2,000-3,000 words
+- Length: 3,000-4,000 words (MINIMUM 3,000 — never publish under this)
 - All claims need sources (linked inline)
 - Include practical prompts in code blocks
 - No emoji in headings
