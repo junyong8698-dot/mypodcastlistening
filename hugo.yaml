@@ -29,7 +29,7 @@ params:
     - LLM agents
     - autonomous AI
   author: "JY"
-  defaultTheme: auto
+  defaultTheme: dark
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
@@ -78,6 +78,22 @@ params:
       - summary
       - content
 
+related:
+  includeNewer: true
+  threshold: 80
+  toLower: true
+  indices:
+    - name: series
+      weight: 200
+    - name: tags
+      weight: 100
+    - name: categories
+      weight: 50
+
+imaging:
+  hint: photo
+  quality: 75
+
 markup:
   goldmark:
     renderer:
@@ -103,6 +119,10 @@ menu:
       name: Tags
       url: /tags/
       weight: 40
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 45
     - identifier: search
       name: Search
       url: /search/

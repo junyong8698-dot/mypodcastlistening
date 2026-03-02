@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>AI Agents on The Multi-Agent Future</title>
-    <link>http://localhost:1313/tags/ai-agents/</link>
+    <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
     <description>Recent content in AI Agents on The Multi-Agent Future</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 19 Jul 2025 15:00:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/ai-agents/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.mypodcastlistening.com/tags/ai-agents/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How Multi-Agent AI Is Replacing $200/Hour Legal Associates in Document Review</title>
-      <link>http://localhost:1313/posts/industry/01-ai-agents-in-legal-discovery/</link>
+      <link>https://www.mypodcastlistening.com/posts/industry/01-ai-agents-in-legal-discovery/</link>
       <pubDate>Sat, 19 Jul 2025 15:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/industry/01-ai-agents-in-legal-discovery/</guid>
+      <guid>https://www.mypodcastlistening.com/posts/industry/01-ai-agents-in-legal-discovery/</guid>
       <description>Law firms spend 60-80% of litigation budgets on document review. Multi-agent AI systems are cutting that by 90% while improving accuracy. Here&amp;#39;s exactly how it works, with implementation prompts.</description>
     </item>
     <item>
       <title>I Lost 40% of My Savings on Emotional Trades. So I Built an AI Agent to Trade For Me.</title>
-      <link>http://localhost:1313/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/</link>
+      <link>https://www.mypodcastlistening.com/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/</link>
       <pubDate>Sat, 19 Jul 2025 09:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/</guid>
+      <guid>https://www.mypodcastlistening.com/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/</guid>
       <description>After a devastating 4AM liquidation, I decided to remove myself from the trading loop entirely. This is Part 1 of how I built OWUW Beat — an autonomous BTC trading system powered by AI agents.</description>
     </item>
   </channel>

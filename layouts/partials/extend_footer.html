@@ -1,0 +1,62 @@
+{{ if .IsPage }}
+<!-- Series Navigation -->
+{{ with .Params.series }}
+{{ $seriesName := index . 0 }}
+{{ $allInSeries := where site.RegularPages "Params.series" "intersect" (slice $seriesName) }}
+{{ $sorted := sort $allInSeries "Params.weight" "asc" }}
+{{ $currentIndex := -1 }}
+{{ range $i, $p := $sorted }}
+  {{ if eq $p.Permalink $.Permalink }}
+    {{ $currentIndex = $i }}
+  {{ end }}
+{{ end }}
+{{ if ge $currentIndex 0 }}
+<div class="series-nav">
+  {{ if gt $currentIndex 0 }}
+    {{ $prev := index $sorted (sub $currentIndex 1) }}
+    <a href="{{ $prev.Permalink }}">← Part {{ $currentIndex }}: {{ $prev.Title | truncate 40 }}</a>
+  {{ else }}
+    <span></span>
+  {{ end }}
+  <span class="series-name">{{ $seriesName }}</span>
+  {{ if lt (add $currentIndex 1) (len $sorted) }}
+    {{ $next := index $sorted (add $currentIndex 1) }}
+    <a href="{{ $next.Permalink }}">Part {{ add $currentIndex 2 }}: {{ $next.Title | truncate 40 }} →</a>
+  {{ else }}
+    <span></span>
+  {{ end }}
+</div>
+{{ end }}
+{{ end }}
+
+<!-- Share Buttons -->
+<div class="share-buttons">
+  <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text={{ .Title | querify "t" | replaceRE "^t=" "" }}&url={{ .Permalink }}" target="_blank" rel="noopener">𝕏 Share</a>
+  <a class="share-btn reddit" href="https://reddit.com/submit?url={{ .Permalink }}&title={{ .Title | querify "t" | replaceRE "^t=" "" }}" target="_blank" rel="noopener">Reddit</a>
+  <button class="share-btn" onclick="navigator.clipboard.writeText('{{ .Permalink }}').then(()=>this.textContent='Copied!')">📋 Copy Link</button>
+</div>
+
+<!-- Related Posts -->
+{{ $related := slice }}
+{{ with .Params.series }}
+  {{ $seriesName := index . 0 }}
+  {{ $related = where site.RegularPages "Params.series" "intersect" (slice $seriesName) }}
+{{ else }}
+  {{ $related = site.RegularPages.Related . }}
+{{ end }}
+{{ $related = $related | complement (slice $) }}
+{{ if gt (len $related) 0 }}
+<div class="related-posts">
+  <h2>Related Posts</h2>
+  <div class="cards-grid">
+    {{ range first 3 $related }}
+    <div class="card">
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Description | truncate 100 }}</p>
+      <div class="meta">{{ .Date.Format "Jan 2, 2006" }}</div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+{{ end }}

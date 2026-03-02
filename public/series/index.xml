@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Series on The Multi-Agent Future</title>
-    <link>http://localhost:1313/series/</link>
+    <link>https://www.mypodcastlistening.com/series/</link>
     <description>Recent content in Series on The Multi-Agent Future</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 19 Jul 2025 15:00:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.mypodcastlistening.com/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI Agents by Industry</title>
-      <link>http://localhost:1313/series/ai-agents-by-industry/</link>
+      <link>https://www.mypodcastlistening.com/series/ai-agents-by-industry/</link>
       <pubDate>Sat, 19 Jul 2025 15:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/series/ai-agents-by-industry/</guid>
+      <guid>https://www.mypodcastlistening.com/series/ai-agents-by-industry/</guid>
       <description></description>
     </item>
     <item>
       <title>Building OWUW Beat</title>
-      <link>http://localhost:1313/series/building-owuw-beat/</link>
+      <link>https://www.mypodcastlistening.com/series/building-owuw-beat/</link>
       <pubDate>Sat, 19 Jul 2025 09:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/series/building-owuw-beat/</guid>
+      <guid>https://www.mypodcastlistening.com/series/building-owuw-beat/</guid>
       <description></description>
     </item>
   </channel>
