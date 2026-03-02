@@ -1,6 +1,6 @@
 ---
 title: "How AI Is Flattening the Org Chart and Rewriting Middle Management"
-date: 2026-03-03T15:00:00+09:00
+date: 2026-03-03T06:00:00+09:00
 draft: false
 description: "Gartner predicts 20% of companies will use AI to cut half their middle managers by 2026. Here's what's actually happening, who's doing it, and how to prepare."
 tags: ["AI agents", "middle management", "organizational design", "workforce automation", "Gartner", "Klarna", "leadership"]

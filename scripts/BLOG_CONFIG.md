@@ -29,6 +29,16 @@
 - [ ] Part 1: Why write a book with AI
 - [ ] Part 2-5: TBD
 
+## Evergreen Tracker
+### ⑤ Industry Deep Dives
+- [x] 01: AI Agents in Legal Discovery (published)
+
+### ⑥ Org Management
+- [x] 01: AI Flattening the Org Chart — Middle Management (published 2026-03-03)
+
+### ⑦ Startup Ideas
+- (none yet)
+
 ## Content Rules
 - Language: English
 - Length: 3,000-4,000 words (MINIMUM 3,000 — never publish under this)
