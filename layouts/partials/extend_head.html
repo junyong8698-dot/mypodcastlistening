@@ -1,8 +1,3 @@
-<!-- Google Fonts: Inter + JetBrains Mono -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <!-- JSON-LD Structured Data -->
 {{ if .IsPage }}
 <script type="application/ld+json">
@@ -65,13 +60,3 @@
 
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ .Permalink }}" />
-
-<!-- Lazy loading helper -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
-    if (img.complete) img.classList.add('loaded');
-    else img.addEventListener('load', function() { img.classList.add('loaded'); });
-  });
-});
-</script>

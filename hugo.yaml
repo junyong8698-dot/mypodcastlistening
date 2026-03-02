@@ -29,7 +29,7 @@ params:
     - LLM agents
     - autonomous AI
   author: "JY"
-  defaultTheme: dark
+  defaultTheme: light
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
@@ -107,26 +107,14 @@ menu:
       name: Series
       url: /series/
       weight: 10
-    - identifier: daily
-      name: Daily Log
-      url: /categories/daily-log/
-      weight: 20
-    - identifier: news
-      name: News & Analysis
-      url: /categories/news-analysis/
-      weight: 30
-    - identifier: tags
-      name: Tags
-      url: /tags/
-      weight: 40
     - identifier: about
       name: About
       url: /about/
-      weight: 45
+      weight: 20
     - identifier: search
       name: Search
       url: /search/
-      weight: 50
+      weight: 30
 
 taxonomies:
   category: categories

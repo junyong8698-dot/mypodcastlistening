@@ -1,29 +1,3 @@
-<!-- Click-based dropdown for mobile (#11) -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.menu .dropdown > a').forEach(function(trigger) {
-    trigger.addEventListener('click', function(e) {
-      if (window.innerWidth <= 768 || 'ontouchstart' in window) {
-        e.preventDefault();
-        var dd = this.parentElement;
-        dd.classList.toggle('open');
-        // Close others
-        document.querySelectorAll('.menu .dropdown').forEach(function(el) {
-          if (el !== dd) el.classList.remove('open');
-        });
-      }
-    });
-  });
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown')) {
-      document.querySelectorAll('.menu .dropdown').forEach(function(el) {
-        el.classList.remove('open');
-      });
-    }
-  });
-});
-</script>
-
 {{ if .IsPage }}
 <!-- Series Navigation -->
 {{ with .Params.series }}
@@ -40,14 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="series-nav">
   {{ if gt $currentIndex 0 }}
     {{ $prev := index $sorted (sub $currentIndex 1) }}
-    <a href="{{ $prev.Permalink }}">← Part {{ $currentIndex }}: {{ $prev.Title | truncate 40 }}</a>
+    <a href="{{ $prev.Permalink }}">← {{ $prev.Title | truncate 40 }}</a>
   {{ else }}
     <span></span>
   {{ end }}
   <span class="series-name">{{ $seriesName }}</span>
   {{ if lt (add $currentIndex 1) (len $sorted) }}
     {{ $next := index $sorted (add $currentIndex 1) }}
-    <a href="{{ $next.Permalink }}">Part {{ add $currentIndex 2 }}: {{ $next.Title | truncate 40 }} →</a>
+    <a href="{{ $next.Permalink }}">{{ $next.Title | truncate 40 }} →</a>
   {{ else }}
     <span></span>
   {{ end }}
@@ -57,32 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Share Buttons -->
 <div class="share-buttons">
-  <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text={{ .Title | querify "t" | replaceRE "^t=" "" }}&url={{ .Permalink }}" target="_blank" rel="noopener">𝕏 Share</a>
-  <a class="share-btn reddit" href="https://reddit.com/submit?url={{ .Permalink }}&title={{ .Title | querify "t" | replaceRE "^t=" "" }}" target="_blank" rel="noopener">Reddit</a>
+  <a class="share-btn" href="https://twitter.com/intent/tweet?text={{ .Title | querify "t" | replaceRE "^t=" "" }}&url={{ .Permalink }}" target="_blank" rel="noopener">𝕏 Share</a>
+  <a class="share-btn" href="https://reddit.com/submit?url={{ .Permalink }}&title={{ .Title | querify "t" | replaceRE "^t=" "" }}" target="_blank" rel="noopener">Reddit</a>
   <button class="share-btn" onclick="navigator.clipboard.writeText('{{ .Permalink }}').then(()=>this.textContent='Copied!')">📋 Copy Link</button>
 </div>
-
-<!-- Related Posts -->
-{{ $related := slice }}
-{{ with .Params.series }}
-  {{ $seriesName := index . 0 }}
-  {{ $related = where site.RegularPages "Params.series" "intersect" (slice $seriesName) }}
-{{ else }}
-  {{ $related = site.RegularPages.Related . }}
-{{ end }}
-{{ $related = $related | complement (slice $) }}
-{{ if gt (len $related) 0 }}
-<div class="related-posts">
-  <h2>Related Posts</h2>
-  <div class="cards-grid">
-    {{ range first 3 $related }}
-    <div class="card">
-      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Description | truncate 100 }}</p>
-      <div class="meta">{{ .Date.Format "Jan 2, 2006" }}</div>
-    </div>
-    {{ end }}
-  </div>
-</div>
-{{ end }}
 {{ end }}
