@@ -1,79 +1,103 @@
 {{- define "main" }}
 
+{{- $posts := where site.RegularPages "Section" "posts" }}
+{{- $postCount := len $posts }}
+
 <!-- Hero Section -->
 <div class="hero-section">
   <h1>The Multi-Agent Future</h1>
-  <p class="hero-subtitle">Real stories of building AI agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</p>
+  <p class="hero-subtitle">Real money. Real agents. Real losses.<br>A developer's unfiltered lab notes.</p>
   <div class="hero-keywords">
-    <span class="hero-keyword">Trading Bots</span>
-    <span class="hero-keyword">AI Governance</span>
-    <span class="hero-keyword">Multi-Agent Systems</span>
+    <a class="hero-keyword" href="/series/building-owuw-beat/">Trading Bots</a>
+    <a class="hero-keyword" href="/series/ai-org-management/">AI Governance</a>
+    <a class="hero-keyword" href="/tags/multi-agent-systems/">Multi-Agent Systems</a>
   </div>
 </div>
 
-<!-- Featured Posts -->
+{{- if ge $postCount 5 }}
+<!-- Featured Posts (only when 5+ posts) -->
 <h2 class="section-heading">Featured Posts</h2>
 <div class="cards-grid">
-  {{- range first 3 (where site.RegularPages "Params.featured" true) }}
+  {{- $featured := where $posts "Params.featured" true }}
+  {{- if not $featured }}{{ $featured = $posts }}{{ end }}
+  {{- range first 3 $featured }}
   <div class="card">
     <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
     <p>{{ .Description | truncate 120 }}</p>
     <div class="meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</div>
   </div>
-  {{- else }}
-  {{- range first 3 site.RegularPages }}
-  <div class="card">
-    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-    <p>{{ .Description | truncate 120 }}</p>
-    <div class="meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</div>
-  </div>
-  {{- end }}
   {{- end }}
 </div>
 
-<!-- Series Grid -->
+<!-- Series Grid (only when 5+ posts) -->
 <h2 class="section-heading">Series</h2>
 <div class="series-grid">
-  {{ $seriesData := dict
-    "Building OWUW Beat" (dict "desc" "Autonomous BTC trading with AI agents" "total" 10 "icon" "📈")
-    "Building BlackJyong" (dict "desc" "AI-powered stock portfolio management" "total" 10 "icon" "📊")
-    "Writing a Book with AI" (dict "desc" "Co-authoring with LLM agents" "total" 5 "icon" "📖")
-    "AI Agents by Industry" (dict "desc" "How multi-agent AI transforms industries" "total" 10 "icon" "🏭")
-    "AI Org Management" (dict "desc" "Running organizations with AI systems" "total" 10 "icon" "🏢")
-    "Startup Ideas" (dict "desc" "Multi-agent business opportunities" "total" 10 "icon" "💡")
-    "Daily Trading Log" (dict "desc" "Real daily P&L and agent decisions" "total" 0 "icon" "📋")
-    "Weekly News Roundup" (dict "desc" "AI agent ecosystem news & analysis" "total" 0 "icon" "📰")
+  {{ $seriesList := slice
+    (dict "name" "Building OWUW Beat" "desc" "Autonomous BTC trading with AI agents" "total" 10 "color" "#22c55e")
+    (dict "name" "Building BlackJyong" "desc" "AI-powered stock portfolio management" "total" 10 "color" "#a855f7")
+    (dict "name" "Writing a Book with AI" "desc" "Co-authoring with LLM agents" "total" 5 "color" "#f59e0b")
+    (dict "name" "AI Agents by Industry" "desc" "How multi-agent AI transforms industries" "total" 10 "color" "#f97316")
+    (dict "name" "AI Org Management" "desc" "Running organizations with AI systems" "total" 10 "color" "#06b6d4")
+    (dict "name" "Startup Ideas" "desc" "Multi-agent business opportunities" "total" 10 "color" "#ec4899")
+    (dict "name" "Daily Trading Log" "desc" "Real daily P&L and agent decisions" "total" 0 "color" "#64748b")
+    (dict "name" "Weekly News Roundup" "desc" "AI agent ecosystem news & analysis" "total" 0 "color" "#3b82f6")
   }}
-  {{ range $name, $info := $seriesData }}
-  {{ $slug := $name | urlize }}
+  {{ range $seriesList }}
+  {{ $name := .name }}
   {{ $pages := where site.RegularPages "Params.series" "intersect" (slice $name) }}
   {{ $count := len $pages }}
-  {{ $total := index $info "total" }}
-  {{ $pct := 0 }}
-  {{ if gt $total 0 }}{{ $pct = div (mul $count 100) $total }}{{ end }}
-  <a class="series-card" href="/series/{{ $slug }}/">
-    <h3>{{ index $info "icon" }} {{ $name }}</h3>
-    <p class="series-desc">{{ index $info "desc" }}</p>
+  {{ $total := .total }}
+  {{ $slug := $name | urlize }}
+  {{ $color := .color }}
+  {{ if eq $count 0 }}
+  <div class="series-card series-card--empty" style="border-left: 4px solid {{ $color }};">
+    <h3>{{ $name }}</h3>
+    <p class="series-desc">{{ .desc }}</p>
+    <span class="coming-soon-badge">Coming Soon</span>
+  </div>
+  {{ else }}
+  <a class="series-card" href="/series/{{ $slug }}/" style="border-left: 4px solid {{ $color }};">
+    <h3>{{ $name }}</h3>
+    <p class="series-desc">{{ .desc }}</p>
     {{ if gt $total 0 }}
-    <div class="progress-bar"><div class="progress-fill" style="width: {{ $pct }}%"></div></div>
+    {{ $pct := div (mul $count 100) $total }}
+    <div class="progress-bar"><div class="progress-fill" style="width: {{ $pct }}%; background: {{ $color }};"></div></div>
     <div class="progress-text">{{ $count }}/{{ $total }} parts</div>
     {{ else }}
     <div class="progress-text">{{ $count }} posts</div>
     {{ end }}
   </a>
   {{ end }}
+  {{ end }}
 </div>
+{{- end }}
 
-<!-- Latest Posts -->
-<h2 class="section-heading">Latest Posts</h2>
-<div class="cards-grid">
-  {{- range first 6 site.RegularPages }}
-  <div class="card">
-    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-    <p>{{ .Description | truncate 120 }}</p>
-    <div class="meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</div>
+<!-- Posts List -->
+<h2 class="section-heading">{{ if ge $postCount 5 }}Latest Posts{{ else }}Posts{{ end }}</h2>
+
+{{- if $posts }}
+  {{- $first := index $posts 0 }}
+  <!-- Hero card for newest post -->
+  <div class="post-hero-card">
+    <h3><a href="{{ $first.Permalink }}">{{ $first.Title }}</a></h3>
+    <p>{{ $first.Description }}</p>
+    <div class="meta">{{ $first.Date.Format "Jan 2, 2006" }} · {{ $first.ReadingTime }} min read</div>
+  </div>
+
+  {{- $rest := after 1 $posts }}
+  {{- if $rest }}
+  <div class="posts-grid-2col">
+    {{- range $rest }}
+    <div class="card">
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Description | truncate 120 }}</p>
+      <div class="meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</div>
+    </div>
+    {{- end }}
   </div>
   {{- end }}
-</div>
+{{- else }}
+<p style="opacity: 0.6; font-style: italic;">No posts yet. Check back soon.</p>
+{{- end }}
 
 {{- end }}

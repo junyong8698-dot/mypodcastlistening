@@ -1,3 +1,29 @@
+<!-- Click-based dropdown for mobile (#11) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.menu .dropdown > a').forEach(function(trigger) {
+    trigger.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768 || 'ontouchstart' in window) {
+        e.preventDefault();
+        var dd = this.parentElement;
+        dd.classList.toggle('open');
+        // Close others
+        document.querySelectorAll('.menu .dropdown').forEach(function(el) {
+          if (el !== dd) el.classList.remove('open');
+        });
+      }
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.menu .dropdown').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+});
+</script>
+
 {{ if .IsPage }}
 <!-- Series Navigation -->
 {{ with .Params.series }}
