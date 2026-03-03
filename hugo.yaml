@@ -58,6 +58,20 @@ params:
     - name: rss
       url: "/index.xml"
 
+  comments: true
+
+  giscus:
+    repo: "junyong8698-dot/mypodcastlistening"
+    repoId: "R_kgDORcRiJg"
+    category: "General"
+    categoryId: "DIC_kwDORcRiJs4C3oCV"
+    mapping: "pathname"
+    reactionsEnabled: "1"
+    emitMetadata: "0"
+    inputPosition: "top"
+    theme: "preferred_color_scheme"
+    lang: "en"
+
   assets:
     favicon: "/favicon.ico"
     disableHLJS: true

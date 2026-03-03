@@ -348,5 +348,13 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   .post-title { font-size: 1.75rem; }
 }
 
+/* --- Giscus comments --- */
+.giscus-comments {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  max-width: 680px;
+}
+
 /* Remove lazy loading fade effect */
 img[loading="lazy"] { opacity: 1; }

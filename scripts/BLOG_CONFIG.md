@@ -37,7 +37,7 @@
 - [x] 01: AI Flattening the Org Chart — Middle Management (published 2026-03-03)
 
 ### ⑦ Startup Ideas
-- (none yet)
+- [x] 01: Vertical AI Agents — Solo Founder's Best Shot at $1M (published 2026-03-04)
 
 ## Content Rules
 - Language: English
