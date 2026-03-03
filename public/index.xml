@@ -30,6 +30,13 @@
       <description>After a devastating 4AM liquidation, I decided to remove myself from the trading loop entirely. This is Part 1 of how I built OWUW Beat — an autonomous BTC trading system powered by AI agents.</description>
     </item>
     <item>
+      <title>OpenClaw &#43; Telegram &#43; Binance: The Stack Behind My AI Trading Agent</title>
+      <link>https://www.mypodcastlistening.com/posts/series/owuw-beat/02-choosing-the-stack/</link>
+      <pubDate>Sat, 26 Jul 2025 09:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/series/owuw-beat/02-choosing-the-stack/</guid>
+      <description>Why I chose OpenClaw as the agent framework, Telegram as the interface, and Binance as the execution layer — plus the setup gotchas nobody warns you about.</description>
+    </item>
+    <item>
       <title>About</title>
       <link>https://www.mypodcastlistening.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
