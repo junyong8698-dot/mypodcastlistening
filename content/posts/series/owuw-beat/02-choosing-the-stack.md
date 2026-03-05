@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw + Telegram + Binance: The Stack Behind My AI Trading Agent"
-date: 2025-07-26T09:00:00+09:00
+date: 2026-03-04T09:00:00+09:00
 draft: false
 description: "Why I chose OpenClaw as the agent framework, Telegram as the interface, and Binance as the execution layer — plus the setup gotchas nobody warns you about."
 tags: ["OpenClaw", "Telegram bot", "Binance API", "AI agents", "tech stack", "automation", "BTC trading"]

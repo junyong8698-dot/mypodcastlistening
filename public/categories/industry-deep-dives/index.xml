@@ -6,7 +6,7 @@
     <description>Recent content in Industry Deep Dives on The Multi-Agent Future</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Jul 2025 15:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2026 09:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/categories/industry-deep-dives/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How Multi-Agent AI Is Replacing $200/Hour Legal Associates in Document Review</title>
@@ -14,6 +14,13 @@
       <pubDate>Sat, 19 Jul 2025 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/posts/industry/01-ai-agents-in-legal-discovery/</guid>
       <description>Law firms spend 60-80% of litigation budgets on document review. Multi-agent AI systems are cutting that by 90% while improving accuracy. Here&amp;#39;s exactly how it works, with implementation prompts.</description>
+    </item>
+    <item>
+      <title>AI Agents in Clinical Trials: From White Space to Warp Speed</title>
+      <link>https://www.mypodcastlistening.com/posts/industry/02-ai-agents-clinical-trials/</link>
+      <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/industry/02-ai-agents-clinical-trials/</guid>
+      <description>How agentic AI is cutting clinical trial timelines, automating CRA workflows, and reshaping drug development from recruitment to database lock.</description>
     </item>
   </channel>
 </rss>

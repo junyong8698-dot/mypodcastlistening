@@ -6,8 +6,15 @@
     <description>Recent content in Categories on The Multi-Agent Future</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Mar 2026 15:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2026 09:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Industry Deep Dives</title>
+      <link>https://www.mypodcastlistening.com/categories/industry-deep-dives/</link>
+      <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/categories/industry-deep-dives/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Startup Ideas</title>
       <link>https://www.mypodcastlistening.com/categories/startup-ideas/</link>
@@ -23,24 +30,17 @@
       <description></description>
     </item>
     <item>
-      <title>Org Management</title>
-      <link>https://www.mypodcastlistening.com/categories/org-management/</link>
-      <pubDate>Tue, 03 Mar 2026 06:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/categories/org-management/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>OWUW Beat Series</title>
       <link>https://www.mypodcastlistening.com/categories/owuw-beat-series/</link>
-      <pubDate>Sat, 26 Jul 2025 09:00:00 +0900</pubDate>
+      <pubDate>Wed, 04 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/owuw-beat-series/</guid>
       <description></description>
     </item>
     <item>
-      <title>Industry Deep Dives</title>
-      <link>https://www.mypodcastlistening.com/categories/industry-deep-dives/</link>
-      <pubDate>Sat, 19 Jul 2025 15:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/categories/industry-deep-dives/</guid>
+      <title>Org Management</title>
+      <link>https://www.mypodcastlistening.com/categories/org-management/</link>
+      <pubDate>Tue, 03 Mar 2026 06:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/categories/org-management/</guid>
       <description></description>
     </item>
   </channel>

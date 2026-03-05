@@ -1,6 +1,6 @@
 ---
 title: "AI Agents in Clinical Trials: From White Space to Warp Speed"
-date: 2026-03-05T15:00:00+09:00
+date: 2026-03-05T09:00:00+09:00
 description: "How agentic AI is cutting clinical trial timelines, automating CRA workflows, and reshaping drug development from recruitment to database lock."
 categories: ["Industry Deep Dives"]
 tags: ["AI agents", "clinical trials", "drug development", "healthcare AI", "agentic AI", "patient recruitment", "pharma"]
