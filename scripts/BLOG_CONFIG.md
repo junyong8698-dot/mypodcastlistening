@@ -26,8 +26,11 @@
 - [ ] Part 2-10: TBD
 
 ### ③ AI Book (5 parts)
-- [ ] Part 1: Why write a book with AI
-- [ ] Part 2-5: TBD
+- [x] Part 1: Why write a book with AI (published 2026-03-06)
+- [ ] Part 2: Technical setup — OpenClaw, agents, memory architecture
+- [ ] Part 3: The writing process — prompts, iteration, quality control
+- [ ] Part 4: What went wrong — failures, hallucinations, rewrites
+- [ ] Part 5: Results and honest assessment
 
 ## Evergreen Tracker
 ### ⑤ Industry Deep Dives
