@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Building OWUW Beat on The Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/series/building-owuw-beat/</link>
     <description>Recent content in Building OWUW Beat on The Multi-Agent Future</description>
-    <generator>Hugo -- 0.157.0</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Jul 2025 09:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/series/building-owuw-beat/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,14 @@
       <link>https://www.mypodcastlistening.com/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/</link>
       <pubDate>Sat, 19 Jul 2025 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/</guid>
-      <description>After a devastating 4AM liquidation, I decided to remove myself from the trading loop entirely. This is Part 1 of how I built OWUW Beat — an autonomous BTC trading system powered by AI agents.</description>
+      <description>&lt;h2 id=&#34;the-4am-wake-up-call-that-changed-everything&#34;&gt;The 4AM Wake-Up Call That Changed Everything&lt;/h2&gt;&#xA;&lt;p&gt;It was February 2025. My phone buzzed at 4:17 AM. Binance liquidation alert. I watched $13,000 evaporate in eleven minutes.&lt;/p&gt;&#xA;&lt;p&gt;I wasn&amp;rsquo;t a bad trader — at least, I didn&amp;rsquo;t think I was. I&amp;rsquo;d read the books. I understood regime-based positioning, macro correlations, risk management frameworks. I could articulate exactly why overleveraged longs get crushed in a rising-rate environment.&lt;/p&gt;&#xA;&lt;p&gt;None of that mattered at 4AM. My hands were shaking. I opened the app and did exactly what I knew I shouldn&amp;rsquo;t do: I averaged down into a falling position. By 5AM, I was down 40% of my total portfolio.&lt;/p&gt;</description>
     </item>
     <item>
       <title>OpenClaw &#43; Telegram &#43; Binance: The Stack Behind My AI Trading Agent</title>
       <link>https://www.mypodcastlistening.com/posts/series/owuw-beat/02-choosing-the-stack/</link>
       <pubDate>Sat, 26 Jul 2025 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/posts/series/owuw-beat/02-choosing-the-stack/</guid>
-      <description>Why I chose OpenClaw as the agent framework, Telegram as the interface, and Binance as the execution layer — plus the setup gotchas nobody warns you about.</description>
+      <description>&lt;h2 id=&#34;you-dont-need-a-data-center-you-need-the-right-stack&#34;&gt;You Don&amp;rsquo;t Need a Data Center. You Need the Right Stack.&lt;/h2&gt;&#xA;&lt;p&gt;When I decided to build an autonomous BTC trading agent after my &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/01-why-i-built-a-btc-trading-bot/&#34;&gt;emotional trading disaster&lt;/a&gt;, the first question wasn&amp;rsquo;t &amp;ldquo;what model should I use?&amp;rdquo; It was far more mundane: &lt;strong&gt;where does this thing actually run, and how do I talk to it?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Most AI agent tutorials skip this part. They assume you&amp;rsquo;ll spin up a Docker container on AWS, wire up a REST API, and build a React dashboard. That&amp;rsquo;s fine if you&amp;rsquo;re a startup with a DevOps team. I&amp;rsquo;m one person with a Mac Mini on my desk and a Telegram app on my phone.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -1,18 +1,60 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on The Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/tags/</link>
     <description>Recent content in Tags on The Multi-Agent Future</description>
-    <generator>Hugo -- 0.157.0</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Mar 2026 13:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 04 Mar 2026 15:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AI Agents</title>
+      <title>Ai-Agents</title>
       <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
-      <pubDate>Wed, 04 Mar 2026 13:00:00 +0900</pubDate>
+      <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automation</title>
+      <link>https://www.mypodcastlistening.com/tags/automation/</link>
+      <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bootstrapping</title>
+      <link>https://www.mypodcastlistening.com/tags/bootstrapping/</link>
+      <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/bootstrapping/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SaaS</title>
+      <link>https://www.mypodcastlistening.com/tags/saas/</link>
+      <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/saas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Solo Founder</title>
+      <link>https://www.mypodcastlistening.com/tags/solo-founder/</link>
+      <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/solo-founder/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Startup</title>
+      <link>https://www.mypodcastlistening.com/tags/startup/</link>
+      <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/startup/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vertical AI</title>
+      <link>https://www.mypodcastlistening.com/tags/vertical-ai/</link>
+      <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/vertical-ai/</guid>
       <description></description>
     </item>
     <item>
@@ -90,13 +132,6 @@
       <link>https://www.mypodcastlistening.com/tags/workforce-automation/</link>
       <pubDate>Tue, 03 Mar 2026 06:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/workforce-automation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Automation</title>
-      <link>https://www.mypodcastlistening.com/tags/automation/</link>
-      <pubDate>Sat, 26 Jul 2025 09:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/automation/</guid>
       <description></description>
     </item>
     <item>
