@@ -6,7 +6,7 @@
     <description>Recent content in Posts on The Multi-Agent Future</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2026 13:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2026 15:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How AI Is Flattening the Org Chart and Rewriting Middle Management</title>
@@ -28,6 +28,13 @@
       <pubDate>Sat, 19 Jul 2025 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/</guid>
       <description>After a devastating 4AM liquidation, I decided to remove myself from the trading loop entirely. This is Part 1 of how I built OWUW Beat — an autonomous BTC trading system powered by AI agents.</description>
+    </item>
+    <item>
+      <title>AI Is Killing the Annual Performance Review (Finally)</title>
+      <link>https://www.mypodcastlistening.com/posts/org-management/02-ai-killing-annual-performance-review/</link>
+      <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/org-management/02-ai-killing-annual-performance-review/</guid>
+      <description>58% of companies still use spreadsheets for reviews. AI-powered continuous feedback is replacing the ritual. Here&amp;#39;s the real landscape, risks, and how to implement it.</description>
     </item>
     <item>
       <title>OpenClaw &#43; Telegram &#43; Binance: The Stack Behind My AI Trading Agent</title>
