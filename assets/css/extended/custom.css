@@ -493,8 +493,95 @@ img[loading="lazy"] { opacity: 1; }
   text-align: center;
   color: var(--text-muted);
   font-size: 1.05rem;
-  margin: 32px 0 40px;
+  margin: 48px 0 40px;
+  padding-top: 16px;
   line-height: 1.6;
+  clear: both;
+}
+
+/* --- Header nav fix — prevent overlap --- */
+.header .nav {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+#menu {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+}
+
+/* --- Series Hub Page --- */
+.series-hub {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+.series-hub h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+.series-hub-desc {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 40px;
+}
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 600px) {
+  .series-grid { grid-template-columns: 1fr; }
+}
+.series-tile {
+  display: block;
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  text-decoration: none;
+  transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+  position: relative;
+}
+.series-tile:hover {
+  box-shadow: 0 6px 28px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+.series-tile h2 {
+  font-size: 1.25rem;
+  margin: 8px 0;
+  color: var(--text);
+}
+.series-tile p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.series-tile-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  color: #fff;
+  background: var(--accent, #6b7280);
+}
+.dark .series-tile {
+  background: var(--bg);
+  border-color: var(--border);
 }
 
 /* --- Featured Card (hero) --- */
