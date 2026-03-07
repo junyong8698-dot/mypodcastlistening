@@ -3,10 +3,12 @@
   <channel>
     <title>Posts on Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/posts/</link>
-    <description>Recent content in Posts on Multi-Agent Future</description>
-    <generator>Hugo -- 0.157.0</generator>
+    <description>Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate></lastBuildDate>
+    <managingEditor>JY</managingEditor>
+    <webMaster>JY</webMaster>
+    <lastBuildDate>Sat, 07 Mar 2026 15:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/posts/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

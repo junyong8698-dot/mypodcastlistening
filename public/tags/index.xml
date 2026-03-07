@@ -3,9 +3,11 @@
   <channel>
     <title>Tags on Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/tags/</link>
-    <description>Recent content in Tags on Multi-Agent Future</description>
-    <generator>Hugo -- 0.157.0</generator>
+    <description>Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>JY</managingEditor>
+    <webMaster>JY</webMaster>
     <lastBuildDate>Sat, 07 Mar 2026 15:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,6 +16,7 @@
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-compliance/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Colorado AI Act</title>
@@ -21,6 +24,7 @@
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/colorado-ai-act/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>EU AI Act</title>
@@ -28,6 +32,7 @@
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/eu-ai-act/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Regtech</title>
@@ -35,6 +40,7 @@
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/regtech/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Regulatory Technology</title>
@@ -42,6 +48,7 @@
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/regulatory-technology/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>SaaS</title>
@@ -49,6 +56,7 @@
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/saas/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Startup</title>
@@ -56,6 +64,7 @@
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/startup/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Ai-Agents</title>
@@ -63,6 +72,7 @@
       <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Btc</title>
@@ -70,6 +80,7 @@
       <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/btc/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Daily-Log</title>
@@ -77,6 +88,7 @@
       <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/daily-log/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Owuw</title>
@@ -84,6 +96,7 @@
       <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/owuw/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Stocks</title>
@@ -91,6 +104,7 @@
       <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/stocks/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Trading</title>
@@ -98,6 +112,7 @@
       <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/trading/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>AI Performance Reviews</title>
@@ -105,6 +120,7 @@
       <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-performance-reviews/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Continuous Feedback</title>
@@ -112,6 +128,7 @@
       <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/continuous-feedback/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Culture Amp</title>
@@ -119,6 +136,7 @@
       <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/culture-amp/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>HR Automation</title>
@@ -126,6 +144,7 @@
       <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/hr-automation/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Lattice</title>
@@ -133,6 +152,7 @@
       <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/lattice/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Organizational Design</title>
@@ -140,6 +160,7 @@
       <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/organizational-design/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Performance Management</title>
@@ -147,6 +168,7 @@
       <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/performance-management/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Ai-Writing</title>
@@ -154,6 +176,7 @@
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-writing/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Automation</title>
@@ -161,6 +184,7 @@
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/automation/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Book-Writing</title>
@@ -168,6 +192,7 @@
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/book-writing/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Claude</title>
@@ -175,6 +200,7 @@
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/claude/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>LLM</title>
@@ -182,13 +208,15 @@
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Agentic AI</title>
@@ -196,6 +224,7 @@
       <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/agentic-ai/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Clinical Trials</title>
@@ -203,6 +232,7 @@
       <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/clinical-trials/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Drug Development</title>
@@ -210,6 +240,7 @@
       <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/drug-development/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Healthcare AI</title>
@@ -217,6 +248,7 @@
       <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/healthcare-ai/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Patient Recruitment</title>
@@ -224,6 +256,7 @@
       <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/patient-recruitment/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Pharma</title>
@@ -231,6 +264,7 @@
       <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/pharma/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Bootstrapping</title>
@@ -238,6 +272,7 @@
       <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/bootstrapping/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Solo Founder</title>
@@ -245,6 +280,7 @@
       <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/solo-founder/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Vertical AI</title>
@@ -252,6 +288,7 @@
       <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/vertical-ai/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Binance API</title>
@@ -259,6 +296,7 @@
       <pubDate>Wed, 04 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/binance-api/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>BTC Trading</title>
@@ -266,6 +304,7 @@
       <pubDate>Wed, 04 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/btc-trading/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Tech Stack</title>
@@ -273,6 +312,7 @@
       <pubDate>Wed, 04 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/tech-stack/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Telegram Bot</title>
@@ -280,6 +320,7 @@
       <pubDate>Wed, 04 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Gartner</title>
@@ -287,6 +328,7 @@
       <pubDate>Tue, 03 Mar 2026 06:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/gartner/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Klarna</title>
@@ -294,6 +336,7 @@
       <pubDate>Tue, 03 Mar 2026 06:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/klarna/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Leadership</title>
@@ -301,6 +344,7 @@
       <pubDate>Tue, 03 Mar 2026 06:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/leadership/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Middle Management</title>
@@ -308,6 +352,7 @@
       <pubDate>Tue, 03 Mar 2026 06:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/middle-management/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Workforce Automation</title>
@@ -315,6 +360,7 @@
       <pubDate>Tue, 03 Mar 2026 06:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/workforce-automation/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Document Review</title>
@@ -322,6 +368,7 @@
       <pubDate>Mon, 02 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/document-review/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>E-Discovery</title>
@@ -329,6 +376,7 @@
       <pubDate>Mon, 02 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/e-discovery/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Legal Tech</title>
@@ -336,6 +384,7 @@
       <pubDate>Mon, 02 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/legal-tech/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Multi-Agent Systems</title>
@@ -343,6 +392,7 @@
       <pubDate>Mon, 02 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/multi-agent-systems/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Algorithmic Trading</title>
@@ -350,6 +400,7 @@
       <pubDate>Sun, 01 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/algorithmic-trading/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Bitcoin</title>
@@ -357,6 +408,7 @@
       <pubDate>Sun, 01 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/bitcoin/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Quant Trading</title>
@@ -364,6 +416,7 @@
       <pubDate>Sun, 01 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/quant-trading/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
   </channel>
 </rss>

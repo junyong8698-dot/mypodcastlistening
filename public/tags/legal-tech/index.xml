@@ -3,9 +3,11 @@
   <channel>
     <title>Legal Tech on Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/tags/legal-tech/</link>
-    <description>Recent content in Legal Tech on Multi-Agent Future</description>
-    <generator>Hugo -- 0.157.0</generator>
+    <description>Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>JY</managingEditor>
+    <webMaster>JY</webMaster>
     <lastBuildDate>Mon, 02 Mar 2026 15:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/legal-tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -13,7 +15,220 @@
       <link>https://www.mypodcastlistening.com/posts/industry/01-ai-agents-in-legal-discovery/</link>
       <pubDate>Mon, 02 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/posts/industry/01-ai-agents-in-legal-discovery/</guid>
-      <description>Law firms spend 60-80% of litigation budgets on document review. Multi-agent AI systems are cutting that by 90% while improving accuracy. Here&amp;#39;s exactly how it works, with implementation prompts.</description>
+      <description>&lt;h2 id=&#34;the-10-billion-document-review-problem&#34;&gt;The $10 Billion Document Review Problem&lt;/h2&gt;
+&lt;p&gt;When a company gets sued — or sues someone — the first phase is discovery. Both sides must produce relevant documents. In a typical corporate litigation case, this means reviewing 500,000 to 5 million documents to determine which are relevant, privileged, or responsive.&lt;/p&gt;
+&lt;p&gt;At major law firms, this work is done by junior associates and contract attorneys billing $150-400/hour. According to the RAND Corporation&amp;rsquo;s analysis of litigation costs (&lt;a href=&#34;https://www.rand.org/pubs/monographs/MG1208.html&#34;&gt;RAND, 2012&lt;/a&gt;), document review accounts for 60-80% of total discovery costs in large cases.&lt;/p&gt;</description>
+      <content:encoded>&lt;h2 id=&#34;the-10-billion-document-review-problem&#34;&gt;The $10 Billion Document Review Problem&lt;/h2&gt;
+&lt;p&gt;When a company gets sued — or sues someone — the first phase is discovery. Both sides must produce relevant documents. In a typical corporate litigation case, this means reviewing 500,000 to 5 million documents to determine which are relevant, privileged, or responsive.&lt;/p&gt;
+&lt;p&gt;At major law firms, this work is done by junior associates and contract attorneys billing $150-400/hour. According to the RAND Corporation&amp;rsquo;s analysis of litigation costs (&lt;a href=&#34;https://www.rand.org/pubs/monographs/MG1208.html&#34;&gt;RAND, 2012&lt;/a&gt;), document review accounts for 60-80% of total discovery costs in large cases.&lt;/p&gt;
+&lt;p&gt;The math is brutal:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Average large case: 2 million documents
+Review rate: 40-60 docs/hour (human reviewer)
+Hours needed: ~40,000 hours
+At $200/hour: $8,000,000
+Accuracy: 70-80% (human inconsistency across reviewers)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This is the kind of problem multi-agent AI was born to solve: massive scale, repetitive judgment, high cost, and measurable accuracy.&lt;/p&gt;
+&lt;h2 id=&#34;what-multi-agent-legal-review-actually-looks-like&#34;&gt;What Multi-Agent Legal Review Actually Looks Like&lt;/h2&gt;
+&lt;p&gt;A single LLM reading documents one-by-one is already better than nothing. But a &lt;em&gt;multi-agent system&lt;/em&gt; can replicate the actual workflow of a legal review team — with specialization, quality control, and escalation paths.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the architecture I&amp;rsquo;d build (and that several legal tech companies are building variants of):&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;┌───────────────────────────────────────────────────┐
+│           Multi-Agent Legal Review System           │
+│                                                     │
+│  ┌─────────────┐  ┌─────────────┐  ┌────────────┐│
+│  │  Intake      │  │  Classifier │  │  Privilege  ││
+│  │  Agent       │  │  Agents     │  │  Agent      ││
+│  │              │  │  (5-10x)    │  │             ││
+│  │  OCR, parse, │  │  Relevance  │  │  Attorney-  ││
+│  │  de-dupe,    │  │  scoring,   │  │  client     ││
+│  │  metadata    │  │  issue      │  │  privilege, ││
+│  │  extraction  │  │  coding     │  │  work       ││
+│  │              │  │             │  │  product    ││
+│  └──────┬──────┘  └──────┬──────┘  └──────┬─────┘│
+│         │                │                 │       │
+│         v                v                 v       │
+│  ┌─────────────────────────────────────────────┐  │
+│  │              QC / Audit Agent                │  │
+│  │  Random sample 10%, flag disagreements,      │  │
+│  │  measure inter-annotator agreement           │  │
+│  └──────────────────┬──────────────────────────┘  │
+│                     │                              │
+│                     v                              │
+│  ┌─────────────────────────────────────────────┐  │
+│  │           Senior Review Agent                │  │
+│  │  Handles escalations, borderline cases,      │  │
+│  │  produces review protocol updates            │  │
+│  └──────────────────┬──────────────────────────┘  │
+│                     │                              │
+│                     v                              │
+│  ┌─────────────────────────────────────────────┐  │
+│  │           Reporting Dashboard                │  │
+│  │  Progress, accuracy metrics, cost tracking   │  │
+│  └─────────────────────────────────────────────┘  │
+└───────────────────────────────────────────────────┘
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;why-multiple-agents-not-one&#34;&gt;Why multiple agents, not one?&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Specialization&lt;/strong&gt; — The intake agent handles OCR and parsing (a different skill than legal reasoning). The privilege agent needs deep understanding of attorney-client privilege doctrine. A single prompt trying to do everything produces worse results than specialized agents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Parallelism&lt;/strong&gt; — 5-10 classifier agents can review documents simultaneously. A 2-million document set that takes 40,000 human-hours can be processed in hours.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Quality control&lt;/strong&gt; — The QC agent samples completed work and flags inconsistencies, similar to how a senior associate spot-checks junior reviewers. This catches drift and errors.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Escalation&lt;/strong&gt; — Borderline documents get routed to the senior review agent, which has access to the full case context and review protocol. This mirrors how real review teams handle ambiguous documents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;real-numbers-cost-and-accuracy&#34;&gt;Real Numbers: Cost and Accuracy&lt;/h2&gt;
+&lt;h3 id=&#34;cost-comparison&#34;&gt;Cost comparison&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Method&lt;/th&gt;
+          &lt;th&gt;Cost per document&lt;/th&gt;
+          &lt;th&gt;2M document case&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Human review (associates)&lt;/td&gt;
+          &lt;td&gt;$3.33-$10.00&lt;/td&gt;
+          &lt;td&gt;$6.6M - $20M&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Human review (contract attorneys)&lt;/td&gt;
+          &lt;td&gt;$1.50-$4.00&lt;/td&gt;
+          &lt;td&gt;$3M - $8M&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;TAR 1.0 (keyword + ML)&lt;/td&gt;
+          &lt;td&gt;$0.50-$1.50&lt;/td&gt;
+          &lt;td&gt;$1M - $3M&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Multi-agent AI (2025 pricing)&lt;/td&gt;
+          &lt;td&gt;$0.05-$0.20&lt;/td&gt;
+          &lt;td&gt;$100K - $400K&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The multi-agent cost assumes GPT-4o-level models at current API pricing (~$2.50/1M input tokens). For a 2-page document averaging 1,000 tokens, that&amp;rsquo;s $0.0025 per document for the LLM call alone, plus overhead for multiple agent passes.&lt;/p&gt;
+&lt;h3 id=&#34;accuracy&#34;&gt;Accuracy&lt;/h3&gt;
+&lt;p&gt;This is where it gets interesting. A 2023 study published in the &lt;em&gt;Journal of Law and Technology at Texas&lt;/em&gt; (&lt;a href=&#34;https://doi.org/10.15781/T2MS3K73P&#34;&gt;Grossman &amp;amp; Cormack, 2023&lt;/a&gt;) found that LLM-based review achieved recall rates of 85-95% and precision of 80-90% on standard TREC Legal Track datasets — comparable to or exceeding human reviewer performance.&lt;/p&gt;
+&lt;p&gt;The key insight: &lt;strong&gt;human reviewers are inconsistent&lt;/strong&gt;. Studies consistently show inter-annotator agreement (how often two human reviewers agree on the same document) at only 70-80%. AI reviewers are at least &lt;em&gt;consistently&lt;/em&gt; wrong in predictable ways that can be identified and corrected.&lt;/p&gt;
+&lt;h2 id=&#34;implementation-the-classifier-agent-prompt&#34;&gt;Implementation: The Classifier Agent Prompt&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s a production-grade prompt for the core classification agent. This is the kind of prompt that actually works in practice — it&amp;rsquo;s specific, structured, and includes the review protocol:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You are a document review attorney specializing in e-discovery. 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Your role is to classify documents for relevance and issue coding 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;in the matter of [CASE NAME].
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Case Summary
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Insert 2-3 paragraph case summary]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Review Protocol
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Relevant documents are those that:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt; Discuss, reference, or relate to [specific subject matter]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;2.&lt;/span&gt; Were created between [date range]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;3.&lt;/span&gt; Involve any of the following custodians: [list]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;4.&lt;/span&gt; Contain information about [specific topics/issues]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;A document is NOT relevant if it:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt; Is purely administrative (meeting scheduling, lunch orders) 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   with no substantive discussion
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;2.&lt;/span&gt; Relates to [excluded topics]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;3.&lt;/span&gt; Is a duplicate of an already-reviewed document
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Issue Codes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Apply all that apply:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; CONTRACT: References the [specific] agreement or its terms
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; NEGOTIATION: Discusses negotiation of terms
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; BREACH: References potential or actual breach
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; DAMAGES: Discusses financial impact or damages
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; COMMUNICATIONS: External communications with [counterparty]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Output Format
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;For each document, respond with:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;doc_id&amp;#34;: &amp;#34;[ID]&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;relevant&amp;#34;: true/false,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;confidence&amp;#34;: 0.0-1.0,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;issue_codes&amp;#34;: [&amp;#34;CODE1&amp;#34;, &amp;#34;CODE2&amp;#34;],
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;privilege_flag&amp;#34;: true/false,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;reasoning&amp;#34;: &amp;#34;One sentence explaining your classification&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;escalate&amp;#34;: true/false
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Set escalate=true if:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Confidence &amp;lt; 0.7
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Document appears to contain privileged material
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Document discusses topics not covered in the review protocol
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Important
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; When in doubt, err on the side of marking relevant (over-inclusion 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  is preferred over missing relevant documents)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Do not skip or summarize — classify every document presented
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Your reasoning must reference specific content from the document
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;the-qc-agent-prompt&#34;&gt;The QC Agent prompt&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You are a senior review attorney conducting quality control.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You will receive:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt; The original document
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;2.&lt;/span&gt; The classification from the primary reviewer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Your job:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt; Independently classify the document using the same protocol
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;2.&lt;/span&gt; Compare your classification to the primary reviewer&amp;#39;s
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;3.&lt;/span&gt; Flag any disagreements
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Output:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;doc_id&amp;#34;: &amp;#34;[ID]&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;qc_relevant&amp;#34;: true/false,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;qc_issue_codes&amp;#34;: [&amp;#34;...&amp;#34;],
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;agrees_with_primary&amp;#34;: true/false,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;disagreement_type&amp;#34;: &amp;#34;relevance|issue_code|privilege|none&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;qc_notes&amp;#34;: &amp;#34;Explanation if disagreement&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Only flag genuine disagreements. Minor differences in issue coding 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(e.g., missing a secondary code) should be noted but not flagged 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;as disagreements.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;whos-already-doing-this&#34;&gt;Who&amp;rsquo;s Already Doing This&lt;/h2&gt;
+&lt;p&gt;Several companies are building production versions of multi-agent legal review:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Harvey AI&lt;/strong&gt; (backed by Sequoia, $100M+ raised) — uses LLMs for contract review, due diligence, and litigation support. Their system handles multi-step legal reasoning with specialized models (&lt;a href=&#34;https://www.harvey.ai/&#34;&gt;Harvey AI&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CoCounsel by Thomson Reuters&lt;/strong&gt; — integrated into Westlaw, handles document review, deposition preparation, and contract analysis. Uses a multi-step approach where different AI components handle different tasks (&lt;a href=&#34;https://legal.thomsonreuters.com/en/products/cocounsel&#34;&gt;Thomson Reuters, 2024&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Relativity aiR&lt;/strong&gt; — built into the Relativity e-discovery platform, provides AI-assisted review with confidence scoring and escalation workflows (&lt;a href=&#34;https://www.relativity.com/air/&#34;&gt;Relativity&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;None of these companies publicly describe their systems as &amp;ldquo;multi-agent&amp;rdquo; — the marketing term is &amp;ldquo;AI-assisted review&amp;rdquo; or &amp;ldquo;AI-powered legal research.&amp;rdquo; But under the hood, the architecture involves multiple specialized components working in coordination, which is functionally a multi-agent system.&lt;/p&gt;
+&lt;h2 id=&#34;the-bigger-picture-what-this-means-for-law&#34;&gt;The Bigger Picture: What This Means for Law&lt;/h2&gt;
+&lt;p&gt;The implications are significant and already unfolding:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Short-term (2025-2026):&lt;/strong&gt; Document review costs drop 80-90%. Mid-size firms that couldn&amp;rsquo;t afford large-scale discovery can now compete with BigLaw on document-heavy cases. Contract attorney staffing agencies face existential pressure.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Medium-term (2026-2028):&lt;/strong&gt; The multi-agent approach expands beyond document review to contract drafting (multiple agents handling different clauses), regulatory compliance monitoring (agents tracking regulatory changes across jurisdictions), and due diligence (agents reviewing data rooms).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Long-term (2028+):&lt;/strong&gt; The question becomes whether legal judgment itself — not just document classification — can be delegated to agent systems. My bet: routine legal judgment (is this clause standard? does this contract have unusual terms?) yes. Novel legal reasoning (how should this ambiguous statute be interpreted?) no, not for a long time.&lt;/p&gt;
+&lt;h2 id=&#34;try-it-yourself&#34;&gt;Try It Yourself&lt;/h2&gt;
+&lt;p&gt;If you want to experiment with multi-agent document review on a small scale:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pick any set of 50-100 documents (contracts, emails, reports)&lt;/li&gt;
+&lt;li&gt;Write a clear review protocol (what&amp;rsquo;s relevant, what&amp;rsquo;s not)&lt;/li&gt;
+&lt;li&gt;Use the classifier prompt above with Claude or GPT-4&lt;/li&gt;
+&lt;li&gt;Process documents in batches of 10&lt;/li&gt;
+&lt;li&gt;Run 10% through the QC agent&lt;/li&gt;
+&lt;li&gt;Measure agreement rate between classifier and QC&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You&amp;rsquo;ll likely see 85-90% agreement, which is already at or above human inter-reviewer agreement. The entire exercise will cost less than $1 in API fees and take about 30 minutes.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s the future of legal review. Not a single genius AI lawyer — a team of specialized agents, each doing one thing well, coordinated by a system that ensures quality.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is the first in a daily series exploring how multi-agent AI is transforming specific industries. Tomorrow: healthcare — how agent teams are accelerating drug discovery pipelines.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sources and references are linked inline. If you spot an error or have additional data, leave a comment.&lt;/em&gt;&lt;/p&gt;
+</content:encoded>
     </item>
   </channel>
 </rss>

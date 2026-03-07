@@ -3,9 +3,11 @@
   <channel>
     <title>AI Book — Writing a Book with AI Agents on Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/posts/series/ai-book/</link>
-    <description>Recent content in AI Book — Writing a Book with AI Agents on Multi-Agent Future</description>
-    <generator>Hugo -- 0.157.0</generator>
+    <description>Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>JY</managingEditor>
+    <webMaster>JY</webMaster>
     <lastBuildDate>Fri, 06 Mar 2026 09:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/posts/series/ai-book/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -13,7 +15,202 @@
       <link>https://www.mypodcastlistening.com/posts/series/ai-book/01-why-write-a-book-with-ai-agents/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/posts/series/ai-book/01-why-write-a-book-with-ai-agents/</guid>
-      <description>How I used OpenClaw, Claude, and a team of six AI sub-agents to write a full-length book about AI automation — and what I learned about the future of creative work.</description>
+      <description>&lt;p&gt;On February 16th, 2026, at 9:45 PM, I sat down and typed a message into a Telegram bot:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;We&amp;rsquo;re writing a book. 250 pages. Deadline: Sunday midnight. Go.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Six days later, I had a complete manuscript. Eight parts, twenty-one chapters, covering everything from generative AI fundamentals to a BTC trading bot with an AI board of directors to a smart factory automation case study.&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t a story about a magic button. It was chaotic, exhausting, and sometimes infuriating. Agents crashed. Compaction ate context. Chapters came back filled with fabricated sales numbers I had to delete. I rewrote sections at 3 AM because the AI nailed the structure but completely missed the voice.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;On February 16th, 2026, at 9:45 PM, I sat down and typed a message into a Telegram bot:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;We&amp;rsquo;re writing a book. 250 pages. Deadline: Sunday midnight. Go.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Six days later, I had a complete manuscript. Eight parts, twenty-one chapters, covering everything from generative AI fundamentals to a BTC trading bot with an AI board of directors to a smart factory automation case study.&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t a story about a magic button. It was chaotic, exhausting, and sometimes infuriating. Agents crashed. Compaction ate context. Chapters came back filled with fabricated sales numbers I had to delete. I rewrote sections at 3 AM because the AI nailed the structure but completely missed the voice.&lt;/p&gt;
+&lt;p&gt;But it worked. And the process changed how I think about writing, delegation, and what it means to be an &amp;ldquo;author&amp;rdquo; when your co-writers are language models.&lt;/p&gt;
+&lt;h2 id=&#34;why-i-decided-to-do-this&#34;&gt;Why I Decided to Do This&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;d been running AI agents for months before the book project started. Not as experiments — as actual production systems.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/openclaw/openclaw&#34;&gt;OWUW Beat&lt;/a&gt;, my BTC quantitative trading agent, had been generating daily market reports, running R&amp;amp;D research sub-agents, and even convening a weekly governance board of nine AI members to vote on strategy changes. It was built on &lt;a href=&#34;https://github.com/openclaw/openclaw&#34;&gt;OpenClaw&lt;/a&gt;, an open-source AI agent platform that connects Claude (or other LLMs) to Telegram, giving agents persistent memory, cron jobs, file system access, and tool use.&lt;/p&gt;
+&lt;p&gt;I also had Marie, a personal assistant agent, and OWUW Stock, a newer agent focused on AI-themed equities. Three agents, running 24/7 on a Mac Mini, talking to me through Telegram.&lt;/p&gt;
+&lt;p&gt;After a few months of this, I realized I was sitting on something unusual: &lt;strong&gt;81 recorded agent sessions&lt;/strong&gt; with full conversation logs, decision trails, code artifacts, and memory files. Every trade decision, every R&amp;amp;D proposal, every board vote — all documented.&lt;/p&gt;
+&lt;p&gt;The obvious question was: could I turn this into a book?&lt;/p&gt;
+&lt;p&gt;The less obvious question was: could the agents help write it?&lt;/p&gt;
+&lt;h2 id=&#34;the-setup-that-made-it-possible&#34;&gt;The Setup That Made It Possible&lt;/h2&gt;
+&lt;p&gt;Let me be specific about the tooling, because &amp;ldquo;I used AI to write a book&amp;rdquo; can mean anything from &amp;ldquo;I pasted chapters into ChatGPT for editing&amp;rdquo; to &amp;ldquo;I had fully autonomous agents drafting in parallel.&amp;rdquo; What I did was closer to the latter.&lt;/p&gt;
+&lt;h3 id=&#34;the-platform-openclaw&#34;&gt;The Platform: OpenClaw&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/openclaw/openclaw&#34;&gt;OpenClaw&lt;/a&gt; is a self-hosted AI agent runtime. You install it on a Mac, Linux box, or Raspberry Pi, connect it to an LLM provider (Anthropic, OpenAI, etc.), and wire it up to a messaging channel — Telegram, Discord, Signal, whatever.&lt;/p&gt;
+&lt;p&gt;What makes it different from just using the Claude API is the agent layer:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Persistent memory&lt;/strong&gt;: Agents have &lt;code&gt;MEMORY.md&lt;/code&gt; files and daily memory logs (&lt;code&gt;memory/YYYY-MM-DD.md&lt;/code&gt;). They remember conversations across sessions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File system access&lt;/strong&gt;: Agents can read and write files directly. No copy-pasting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cron jobs&lt;/strong&gt;: You can schedule recurring tasks — daily reports, weekly reviews, automated check-ins.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sub-agent spawning&lt;/strong&gt;: An agent can spin up isolated sub-sessions to handle specific tasks, then report back.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tool use&lt;/strong&gt;: Web search, browser control, shell commands, image analysis.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This isn&amp;rsquo;t a chatbot. It&amp;rsquo;s closer to a junior employee who lives in your terminal and never sleeps.&lt;/p&gt;
+&lt;h3 id=&#34;the-model-claude&#34;&gt;The Model: Claude&lt;/h3&gt;
+&lt;p&gt;The book agent ran on Claude (Anthropic&amp;rsquo;s model, specifically claude-opus-4-6 equivalent at the time). I chose Claude for three reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Long context window&lt;/strong&gt;: 200K tokens meant I could feed entire chapters plus style guides plus reference material in a single prompt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Writing quality&lt;/strong&gt;: In my experience across dozens of agent sessions, Claude produces more natural prose than GPT-4 for long-form content. Less of the &amp;ldquo;furthermore&amp;rdquo; and &amp;ldquo;it&amp;rsquo;s important to note&amp;rdquo; verbal tics.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Instruction following&lt;/strong&gt;: The book had a specific style guide (해요체, reader-participatory tone, question-driven transitions) and Claude stuck to it more consistently than alternatives I tested.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;the-agent-architecture&#34;&gt;The Agent Architecture&lt;/h3&gt;
+&lt;p&gt;Here&amp;rsquo;s where it gets interesting. I didn&amp;rsquo;t use one agent. I used six teams:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Team&lt;/th&gt;
+          &lt;th&gt;Role&lt;/th&gt;
+          &lt;th&gt;What They Did&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Editorial (편집장)&lt;/td&gt;
+          &lt;td&gt;Project management&lt;/td&gt;
+          &lt;td&gt;Tracked progress, managed timeline, resolved conflicts between chapters&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Research (리서치)&lt;/td&gt;
+          &lt;td&gt;Source material&lt;/td&gt;
+          &lt;td&gt;Searched the web, analyzed agent logs, gathered statistics and citations&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Writing (집필)&lt;/td&gt;
+          &lt;td&gt;Parallel drafting&lt;/td&gt;
+          &lt;td&gt;Multiple sub-agents writing different chapters simultaneously&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Proofreading (교정)&lt;/td&gt;
+          &lt;td&gt;Quality control&lt;/td&gt;
+          &lt;td&gt;Style guide enforcement, fact-checking, consistency passes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Smart Factory (스마트팩토리)&lt;/td&gt;
+          &lt;td&gt;Domain expert&lt;/td&gt;
+          &lt;td&gt;Specialized content for the manufacturing automation chapter&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Structure (구조)&lt;/td&gt;
+          &lt;td&gt;Architecture&lt;/td&gt;
+          &lt;td&gt;Table of contents, chapter flow, cross-references, page balancing&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Each team was an OpenClaw agent session or sub-agent spawn. They could read each other&amp;rsquo;s output files but couldn&amp;rsquo;t modify them — a deliberate isolation choice to prevent one agent from accidentally overwriting another&amp;rsquo;s work.&lt;/p&gt;
+&lt;p&gt;The writing team was the most parallel. On peak days, I had three sub-agents drafting different chapters simultaneously, each with its own context window loaded with the relevant source material and style guide.&lt;/p&gt;
+&lt;h2 id=&#34;what-the-book-covers&#34;&gt;What the Book Covers&lt;/h2&gt;
+&lt;p&gt;The manuscript landed at eight parts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;The State of Generative AI&lt;/strong&gt; (~35 pages) — Where the technology actually stands in 2026, stripped of hype&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI Tools &amp;amp; Setup Guide&lt;/strong&gt; (~40 pages) — Practical walkthrough of OpenClaw, API setup, Telegram bots&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Case Study: BTC Automated Trading&lt;/strong&gt; (~45 pages) — OWUW Beat&amp;rsquo;s full architecture, from regime detection to AI governance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Case Study: Smart Factory&lt;/strong&gt; (~45 pages) — AI-driven manufacturing monitoring, quality tracking, predictive maintenance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Case Study: English Learning App&lt;/strong&gt; (~35 pages) — Building an AI tutor with speech recognition&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI Governance &amp;amp; Automation Frameworks&lt;/strong&gt; (~25 pages) — The R&amp;amp;D → proposal → board vote → auto-apply pipeline&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Future Outlook &amp;amp; Getting Started&lt;/strong&gt; (~15 pages) — What&amp;rsquo;s coming next and how to begin&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI Team Retrospective&lt;/strong&gt; (~10 pages) — What the agents themselves &amp;ldquo;thought&amp;rdquo; about the process&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The total came to roughly 250 pages at 신국판 (152×224mm) formatting, Batang 10pt.&lt;/p&gt;
+&lt;h2 id=&#34;the-brutal-realities&#34;&gt;The Brutal Realities&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s what nobody tells you about writing with AI agents. The highlight reel — &amp;ldquo;250 pages in 6 days!&amp;rdquo; — obscures how much human work was actually involved.&lt;/p&gt;
+&lt;h3 id=&#34;reality-1-fabrication-is-the-default&#34;&gt;Reality 1: Fabrication is the Default&lt;/h3&gt;
+&lt;p&gt;In Part 3, the smart factory chapter, the writing agent produced detailed case studies about overseas sales operations that sounded incredibly compelling. Revenue numbers, client names, regional breakdowns.&lt;/p&gt;
+&lt;p&gt;None of it was real. The agent invented it wholesale.&lt;/p&gt;
+&lt;p&gt;I had to delete entire sections and rewrite them with actual data from the factory monitoring system. The lesson: AI agents will confidently fill gaps in their knowledge with plausible fiction. You cannot trust any specific claim without verification, especially numbers.&lt;/p&gt;
+&lt;h3 id=&#34;reality-2-context-window-management-is-real-engineering&#34;&gt;Reality 2: Context Window Management is Real Engineering&lt;/h3&gt;
+&lt;p&gt;Each chapter draft was around 10,000-15,000 Korean characters (~15 pages). The style guide was another 2,000 characters. Source material from agent logs could easily hit 50,000+ characters.&lt;/p&gt;
+&lt;p&gt;When you&amp;rsquo;re pushing against context limits, agents start &amp;ldquo;forgetting&amp;rdquo; the style guide or contradicting earlier chapters. I learned to structure prompts with a clear hierarchy:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;System: You are a book writing agent.
+Priority 1: Follow STYLE_GUIDE.md exactly (해요체, reader-participatory tone)
+Priority 2: Use ONLY facts from the provided source material
+Priority 3: Match the chapter outline structure
+Priority 4: Target 15 pages / 21,000 characters
+
+[STYLE_GUIDE.md contents]
+[Chapter outline]
+[Source material - trimmed to most relevant sections]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The ordering mattered. When I put source material before the style guide, the agent would nail the facts but write in a completely different voice.&lt;/p&gt;
+&lt;h3 id=&#34;reality-3-iteration-is-everything&#34;&gt;Reality 3: Iteration is Everything&lt;/h3&gt;
+&lt;p&gt;No chapter was done in one pass. The actual process looked like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Structure pass&lt;/strong&gt;: Agent generates a chapter outline with section headers, estimated lengths, key points per section&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft pass&lt;/strong&gt;: Agent writes the full chapter based on the outline&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Human review&lt;/strong&gt;: I read the draft, mark sections that are wrong, weak, or off-voice&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Revision pass&lt;/strong&gt;: Agent rewrites marked sections with specific feedback&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Style pass&lt;/strong&gt;: A separate &amp;ldquo;proofreading&amp;rdquo; agent reviews for style guide compliance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Final human read&lt;/strong&gt;: I do one last pass for flow and voice&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Steps 3-4 often repeated two or three times per chapter. The timeline was tight — 6 days for 250 pages — but I made a deliberate rule: &lt;strong&gt;if you finish early, invest in quality, not quantity.&lt;/strong&gt; Re-read. Re-write. Agonize over word choices.&lt;/p&gt;
+&lt;p&gt;That rule came from experience. When I let agents race ahead to the next chapter without thorough review, the quality of later chapters degraded because they were building on unchecked foundations.&lt;/p&gt;
+&lt;h3 id=&#34;reality-4-voice-is-the-hardest-thing-to-delegate&#34;&gt;Reality 4: Voice is the Hardest Thing to Delegate&lt;/h3&gt;
+&lt;p&gt;The book&amp;rsquo;s style guide specified a very particular Korean writing voice — conversational but authoritative, using 해요체 (polite informal ending), with lots of direct reader address (&amp;ldquo;이 목록을 가만히 보세요 — look at this list carefully&amp;rdquo;) and emotional beats.&lt;/p&gt;
+&lt;p&gt;Claude could approximate this voice about 70% of the time. The other 30% slipped into either:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Textbook mode&lt;/strong&gt;: Dry, passive, no personality&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Overselling mode&lt;/strong&gt;: &amp;ldquo;Amazing!&amp;rdquo; &amp;ldquo;Incredible!&amp;rdquo; — the classic AI enthusiasm nobody asked for&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That 30% required human rewriting. And honestly, the human rewriting is what makes it a book instead of a long blog post. Voice isn&amp;rsquo;t just word choice; it&amp;rsquo;s rhythm, pacing, knowing when to speed up through technical details and when to slow down for a story.&lt;/p&gt;
+&lt;h2 id=&#34;what-id-do-differently&#34;&gt;What I&amp;rsquo;d Do Differently&lt;/h2&gt;
+&lt;h3 id=&#34;use-more-granular-sub-agents&#34;&gt;Use More Granular Sub-Agents&lt;/h3&gt;
+&lt;p&gt;I started with broad assignments: &amp;ldquo;Write Chapter 5.&amp;rdquo; This produced mediocre results because the agent tried to hold too much context.&lt;/p&gt;
+&lt;p&gt;By the end of the project, I was assigning at the section level: &amp;ldquo;Write section 2.3: the regime detection model. Here&amp;rsquo;s the specific code from OWUW Beat&amp;rsquo;s regime_model.py. Target: 3,000 characters.&amp;rdquo; This worked dramatically better.&lt;/p&gt;
+&lt;p&gt;If I did it again, I&amp;rsquo;d break every chapter into 4-5 section-level tasks from the start.&lt;/p&gt;
+&lt;h3 id=&#34;build-the-fact-checking-pipeline-first&#34;&gt;Build the Fact-Checking Pipeline First&lt;/h3&gt;
+&lt;p&gt;I lost almost a full day to the fabrication problem in Part 3. A pre-built fact-checking step — where a separate agent cross-references every specific claim against source material before human review — would have caught this earlier.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the prompt I eventually developed for fact-checking:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Review the following chapter draft against the provided source material.
+For every specific claim (numbers, dates, names, technical specifications):
+1. Mark it as VERIFIED if it appears in the source material
+2. Mark it as UNVERIFIED if it does not
+3. Mark it as FABRICATED if it contradicts the source material
+
+Do not suggest improvements. Only verify facts.
+
+[Chapter draft]
+[Source material]
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;maintain-a-running-canon-document&#34;&gt;Maintain a Running &amp;ldquo;Canon&amp;rdquo; Document&lt;/h3&gt;
+&lt;p&gt;By chapter 15, agents were occasionally contradicting things established in chapter 3. A &amp;ldquo;canon&amp;rdquo; document — a living reference of established facts, terms, and narrative threads — would have prevented this.&lt;/p&gt;
+&lt;h2 id=&#34;the-numbers&#34;&gt;The Numbers&lt;/h2&gt;
+&lt;p&gt;Some metrics from the project:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Total time&lt;/strong&gt;: 6 days (Feb 16-22, 2026)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Final page count&lt;/strong&gt;: ~168 pages at snapshot (52% of 320-page stretch goal), with 21 chapters drafted&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Strong chapters&lt;/strong&gt; (10+ pages, fully reviewed): 8&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chapters needing expansion&lt;/strong&gt;: 8&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agent sessions used&lt;/strong&gt;: 81 total across all agents&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Estimated human hours&lt;/strong&gt;: 40-50 (yes, it was basically a full-time week)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Estimated agent compute hours&lt;/strong&gt;: Hard to measure exactly, but roughly 200+ API calls across all sub-agents&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The honest assessment: I got a solid first draft, not a finished book. Several chapters needed expansion from 4-6 pages to 10-15 pages. Part 3 needed a factual rewrite. The novel companion project (a science fiction story about an AI trader, because why not) was only 4 chapters in.&lt;/p&gt;
+&lt;p&gt;But as a first draft produced in 6 days by one person with AI assistance? I&amp;rsquo;d never have gotten there alone. Not in 6 days, probably not in 6 months.&lt;/p&gt;
+&lt;h2 id=&#34;what-this-means-for-writers&#34;&gt;What This Means for Writers&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m not going to claim AI will replace authors. That&amp;rsquo;s a boring prediction and probably wrong in the way people mean it.&lt;/p&gt;
+&lt;p&gt;What I will say: the bottleneck in writing has shifted. It used to be &lt;strong&gt;production&lt;/strong&gt; — the physical act of generating words. That bottleneck is gone. Claude can produce 10,000 coherent words in minutes.&lt;/p&gt;
+&lt;p&gt;The new bottlenecks are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Judgment&lt;/strong&gt;: Knowing what to write, what to cut, what&amp;rsquo;s actually interesting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Voice&lt;/strong&gt;: The specific way &lt;em&gt;you&lt;/em&gt; say things that no model can fully replicate&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Truth&lt;/strong&gt;: Verifying that what the AI wrote is actually accurate&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Architecture&lt;/strong&gt;: Structuring a 250-page work so it flows and builds&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;These are all human skills. But they&amp;rsquo;re different human skills than &amp;ldquo;sit at a keyboard and type for eight hours.&amp;rdquo; The writer&amp;rsquo;s job is evolving from producer to director.&lt;/p&gt;
+&lt;p&gt;Whether that&amp;rsquo;s exciting or terrifying depends on how you feel about directing.&lt;/p&gt;
+&lt;h2 id=&#34;whats-next-in-this-series&#34;&gt;What&amp;rsquo;s Next in This Series&lt;/h2&gt;
+&lt;p&gt;This is Part 1 of a 5-part series documenting the AI book-writing experience:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Part 1&lt;/strong&gt;: Why write a book with AI (you&amp;rsquo;re here)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part 2&lt;/strong&gt;: The technical setup — OpenClaw, agents, memory architecture&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part 3&lt;/strong&gt;: The writing process — prompts, iteration, quality control&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part 4&lt;/strong&gt;: What went wrong — failures, hallucinations, and rewrites&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Part 5&lt;/strong&gt;: Results and honest assessment — was it worth it?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Next Friday, I&amp;rsquo;ll get into the technical details of how the agent team was structured, including the actual OpenClaw configuration, memory file formats, and the cron schedules that kept everything running.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This post is part of the &lt;a href=&#34;https://www.mypodcastlistening.com/series/ai-book/&#34;&gt;AI Book series&lt;/a&gt; documenting my experience writing a full-length book with AI agents. The book itself covers AI automation, quantitative trading, and smart factory systems — all built and operated by one person with AI assistance.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Previously in the OWUW series: &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/owuw-beat/01-why-i-built-btc-trading-bot-with-ai-agents/&#34;&gt;Why I Built a BTC Trading Bot with AI Agents&lt;/a&gt; | &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/owuw-beat/02-choosing-the-stack/&#34;&gt;Choosing the Tech Stack&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</content:encoded>
     </item>
   </channel>
 </rss>

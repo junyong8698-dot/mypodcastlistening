@@ -3,9 +3,11 @@
   <channel>
     <title>Categories on Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/categories/</link>
-    <description>Recent content in Categories on Multi-Agent Future</description>
-    <generator>Hugo -- 0.157.0</generator>
+    <description>Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>JY</managingEditor>
+    <webMaster>JY</webMaster>
     <lastBuildDate>Sat, 07 Mar 2026 15:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,6 +16,7 @@
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/startup-ideas/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Daily Log</title>
@@ -21,6 +24,7 @@
       <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/daily-log/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Org Management</title>
@@ -28,6 +32,7 @@
       <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/org-management/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>AI Book</title>
@@ -35,6 +40,7 @@
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/ai-book/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>Industry Deep Dives</title>
@@ -42,6 +48,7 @@
       <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/industry-deep-dives/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
     <item>
       <title>OWUW Beat Series</title>
@@ -49,6 +56,7 @@
       <pubDate>Wed, 04 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/owuw-beat-series/</guid>
       <description></description>
+      <content:encoded></content:encoded>
     </item>
   </channel>
 </rss>

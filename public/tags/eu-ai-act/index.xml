@@ -3,9 +3,11 @@
   <channel>
     <title>EU AI Act on Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/tags/eu-ai-act/</link>
-    <description>Recent content in EU AI Act on Multi-Agent Future</description>
-    <generator>Hugo -- 0.157.0</generator>
+    <description>Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>JY</managingEditor>
+    <webMaster>JY</webMaster>
     <lastBuildDate>Sat, 07 Mar 2026 15:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/eu-ai-act/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -13,7 +15,143 @@
       <link>https://www.mypodcastlistening.com/posts/startup-ideas/02-ai-compliance-regtech-startup/</link>
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/posts/startup-ideas/02-ai-compliance-regtech-startup/</guid>
-      <description>New AI laws in the US and EU are creating massive demand for compliance tooling. A practical breakdown of the regtech startup opportunity for 2026.</description>
+      <description>&lt;h2 id=&#34;every-company-using-ai-just-got-a-compliance-problem&#34;&gt;Every Company Using AI Just Got a Compliance Problem&lt;/h2&gt;
+&lt;p&gt;On January 1, 2026, a wave of state AI laws went live across the United States. Texas enacted the &lt;a href=&#34;https://stubbsalderton.com/client-alert-new-ai-laws-will-prompt-changes-to-how-companies-do-business/&#34;&gt;Responsible AI Governance Act&lt;/a&gt; (HB 149). Illinois started enforcing its &lt;a href=&#34;https://www.kslaw.com/news-and-insights/new-state-ai-laws-are-effective-on-january-1-2026-but-a-new-executive-order-signals-disruption&#34;&gt;amendment to the Human Rights Act&lt;/a&gt; under HB 3773, covering AI in employment decisions. Colorado&amp;rsquo;s AI Act (SB 24-205) takes effect on &lt;a href=&#34;https://perkinscoie.com/insights/update/navigating-growing-landscape-state-ai-employment-bills-and-laws-what-employers-need&#34;&gt;June 30, 2026&lt;/a&gt;, requiring impact assessments that Baker Botts notes &lt;a href=&#34;https://www.bakerbotts.com/thought-leadership/publications/2026/january/us-ai-law-update&#34;&gt;&amp;ldquo;take months to prepare&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;h2 id=&#34;every-company-using-ai-just-got-a-compliance-problem&#34;&gt;Every Company Using AI Just Got a Compliance Problem&lt;/h2&gt;
+&lt;p&gt;On January 1, 2026, a wave of state AI laws went live across the United States. Texas enacted the &lt;a href=&#34;https://stubbsalderton.com/client-alert-new-ai-laws-will-prompt-changes-to-how-companies-do-business/&#34;&gt;Responsible AI Governance Act&lt;/a&gt; (HB 149). Illinois started enforcing its &lt;a href=&#34;https://www.kslaw.com/news-and-insights/new-state-ai-laws-are-effective-on-january-1-2026-but-a-new-executive-order-signals-disruption&#34;&gt;amendment to the Human Rights Act&lt;/a&gt; under HB 3773, covering AI in employment decisions. Colorado&amp;rsquo;s AI Act (SB 24-205) takes effect on &lt;a href=&#34;https://perkinscoie.com/insights/update/navigating-growing-landscape-state-ai-employment-bills-and-laws-what-employers-need&#34;&gt;June 30, 2026&lt;/a&gt;, requiring impact assessments that Baker Botts notes &lt;a href=&#34;https://www.bakerbotts.com/thought-leadership/publications/2026/january/us-ai-law-update&#34;&gt;&amp;ldquo;take months to prepare&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Across the Atlantic, the &lt;a href=&#34;https://www.legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks&#34;&gt;EU AI Act&lt;/a&gt; is ramping into its most consequential phase. Providers of high-risk AI systems must carry out conformity assessments, draw up EU declarations of conformity, affix CE markings, and register systems in the EU database — before placing anything on the market.&lt;/p&gt;
+&lt;p&gt;And here&amp;rsquo;s what matters for founders: the companies affected by these laws are not prepared. Most mid-market companies don&amp;rsquo;t have a Chief AI Officer. They don&amp;rsquo;t have a compliance team that understands model risk. They&amp;rsquo;re using ChatGPT in their HR department and have no idea they might be violating Illinois employment law.&lt;/p&gt;
+&lt;p&gt;That gap between regulation and readiness is a startup goldmine.&lt;/p&gt;
+&lt;h2 id=&#34;the-numbers-behind-the-opportunity&#34;&gt;The Numbers Behind the Opportunity&lt;/h2&gt;
+&lt;p&gt;The global regtech market was valued at &lt;a href=&#34;https://www.fortunebusinessinsights.com/regtech-market-108305&#34;&gt;$19.06 billion in 2025&lt;/a&gt; and is projected to reach $23.43 billion in 2026, growing to $105.23 billion by 2034 at a 20% CAGR. But AI-specific compliance is growing even faster — the AI-in-regtech segment is forecast to hit &lt;a href=&#34;https://www.industryarc.com/Report/17918/artificial-intelligence-market-in-regtech.html&#34;&gt;$3.3 billion by 2026&lt;/a&gt; at a 36.1% CAGR.&lt;/p&gt;
+&lt;p&gt;Those numbers matter because they tell you where the buying intent is. Companies aren&amp;rsquo;t evaluating AI compliance tools because they think it&amp;rsquo;s interesting. They&amp;rsquo;re evaluating them because they have a legal deadline and no internal capability to meet it.&lt;/p&gt;
+&lt;p&gt;Compare this to the AI chatbot market or the AI writing tool market, where adoption is discretionary. Nobody gets fined for not using Jasper. Plenty of companies will get fined for not doing an impact assessment on their AI hiring tool.&lt;/p&gt;
+&lt;p&gt;Compliance spending is non-discretionary. That changes the entire sales dynamic.&lt;/p&gt;
+&lt;h2 id=&#34;what-the-current-players-look-like-and-where-the-gaps-are&#34;&gt;What the Current Players Look Like (and Where the Gaps Are)&lt;/h2&gt;
+&lt;p&gt;The incumbents in AI governance and compliance are surprisingly few, and most target enterprise:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Credo AI&lt;/strong&gt; has raised &lt;a href=&#34;https://tracxn.com/d/companies/credo/__MZh1pV2x2jXmyP5kF0W41EKhObae1h7gkkz4B-ZWXyE&#34;&gt;$41.3 million over 4 rounds&lt;/a&gt;. Their platform automates AI risk management workflows and maps to regulatory frameworks including the NIST AI RMF, ISO 42001, and EO 13960. They sell primarily to federal agencies and Fortune 500 companies.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Holistic AI&lt;/strong&gt; offers a &lt;a href=&#34;https://www.holisticai.com/&#34;&gt;governance platform&lt;/a&gt; that discovers AI systems across an organization, tests for bias and security risks, and generates compliance documentation. They focus on enterprise — the kind of customer that needs to manage hundreds of models simultaneously.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Drata&lt;/strong&gt; has expanded from SOC 2 compliance into &lt;a href=&#34;https://drata.com/blog/artificial-intelligence-regulations-state-and-federal-ai-laws-2026&#34;&gt;AI regulatory compliance&lt;/a&gt;, offering guidance on federal and state AI law programs.&lt;/p&gt;
+&lt;p&gt;Notice the pattern: enterprise-first, six-figure contracts, long sales cycles, large implementation teams.&lt;/p&gt;
+&lt;p&gt;Now think about who&amp;rsquo;s not being served.&lt;/p&gt;
+&lt;p&gt;A 200-person staffing agency in Denver that uses an AI screening tool. A 50-person SaaS company in Austin whose customer success team uses GPT to draft responses. A European e-commerce brand with 80 employees that deployed a recommendation engine. A mid-size healthcare provider that built an internal triage chatbot.&lt;/p&gt;
+&lt;p&gt;These companies have compliance obligations under the new laws. They cannot afford Credo AI. They don&amp;rsquo;t need an enterprise governance platform. They need something more like TurboTax for AI compliance — answer some questions, get your documentation, stay out of trouble.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s the gap.&lt;/p&gt;
+&lt;h2 id=&#34;five-specific-startup-ideas-in-ai-compliance&#34;&gt;Five Specific Startup Ideas in AI Compliance&lt;/h2&gt;
+&lt;h3 id=&#34;1-ai-impact-assessment-generator-for-smbs&#34;&gt;1. AI Impact Assessment Generator for SMBs&lt;/h3&gt;
+&lt;p&gt;Colorado&amp;rsquo;s AI Act requires &amp;ldquo;impact assessments&amp;rdquo; for high-risk AI systems. The &lt;a href=&#34;https://www.bakerbotts.com/thought-leadership/publications/2026/january/us-ai-law-update&#34;&gt;Baker Botts analysis&lt;/a&gt; emphasizes these take months to prepare, which means most companies approaching the June 30 deadline are already behind.&lt;/p&gt;
+&lt;p&gt;Build a guided workflow — not unlike how TurboTax handles tax filing — that walks a non-technical compliance officer through describing their AI system, its inputs, its decision-making scope, and its potential risks. Output: a formatted impact assessment document that maps to Colorado SB 24-205 requirements, ready for legal review.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Revenue model:&lt;/strong&gt; $299-999/assessment for SMBs. Annual subscription for ongoing monitoring at $2,400-4,800/year.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Moat:&lt;/strong&gt; Templates built from real legal interpretations of each state law, updated as case law develops. Every customer&amp;rsquo;s assessment makes your templates better. After 500 customers, your institutional knowledge of what auditors actually accept is worth more than the software itself.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Execution Prompt:
+&amp;#34;I&amp;#39;m building an AI impact assessment tool for Colorado&amp;#39;s SB 24-205.
+Research the specific requirements of this law — what must an impact
+assessment include? What risk categories does it define? What are the
+disclosure requirements to consumers? Give me a detailed product spec
+for a web app that guides a non-technical user through producing a
+compliant impact assessment document. Include the specific data fields,
+risk scoring methodology, and output format.&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;2-ai-usage-discovery-and-inventory-tool&#34;&gt;2. AI Usage Discovery and Inventory Tool&lt;/h3&gt;
+&lt;p&gt;You can&amp;rsquo;t comply with AI regulations if you don&amp;rsquo;t know where AI is being used in your organization. Holistic AI sells this capability to enterprises, but there&amp;rsquo;s no affordable version for mid-market companies.&lt;/p&gt;
+&lt;p&gt;Build a lightweight agent that scans a company&amp;rsquo;s SaaS stack (via OAuth integrations and API audit logs), identifies which tools have AI/ML features enabled, and produces an inventory. Think: &amp;ldquo;You have 14 tools with AI features. 3 of them make decisions about people (high-risk under Colorado law). 2 process EU citizen data (EU AI Act obligations). Here&amp;rsquo;s what you need to do about each one.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Revenue model:&lt;/strong&gt; $199/month for continuous monitoring. One-time audit at $1,500.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Moat:&lt;/strong&gt; The integration library. Every new SaaS tool you catalog and classify (Does Gusto&amp;rsquo;s AI feature count as &amp;ldquo;automated decision-making in employment&amp;rdquo;?) becomes institutional knowledge. After 200 integrations, a competitor would need months to replicate your coverage.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Execution Prompt:
+&amp;#34;Design an AI discovery tool that connects to a company&amp;#39;s SaaS stack
+via OAuth. For each connected tool, it should: (1) detect AI/ML features,
+(2) classify the risk level under Colorado AI Act, EU AI Act, and
+Illinois HB 3773, (3) flag which features involve automated
+decision-making about individuals. Map out the top 50 business SaaS
+tools and pre-classify their AI features by regulatory risk category.&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;3-employee-ai-use-policy-generator-and-enforcer&#34;&gt;3. Employee AI Use Policy Generator and Enforcer&lt;/h3&gt;
+&lt;p&gt;Most companies still don&amp;rsquo;t have an acceptable use policy for AI tools. Their employees use ChatGPT, Claude, Midjourney, and dozens of other tools daily, feeding them customer data, proprietary code, and personal information. Under the new laws, that&amp;rsquo;s a liability.&lt;/p&gt;
+&lt;p&gt;Build a tool that generates a customized AI acceptable use policy based on the company&amp;rsquo;s industry, jurisdiction, and risk tolerance, then provides a lightweight browser extension or proxy that flags when employees are about to paste sensitive data into an AI tool.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Revenue model:&lt;/strong&gt; $5-15/employee/month. A 200-person company pays $1,000-3,000/month.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Moat:&lt;/strong&gt; Policy templates refined by actual compliance incidents. Data classification models trained on what real companies consider sensitive. Usage analytics that help compliance teams understand their actual exposure.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Execution Prompt:
+&amp;#34;Create a comprehensive AI acceptable use policy template for a
+mid-size company (100-500 employees) operating in Colorado. The policy
+must address: approved AI tools, data classification rules (what can
+and cannot be input to AI), disclosure requirements when AI is used in
+customer-facing outputs, incident reporting procedures, and employee
+training obligations. Make it specific enough to be immediately usable,
+not a generic framework.&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;4-ai-bias-auditing-as-a-service&#34;&gt;4. AI Bias Auditing as a Service&lt;/h3&gt;
+&lt;p&gt;NYC&amp;rsquo;s Local Law 144 already requires &lt;a href=&#34;https://www.lexology.com/library/detail.aspx?g=bb0a51a8-4a1f-4592-83a2-3de69f22d075&#34;&gt;annual bias audits&lt;/a&gt; for automated employment decision tools. Illinois HB 3773 extends similar requirements. Colorado&amp;rsquo;s law requires ongoing monitoring for discriminatory outcomes.&lt;/p&gt;
+&lt;p&gt;Most companies doing bias audits today hire expensive consulting firms at $50,000-200,000 per engagement. Build a self-serve platform where a company uploads their model&amp;rsquo;s decision data (or connects via API), and your system runs statistical bias tests across protected categories, generating audit reports that meet the specific format requirements of each jurisdiction.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Revenue model:&lt;/strong&gt; $5,000-15,000 per audit. Annual monitoring subscription at $2,000-4,000/month.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Moat:&lt;/strong&gt; Accepted audit methodologies. Once your reports have been reviewed and accepted by regulators in multiple jurisdictions, that track record becomes your primary competitive advantage. A new competitor&amp;rsquo;s audit report is unproven; yours has been through the regulatory gauntlet.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Execution Prompt:
+&amp;#34;Design the statistical methodology for an AI bias audit that complies
+with NYC Local Law 144 and Colorado SB 24-205. Include: which
+demographic categories must be tested, what statistical tests to use
+(disparate impact ratio, four-fifths rule, etc.), sample size
+requirements, confidence intervals, and the specific output format
+that regulators expect. Then spec out an API that accepts model
+decision data and returns a formatted audit report.&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;5-regulatory-change-tracking-for-ai-teams&#34;&gt;5. Regulatory Change Tracking for AI Teams&lt;/h3&gt;
+&lt;p&gt;AI regulation is moving faster than any compliance team can track manually. New state bills are introduced weekly. The EU AI Act&amp;rsquo;s implementing guidelines keep evolving. Federal agencies issue new guidance continuously.&lt;/p&gt;
+&lt;p&gt;Build a monitoring service that tracks AI regulation across all 50 states, the EU, and federal agencies, then automatically maps changes to a customer&amp;rsquo;s specific AI systems and jurisdictions. Output: &amp;ldquo;New bill introduced in California that would affect your recommendation engine. Here&amp;rsquo;s what it requires and here&amp;rsquo;s your gap analysis.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Revenue model:&lt;/strong&gt; $500-1,500/month depending on jurisdictions covered.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Moat:&lt;/strong&gt; Coverage breadth and interpretation quality. Tracking bills is easy; interpreting what they mean for specific AI use cases requires domain expertise that compounds over time. After a year of interpretation decisions, your database of &amp;ldquo;what this regulation means for this type of AI system&amp;rdquo; is the product.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Execution Prompt:
+&amp;#34;Build a regulatory tracking system for AI laws. Data sources: state
+legislature RSS feeds and APIs, EU AI Act updates from
+artificialintelligenceact.eu, federal register entries related to AI.
+For each new development, the system should: classify by jurisdiction,
+identify affected AI system types, generate a plain-English summary,
+and produce a gap analysis template. Design the data schema and the
+classification taxonomy for AI system types.&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;why-this-market-rewards-speed-over-perfection&#34;&gt;Why This Market Rewards Speed Over Perfection&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s what makes AI compliance different from most startup markets: the customers don&amp;rsquo;t have the luxury of waiting for the perfect solution.&lt;/p&gt;
+&lt;p&gt;Colorado&amp;rsquo;s deadline is June 30, 2026. That&amp;rsquo;s less than four months away. Companies need something now, even if it&amp;rsquo;s 70% automated and 30% manual. The bar isn&amp;rsquo;t &amp;ldquo;better than the enterprise platforms.&amp;rdquo; The bar is &amp;ldquo;better than hiring a law firm at $500/hour to manually write impact assessments.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This is the same dynamic that powered early-stage fintech compliance tools. When GDPR hit in 2018, companies like OneTrust went from zero to &lt;a href=&#34;https://www.fortunebusinessinsights.com/regtech-market-108305&#34;&gt;billions in valuation&lt;/a&gt; not because their initial product was perfect, but because they were there when the deadline arrived. Being present and adequate beats being absent and excellent.&lt;/p&gt;
+&lt;p&gt;For founders, this means you can launch with a much narrower product than you&amp;rsquo;d normally consider viable. An AI impact assessment tool that only covers Colorado SB 24-205 is still useful to thousands of companies. You can add Illinois, Texas, and the EU AI Act later. But you need to be in market before June 30.&lt;/p&gt;
+&lt;h2 id=&#34;a-closer-look-at-what-each-law-actually-requires&#34;&gt;A Closer Look at What Each Law Actually Requires&lt;/h2&gt;
+&lt;p&gt;Understanding the startup opportunity here means understanding the specific compliance burdens these laws create. Each one generates different product requirements.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Colorado SB 24-205 (effective June 30, 2026):&lt;/strong&gt; This is the most comprehensive state AI law in the US. It applies to &amp;ldquo;deployers&amp;rdquo; of high-risk AI systems — meaning any company that uses AI to make &amp;ldquo;consequential decisions&amp;rdquo; about people in areas like employment, education, financial services, housing, insurance, and healthcare. Deployers must complete impact assessments before deployment and annually thereafter. They must implement a risk management policy. They must notify consumers when AI is used in consequential decisions and provide an appeals process. The impact assessment alone requires documenting the system&amp;rsquo;s purpose, intended benefits, known limitations, data used for training, and an analysis of potential discriminatory impact.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s a significant amount of documentation work. For a mid-size company without dedicated AI governance staff, producing this from scratch could easily consume 40-80 hours of a compliance officer&amp;rsquo;s time — assuming they even know what to write.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Illinois HB 3773 (effective January 1, 2026):&lt;/strong&gt; Narrower in scope but with sharp teeth. It amends the Illinois Human Rights Act to specifically address AI in employment. Employers using AI to make hiring, promotion, or termination decisions must provide notice to employees and applicants, ensure the tools don&amp;rsquo;t discriminate based on protected characteristics, and maintain records of their AI systems&amp;rsquo; development and deployment. The enforcement mechanism here matters: violations go through the Illinois Department of Human Rights, and the penalties align with existing human rights law — meaning actual legal liability, not just regulatory fines.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Texas HB 149 (effective January 1, 2026):&lt;/strong&gt; Requires companies deploying &amp;ldquo;high-risk AI systems&amp;rdquo; to implement governance programs, conduct impact assessments, maintain human oversight, and provide notice when AI is used in consequential decisions. Texas defines high-risk more broadly than some states, catching AI systems used in criminal justice, employment, education, and financial services.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EU AI Act (phased implementation through August 2026):&lt;/strong&gt; The most extensive regime globally. Providers of high-risk AI systems must implement quality management systems, maintain technical documentation, conduct conformity assessments, register in the EU database, and enable regulatory access to logs. Importers, distributors, and deployers each have separate obligations. The &lt;a href=&#34;https://www.legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks&#34;&gt;August 2, 2026 deadline&lt;/a&gt; marks when most high-risk AI system requirements become enforceable, with fines up to €35 million or 7% of global annual turnover.&lt;/p&gt;
+&lt;p&gt;For a startup builder, each of these laws is a product specification. Each required document is a feature. Each deadline is a marketing trigger.&lt;/p&gt;
+&lt;h2 id=&#34;the-defensibility-question&#34;&gt;The Defensibility Question&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;Isn&amp;rsquo;t this just a wrapper around GPT that generates compliance documents?&amp;rdquo; Fair question. And the answer is: it starts that way, but it doesn&amp;rsquo;t stay that way.&lt;/p&gt;
+&lt;p&gt;The defensibility in compliance tools comes from three sources:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Regulatory interpretation.&lt;/strong&gt; When a customer asks &amp;ldquo;does my chatbot count as a high-risk AI system under Colorado law?&amp;rdquo;, the answer isn&amp;rsquo;t in the statute. It&amp;rsquo;s in the combination of the statute&amp;rsquo;s text, regulatory guidance, enforcement actions, and legal opinions. Every interpretation you make and get validated (by a customer&amp;rsquo;s legal team accepting it, or by a regulator reviewing it) becomes institutional knowledge. After a year, your interpretation database is more valuable than the software.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Customer data network effects.&lt;/strong&gt; When you&amp;rsquo;ve seen 500 companies&amp;rsquo; AI systems and classified them by risk level, you can tell a new customer: &amp;ldquo;89% of companies using similar AI screening tools classified them as high-risk. Here&amp;rsquo;s the standard impact assessment approach.&amp;rdquo; That benchmark data doesn&amp;rsquo;t exist anywhere else.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Switching costs.&lt;/strong&gt; Once a company&amp;rsquo;s compliance documentation, audit history, and risk assessments live in your platform, switching to a competitor means re-doing all of that work. Compliance records need continuity — auditors want to see year-over-year tracking, not a fresh start.&lt;/p&gt;
+&lt;p&gt;As one &lt;a href=&#34;https://www.reddit.com/r/ArtificialInteligence/comments/1n0rj68/99_of_ai_start_ups_will_be_dead_by_2026/&#34;&gt;Reddit discussion&lt;/a&gt; on AI startup defensibility put it: &amp;ldquo;If you add proprietary data, domain-specific value or deep integration, you&amp;rsquo;re not &amp;lsquo;just a wrapper&amp;rsquo; anymore; you&amp;rsquo;re a vertical SaaS product powered by LLMs.&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;how-to-actually-start-this-week&#34;&gt;How to Actually Start (This Week)&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re reading this and thinking about entering the AI compliance space, here&amp;rsquo;s a concrete 30-day plan:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Week 1: Pick your jurisdiction and use case.&lt;/strong&gt; Don&amp;rsquo;t try to cover everything. Pick one law (Colorado SB 24-205 is the ripest opportunity given the June 30 deadline) and one AI use case (hiring/HR tools are the most regulated and highest-anxiety category). Read the full statute. Read every law firm alert about it (there are dozens from King &amp;amp; Spalding, Baker Botts, Perkins Coie, and others).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Week 2: Build the assessment workflow.&lt;/strong&gt; Map the statute&amp;rsquo;s requirements to a step-by-step questionnaire. What information does a company need to provide? What calculations need to happen? What does the output document need to include? Build this as a simple web form — even a Typeform or Google Form works for validation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Week 3: Get 10 companies through it.&lt;/strong&gt; Find companies in Colorado that use AI in hiring (LinkedIn Sales Navigator, filter by Denver/Boulder, HR tech, 50-500 employees). Offer to do their impact assessment for free using your tool. The goal isn&amp;rsquo;t revenue — it&amp;rsquo;s learning what&amp;rsquo;s missing from your workflow and getting testimonials.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Week 4: Price it and sell it.&lt;/strong&gt; You now have a validated tool, customer feedback, and case studies. Set a price ($499-999 per assessment), build a landing page, and run targeted ads to &amp;ldquo;Colorado AI Act compliance&amp;rdquo; search terms. The organic search volume for these terms is growing exponentially as the deadline approaches.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Execution Prompt:
+&amp;#34;I want to build an AI compliance startup focused on Colorado SB
+24-205 impact assessments. Help me create: (1) a complete breakdown
+of the statute&amp;#39;s impact assessment requirements, (2) a product
+requirements document for a web application that guides users through
+producing a compliant assessment, (3) a go-to-market strategy targeting
+Colorado companies with AI hiring tools, (4) a pricing analysis
+comparing my planned $499-999 price point against the alternative of
+hiring a law firm. Include specific competitor analysis of Credo AI,
+Holistic AI, and Drata.&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;the-timing-window&#34;&gt;The Timing Window&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s the uncomfortable truth about compliance markets: the window of maximum opportunity is narrow.&lt;/p&gt;
+&lt;p&gt;Right now, companies are panicking. They have legal obligations they don&amp;rsquo;t understand, deadlines they can&amp;rsquo;t meet, and no budget allocated for solutions they didn&amp;rsquo;t know they&amp;rsquo;d need. This is when they&amp;rsquo;ll buy from a startup they&amp;rsquo;ve never heard of, because the alternative is non-compliance.&lt;/p&gt;
+&lt;p&gt;In 18 months, the market matures. Large players enter. Law firms build their own tools. Companies hire in-house compliance teams. The panic buying phase ends.&lt;/p&gt;
+&lt;p&gt;The Y Combinator &lt;a href=&#34;https://www.ycombinator.com/companies/industry/compliance&#34;&gt;compliance startup page&lt;/a&gt; already shows companies like Ritivel (regulatory submissions for pharma) and Veriad (AI compliance officers for marketing) getting funded in the current batch. The smart money sees the wave coming.&lt;/p&gt;
+&lt;p&gt;Your advantage as a small, fast-moving founder: you can ship a focused product in 30 days. Credo AI took years and $41 million to build their platform. You don&amp;rsquo;t need a platform. You need a tool that solves one specific compliance problem well enough that a stressed-out VP of HR will pay $500 to not get fined.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s the entire business case.&lt;/p&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;p&gt;In the next Startup Ideas post, we&amp;rsquo;ll break down the infrastructure layer underneath all these compliance tools — the pipes that every AI-powered business needs but nobody&amp;rsquo;s building yet. Data lineage, model registries, and decision audit trails: the unsexy infrastructure that&amp;rsquo;s about to become mandatory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Catch up on this series:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mypodcastlistening.com/posts/startup-ideas/01-vertical-ai-agents-solo-founder/&#34;&gt;Part 1: Vertical AI Agents — Solo Founder&amp;rsquo;s Best Shot at $1M&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
     </item>
   </channel>
 </rss>

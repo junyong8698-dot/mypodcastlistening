@@ -3,9 +3,11 @@
   <channel>
     <title>Quant Trading on Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/tags/quant-trading/</link>
-    <description>Recent content in Quant Trading on Multi-Agent Future</description>
-    <generator>Hugo -- 0.157.0</generator>
+    <description>Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>JY</managingEditor>
+    <webMaster>JY</webMaster>
     <lastBuildDate>Sun, 01 Mar 2026 09:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/quant-trading/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -13,7 +15,186 @@
       <link>https://www.mypodcastlistening.com/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/</link>
       <pubDate>Sun, 01 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/</guid>
-      <description>After a devastating 4AM liquidation, I decided to remove myself from the trading loop entirely. This is Part 1 of how I built OWUW Beat — an autonomous BTC trading system powered by AI agents.</description>
+      <description>&lt;h2 id=&#34;the-4am-wake-up-call-that-changed-everything&#34;&gt;The 4AM Wake-Up Call That Changed Everything&lt;/h2&gt;
+&lt;p&gt;It was February 2025. My phone buzzed at 4:17 AM. Binance liquidation alert. I watched $13,000 evaporate in eleven minutes.&lt;/p&gt;
+&lt;p&gt;I wasn&amp;rsquo;t a bad trader — at least, I didn&amp;rsquo;t think I was. I&amp;rsquo;d read the books. I understood regime-based positioning, macro correlations, risk management frameworks. I could articulate exactly why overleveraged longs get crushed in a rising-rate environment.&lt;/p&gt;
+&lt;p&gt;None of that mattered at 4AM. My hands were shaking. I opened the app and did exactly what I knew I shouldn&amp;rsquo;t do: I averaged down into a falling position. By 5AM, I was down 40% of my total portfolio.&lt;/p&gt;</description>
+      <content:encoded>&lt;h2 id=&#34;the-4am-wake-up-call-that-changed-everything&#34;&gt;The 4AM Wake-Up Call That Changed Everything&lt;/h2&gt;
+&lt;p&gt;It was February 2025. My phone buzzed at 4:17 AM. Binance liquidation alert. I watched $13,000 evaporate in eleven minutes.&lt;/p&gt;
+&lt;p&gt;I wasn&amp;rsquo;t a bad trader — at least, I didn&amp;rsquo;t think I was. I&amp;rsquo;d read the books. I understood regime-based positioning, macro correlations, risk management frameworks. I could articulate exactly why overleveraged longs get crushed in a rising-rate environment.&lt;/p&gt;
+&lt;p&gt;None of that mattered at 4AM. My hands were shaking. I opened the app and did exactly what I knew I shouldn&amp;rsquo;t do: I averaged down into a falling position. By 5AM, I was down 40% of my total portfolio.&lt;/p&gt;
+&lt;p&gt;The worst part wasn&amp;rsquo;t the money. It was the clarity that came after. I &lt;em&gt;knew&lt;/em&gt; the right move. I had the framework. I had the data. And I still made the emotional choice. Every single time.&lt;/p&gt;
+&lt;p&gt;That morning, sitting in my apartment with half a bottle of soju and a Binance app showing a number I couldn&amp;rsquo;t look at, I made a decision: &lt;strong&gt;I would never make another trade myself.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Not because I&amp;rsquo;d stop trading. Because I&amp;rsquo;d build something that could do it without the 4AM panic, without the sunk-cost averaging, without the dopamine hit of a green candle making me go all-in.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d build an AI agent.&lt;/p&gt;
+&lt;h2 id=&#34;what-this-series-covers&#34;&gt;What This Series Covers&lt;/h2&gt;
+&lt;p&gt;Over 10 posts, I&amp;rsquo;m going to walk through exactly how I built &lt;strong&gt;OWUW Beat&lt;/strong&gt; — an autonomous Bitcoin trading system that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Monitors BTC markets 24/7 across 5 data categories (on-chain, derivatives, sentiment, macro, technical)&lt;/li&gt;
+&lt;li&gt;Makes regime-based allocation decisions (BULL/NEUTRAL/BEAR)&lt;/li&gt;
+&lt;li&gt;Runs its own R&amp;amp;D department — testing 15-20 new strategy hypotheses per day&lt;/li&gt;
+&lt;li&gt;Has a 9-member AI board of directors that votes on strategy changes every Sunday&lt;/li&gt;
+&lt;li&gt;Executes trades on Binance automatically, including Flexible Earn for idle USDT&lt;/li&gt;
+&lt;li&gt;Reports everything to me via Telegram — I just read the updates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This isn&amp;rsquo;t a tutorial for a toy project. This is a production system managing real money. I&amp;rsquo;ll share the actual architecture, the real failures, and the prompts I use to run each component.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Here&amp;rsquo;s the series roadmap:&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Part&lt;/th&gt;
+          &lt;th&gt;Topic&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1 (this post)&lt;/td&gt;
+          &lt;td&gt;Why I built it — the emotional trading problem&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;Choosing the stack: OpenClaw, Telegram, Binance API&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;The first agent — regime detection and allocation logic&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;Data collection hell — on-chain, derivatives, sentiment, macro, Google Trends&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;The R&amp;amp;D agent — automated strategy research&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;6&lt;/td&gt;
+          &lt;td&gt;The AI board of directors — governance and voting&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;7&lt;/td&gt;
+          &lt;td&gt;Dashboard — building the 7-tab control center&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;8&lt;/td&gt;
+          &lt;td&gt;Rebalancing automation and Binance Flexible Earn&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;9&lt;/td&gt;
+          &lt;td&gt;What went wrong — failures, bugs, and lessons&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;10&lt;/td&gt;
+          &lt;td&gt;Results after 60 days — performance, cost, and what I&amp;rsquo;d change&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;the-core-problem-humans-are-terrible-traders&#34;&gt;The Core Problem: Humans Are Terrible Traders&lt;/h2&gt;
+&lt;p&gt;Let me be specific about why emotional trading fails, because understanding this is the entire motivation for the system.&lt;/p&gt;
+&lt;h3 id=&#34;the-data-is-clear&#34;&gt;The data is clear&lt;/h3&gt;
+&lt;p&gt;According to Dalbar&amp;rsquo;s 2024 Quantitative Analysis of Investor Behavior (&lt;a href=&#34;https://www.dalbar.com/QAIB/Index&#34;&gt;source&lt;/a&gt;), the average equity investor earned 5.50% annually over 30 years while the S&amp;amp;P 500 returned 10.15%. The gap is almost entirely behavioral — panic selling, FOMO buying, and timing mistakes.&lt;/p&gt;
+&lt;p&gt;In crypto, it&amp;rsquo;s worse. A 2023 study by the Bank for International Settlements (&lt;a href=&#34;https://www.bis.org/publ/work1049.htm&#34;&gt;BIS Working Paper 1049&lt;/a&gt;) found that the majority of retail crypto traders lose money, with losses concentrated around high-volatility events — exactly the moments when emotions run hottest.&lt;/p&gt;
+&lt;p&gt;My own trading journal confirmed the pattern:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Date        Action          Reason              Result
+2024-11-15  Bought BTC      &amp;#34;It&amp;#39;s going to 100K&amp;#34; -8% (sold panic 3 days later)
+2024-12-20  Sold all        &amp;#34;Macro looks bad&amp;#34;    Missed 22% rally
+2025-01-08  3x leveraged    &amp;#34;Bottom is in&amp;#34;       Liquidated at 4AM
+2025-02-03  Averaged down   &amp;#34;It can&amp;#39;t go lower&amp;#34;  Lost additional 15%
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Every trade had a &lt;em&gt;reason&lt;/em&gt;. Every reason was an emotion wearing a rational costume.&lt;/p&gt;
+&lt;h3 id=&#34;the-behavioral-loop&#34;&gt;The behavioral loop&lt;/h3&gt;
+&lt;p&gt;Here&amp;rsquo;s the pattern I identified in my own behavior:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;See price move&lt;/strong&gt; → emotional reaction (fear or greed)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rationalize&lt;/strong&gt; → find data that supports the emotion&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Act&lt;/strong&gt; → trade based on the rationalized emotion&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Outcome&lt;/strong&gt; → if loss, repeat from step 1 with stronger emotion&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This is textbook confirmation bias combined with loss aversion (&lt;a href=&#34;https://doi.org/10.2307/1914185&#34;&gt;Kahneman &amp;amp; Tversky, 1979&lt;/a&gt;). The fix isn&amp;rsquo;t better analysis — I already had good analysis. The fix is &lt;strong&gt;removing the human from the loop&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;why-an-ai-agent-not-just-a-trading-bot&#34;&gt;Why an AI Agent, Not Just a Trading Bot&lt;/h2&gt;
+&lt;p&gt;You might ask: why not just write a Python script with simple rules? Buy when RSI &amp;lt; 30, sell when RSI &amp;gt; 70, done.&lt;/p&gt;
+&lt;p&gt;I tried that. The problem is markets aren&amp;rsquo;t static. A mean-reversion signal that works in a range-bound market will destroy you in a trending market. Static rules break when regimes change.&lt;/p&gt;
+&lt;p&gt;What I needed was something that could:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Assess the current market regime&lt;/strong&gt; — is this a trending market, a range-bound market, or a high-volatility crisis?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Adapt its strategy&lt;/strong&gt; — shift allocation based on the regime, not fixed rules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Research new approaches&lt;/strong&gt; — test whether adding new data sources (on-chain metrics, derivatives data, Google Trends) improves performance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Govern itself&lt;/strong&gt; — have a structured process for adopting or rejecting strategy changes, so it doesn&amp;rsquo;t overfit to recent data&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A Python script can do #1. An AI agent system can do all four.&lt;/p&gt;
+&lt;p&gt;The key distinction is &lt;strong&gt;agency&lt;/strong&gt; — the ability to observe, decide, and act autonomously, and to improve over time. This is what separates an &amp;ldquo;AI trading bot&amp;rdquo; from an &amp;ldquo;AI trading agent.&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;the-agent-architecture-preview&#34;&gt;The agent architecture (preview)&lt;/h3&gt;
+&lt;p&gt;Here&amp;rsquo;s what I ended up building. I&amp;rsquo;ll detail each component in later posts:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;┌─────────────────────────────────────────────┐
+│              OWUW Beat System                │
+│                                              │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  │
+│  │  Daily    │  │   R&amp;amp;D    │  │   Board  │  │
+│  │  Market   │  │  Agent   │  │  Meeting │  │
+│  │  Report   │  │ (Mon-Fri)│  │  (Sun)   │  │
+│  │  (07:00)  │  │ 08-19:00 │  │  18:00   │  │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  │
+│       │              │              │        │
+│       v              v              v        │
+│  ┌──────────────────────────────────────┐   │
+│  │        Regime Detection Engine        │   │
+│  │   7 macro factors + technical + on-   │   │
+│  │   chain + derivatives + sentiment     │   │
+│  └──────────────┬───────────────────────┘   │
+│                 │                             │
+│                 v                             │
+│  ┌──────────────────────────────────────┐   │
+│  │     Allocation Decision (0-100%)      │   │
+│  │     BULL: 80-100% | NEUTRAL: 30-50%  │   │
+│  │     BEAR: 0-20%                       │   │
+│  └──────────────┬───────────────────────┘   │
+│                 │                             │
+│                 v                             │
+│  ┌──────────────────────────────────────┐   │
+│  │     Binance Execution + Earn          │   │
+│  │     Auto-rebalance every 10 days      │   │
+│  └──────────────────────────────────────┘   │
+│                                              │
+│  ┌──────────────────────────────────────┐   │
+│  │     Dashboard (7 tabs) + Telegram     │   │
+│  └──────────────────────────────────────┘   │
+└─────────────────────────────────────────────┘
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;the-prompt-that-started-everything&#34;&gt;The Prompt That Started Everything&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s the actual first prompt I used when I sat down to build this system. I&amp;rsquo;m sharing it because I think the &lt;em&gt;framing&lt;/em&gt; of how you talk to an AI agent matters enormously:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;I want to build an autonomous Bitcoin trading system. Here&amp;#39;s my situation:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt; I lost 40% of my portfolio on emotional trades
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;2.&lt;/span&gt; I have quantitative knowledge but can&amp;#39;t execute without emotions interfering
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;3.&lt;/span&gt; I want a system that:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Assesses market regime (bull/neutral/bear) using multiple data sources
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Decides BTC allocation percentage based on regime
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Executes trades on Binance automatically
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Reports to me via Telegram daily
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Has a research component that tests new strategies
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Has a governance process so strategy changes aren&amp;#39;t random
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;My tech: Mac Mini (M4), Python, Binance API, Telegram bot.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;My capital: Small ($34 USDT to start — I want to prove the system works 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;before adding more).
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;My philosophy: I&amp;#39;d rather miss gains than take catastrophic losses. 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Risk-adjusted returns &amp;gt; absolute returns.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Let&amp;#39;s start with the architecture. What components do we need, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;and what&amp;#39;s the build order?
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Notice what this prompt does:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;States the problem honestly&lt;/strong&gt; — not &amp;ldquo;I want to get rich,&amp;rdquo; but &amp;ldquo;I can&amp;rsquo;t control my emotions&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sets constraints&lt;/strong&gt; — small capital, specific tech stack, risk-averse philosophy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Asks for architecture first&lt;/strong&gt; — not code, not a quick fix, but a system design&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Defines success criteria&lt;/strong&gt; — risk-adjusted returns, not absolute gains&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This prompt led to the architecture above, which I then built piece by piece over two weeks.&lt;/p&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;p&gt;In Part 2, I&amp;rsquo;ll cover the technology stack decisions — why I chose OpenClaw as the agent framework, how the Telegram integration works, and the Binance API setup process (including the surprisingly annoying API key permission issues).&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll also share the first working version of the daily market report — the very first automated output that replaced my 4AM phone-checking habit.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is Part 1 of a 10-part series on building an autonomous BTC trading system. Follow the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/&#34;&gt;OWUW Beat Series&lt;/a&gt; for updates.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Have questions? I read every comment. If you&amp;rsquo;re building something similar, I&amp;rsquo;d genuinely like to hear about it.&lt;/em&gt;&lt;/p&gt;
+</content:encoded>
     </item>
   </channel>
 </rss>
