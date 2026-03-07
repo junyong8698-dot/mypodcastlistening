@@ -1,22 +1,68 @@
 {{- define "main" }}
 
 {{- $posts := where site.RegularPages "Section" "posts" }}
+{{- $posts = $posts.ByDate.Reverse }}
 
-<h1 class="site-title">The Multi-Agent Future</h1>
+{{- /* Hero subtitle only — title comes from header */ -}}
 <p class="site-desc">Real money. Real agents. Real losses. A developer's unfiltered lab notes.</p>
 
-<div class="feed">
-  {{- if $posts }}
-    {{- range $posts }}
-    <article class="feed-item">
-      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-      {{ with .Description }}<p class="excerpt">{{ . }}</p>{{ end }}
-      <div class="meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</div>
+{{- if $posts }}
+
+  {{- /* Featured Post — first post as hero card */ -}}
+  {{- $featured := index $posts 0 }}
+  <article class="featured-card">
+    {{- with $featured.Params.cover }}
+      {{- $alt := .alt | default $featured.Title }}
+      {{- with .image }}
+      <a href="{{ $featured.Permalink }}" class="featured-image-link">
+        <img src="{{ . }}" alt="{{ $alt }}" class="featured-image" loading="lazy">
+      </a>
+      {{- end }}
+    {{- end }}
+    <div class="featured-content">
+      {{- /* Series tag badge */ -}}
+      {{- with $featured.Params.series }}
+        {{- range . }}
+        <span class="series-badge" data-series="{{ . | urlize }}">{{ . }}</span>
+        {{- end }}
+      {{- end }}
+      <h2><a href="{{ $featured.Permalink }}">{{ $featured.Title }}</a></h2>
+      {{ with $featured.Description }}<p class="excerpt">{{ . }}</p>{{ end }}
+      <div class="meta">{{ $featured.Date.Format "Jan 2, 2006" }} · {{ $featured.ReadingTime }} min read</div>
+    </div>
+  </article>
+
+  {{- /* Card grid for remaining posts */ -}}
+  {{- $rest := after 1 $posts }}
+  {{- if $rest }}
+  <div class="card-grid">
+    {{- range $rest }}
+    <article class="post-card">
+      {{- with .Params.cover }}
+        {{- $alt := .alt | default $.Title }}
+        {{- with .image }}
+        <a href="{{ $.Permalink }}" class="card-image-link">
+          <img src="{{ . }}" alt="{{ $alt }}" class="card-image" loading="lazy">
+        </a>
+        {{- end }}
+      {{- end }}
+      <div class="card-content">
+        {{- with .Params.series }}
+          {{- range . }}
+          <span class="series-badge" data-series="{{ . | urlize }}">{{ . }}</span>
+          {{- end }}
+        {{- end }}
+        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        {{ with .Description }}<p class="excerpt">{{ . }}</p>{{ end }}
+        <div class="meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</div>
+      </div>
     </article>
     {{- end }}
-  {{- else }}
-    <p style="color: #6b6b6b; font-style: italic; text-align: center; padding: 48px 0;">No posts yet. Check back soon.</p>
+  </div>
   {{- end }}
-</div>
+
+{{- else }}
+  <p style="color: #6b6b6b; font-style: italic; text-align: center; padding: 48px 0;">No posts yet. Check back soon.</p>
+{{- end }}
 
 {{- end }}

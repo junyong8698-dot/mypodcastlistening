@@ -45,12 +45,7 @@ params:
   showtoc: true
   tocopen: false
 
-  homeInfoParams:
-    Title: "Building the Multi-Agent Future"
-    Content: >
-      I build AI agent systems that trade crypto, manage stock portfolios, and run themselves.
-      This is the real, unfiltered story — the code, the failures, the 4AM debugging sessions, 
-      and what actually works. No marketing fluff. Just a dev who can't stop shipping.
+  # homeInfoParams removed — using custom layouts/index.html instead
 
   socialIcons:
     - name: github
@@ -78,6 +73,8 @@ params:
 
   cover:
     linkFullImages: true
+    hiddenInList: false
+    hiddenInSingle: false
 
   fuseOpts:
     isCaseSensitive: false

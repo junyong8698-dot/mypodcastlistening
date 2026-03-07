@@ -1,6 +1,6 @@
 ---
 title: "How Multi-Agent AI Is Replacing $200/Hour Legal Associates in Document Review"
-date: 2025-07-19T15:00:00+09:00
+date: 2026-03-02T15:00:00+09:00
 draft: false
 description: "Law firms spend 60-80% of litigation budgets on document review. Multi-agent AI systems are cutting that by 90% while improving accuracy. Here's exactly how it works, with implementation prompts."
 tags: ["AI agents", "legal tech", "document review", "e-discovery", "multi-agent systems", "LLM", "automation"]

@@ -1,6 +1,6 @@
 ---
 title: "I Lost 40% of My Savings on Emotional Trades. So I Built an AI Agent to Trade For Me."
-date: 2025-07-19T09:00:00+09:00
+date: 2026-03-01T09:00:00+09:00
 draft: false
 description: "After a devastating 4AM liquidation, I decided to remove myself from the trading loop entirely. This is Part 1 of how I built OWUW Beat — an autonomous BTC trading system powered by AI agents."
 tags: ["bitcoin", "algorithmic trading", "AI agents", "OpenClaw", "automation", "quant trading"]
