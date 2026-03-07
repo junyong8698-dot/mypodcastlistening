@@ -30,9 +30,7 @@ params:
     - autonomous AI
   author: "JY"
   label:
-    text: "Multi-Agent Future"
-    icon: /images/logo-light.webp
-    iconHeight: 35
+    text: "⬡ Multi-Agent Future"
   defaultTheme: light
   ShowReadingTime: true
   ShowShareButtons: true

@@ -742,11 +742,14 @@ img[loading="lazy"] { opacity: 1; }
   box-shadow: 0 6px 28px rgba(0,0,0,0.35);
 }
 
-/* --- Logo: dark mode swap --- */
-.dark .logo-img {
-  content: url('/images/logo-dark.webp');
+/* --- Logo styling --- */
+.logo a {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.35rem !important;
+  letter-spacing: -0.02em;
+  color: #1a1a1a !important;
 }
-.logo-img {
-  height: 35px !important;
-  width: auto !important;
+.dark .logo a {
+  color: #f0f0f0 !important;
 }
