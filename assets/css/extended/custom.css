@@ -62,7 +62,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   max-width: 680px;
 }
 
-/* --- Header — 57px, clean, Medium-style --- */
+/* --- Header — full-width nav, clean --- */
 .header {
   padding: 0 !important;
   min-height: 57px !important;
@@ -73,9 +73,9 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 }
 
 .header .nav {
-  max-width: 680px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
   height: 57px;
   display: flex;
   align-items: center;
@@ -83,23 +83,25 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 
 .header .logo a {
   font-family: 'Inter', sans-serif;
-  font-size: 1.1rem !important;
+  font-size: 1rem !important;
   font-weight: 700;
   color: var(--text);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 #menu {
   font-family: 'Inter', sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
 }
 
-#menu li { margin: 0 2px; }
+#menu li { margin: 0 1px; }
 
 #menu a {
-  padding: 6px 12px !important;
+  padding: 6px 10px !important;
   color: var(--text-muted);
   font-weight: 500;
+  white-space: nowrap;
 }
 #menu a:hover, #menu a.active {
   color: var(--text);
@@ -499,20 +501,8 @@ img[loading="lazy"] { opacity: 1; }
   clear: both;
 }
 
-/* --- Header nav fix — prevent overlap --- */
-.header .nav {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 20px;
-  height: 57px;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
+/* --- Header nav extra — no wrap --- */
 #menu {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.875rem;
   display: flex;
   flex-wrap: nowrap;
   gap: 0;

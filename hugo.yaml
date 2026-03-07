@@ -1,6 +1,6 @@
 baseURL: "https://www.mypodcastlistening.com/"
 languageCode: "en-us"
-title: "The Multi-Agent Future"
+title: "Multi-Agent Future"
 theme: "PaperMod"
 paginate: 10
 enableRobotsTXT: true
@@ -19,7 +19,7 @@ outputs:
 
 params:
   env: production
-  title: "The Multi-Agent Future"
+  title: "Multi-Agent Future"
   description: "Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons."
   keywords:
     - AI agents
@@ -127,7 +127,7 @@ menu:
       url: /about/
       weight: 30
     - identifier: search
-      name: Search
+      name: 🔍
       url: /search/
       weight: 40
 
