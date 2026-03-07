@@ -6,6 +6,10 @@ categories: ["Startup Ideas"]
 tags: ["AI compliance", "regtech", "startup", "EU AI Act", "Colorado AI Act", "SaaS", "regulatory technology"]
 series: ["Startup Ideas"]
 draft: false
+cover:
+  image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200"
+  alt: "Compliance and regulatory documents"
+  caption: "Photo by Unsplash"
 ---
 
 ## Every Company Using AI Just Got a Compliance Problem

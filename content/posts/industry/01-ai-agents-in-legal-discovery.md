@@ -9,6 +9,10 @@ series: ["AI Agents by Industry"]
 weight: 1
 ShowToc: true
 TocOpen: true
+cover:
+  image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200"
+  alt: "Legal documents and gavel"
+  caption: "Photo by Unsplash"
 ---
 
 ## The $10 Billion Document Review Problem

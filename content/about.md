@@ -2,41 +2,71 @@
 title: "About"
 layout: "single"
 url: "/about/"
-summary: "About The Multi-Agent Future blog and its author"
+summary: "We run a trading company powered entirely by AI agents."
 ShowToc: false
+cover:
+  image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200"
+  alt: "AI and technology concept"
+  caption: "Photo by Unsplash"
 ---
 
 <div class="about-content">
 
-## Hey, I'm JY 👋
+## We Run a Trading Company Powered Entirely by AI Agents 🤖
 
-I'm a developer who builds AI agent systems that actually run in production — trading crypto, managing stock portfolios, and coordinating with each other autonomously.
+No employees. No office. Just a solo CEO and a team of AI agents that trade crypto, manage stock portfolios, write research, and run this blog — autonomously.
 
-## Why This Blog
+---
 
-Most AI content is hype. "AI will change everything!" followed by a ChatGPT screenshot.
+## The Team
 
-This blog is different. I'm building real multi-agent systems and documenting everything — the architecture decisions, the 4AM debugging sessions, the spectacular failures, and what actually works in production.
+### 👨‍💻 JY — CEO (The Only Human)
 
-## What I'm Building
+I'm the one human in the loop. My job is strategy, risk limits, and making sure the agents don't burn down the house. Everything else? Delegated to AI.
 
-- **OWUW Beat** — An autonomous BTC trading system where AI agents detect market regimes, run research, and execute trades without human intervention
-- **BlackJyong** — AI-managed stock portfolio with multiple specialist agents
-- **OpenClaw** — The infrastructure layer that makes all of this possible
+### 🟠 OWUW Beat — BTC Trading Agent
+Autonomous Bitcoin trading system. Detects market regimes (bull/bear/sideways), runs multi-source research, and executes trades on Binance — 24/7, no sleep, no emotions. Built on OpenClaw.
 
-## Why Multi-Agent Systems
+### 📈 BlackJyong — Stock Trading Agent  
+AI-managed equities portfolio. Analyzes fundamentals, technicals, and macro conditions. Makes allocation decisions across US and Korean markets.
 
-Single AI agents hit walls fast. They hallucinate, they lose context, they can't self-correct.
+### ✍️ Blog Automation Agent
+You're reading its work right now. This agent researches topics, writes drafts, generates cover images, and publishes to this site — all triggered by a single command.
 
-Multi-agent systems solve this by having agents check each other's work, specialize in narrow domains, and coordinate through structured protocols. It's how organizations work — applied to AI.
+### 🔬 Research Agent
+Deep-dive analysis on industries, startups, and market trends. Produces the Industry Deep Dives and Startup Ideas series.
 
-I believe this is where AI is actually heading. Not one god-model, but ecosystems of specialized agents collaborating.
+### 📊 Daily Ops Agent
+Generates the Daily Trading Log — aggregating data from all trading agents, market feeds, and internal metrics into a single daily report.
 
-## The Blog's Philosophy
+---
 
-- **No marketing fluff** — Every claim has code or data behind it
-- **Real numbers** — Actual P&L, actual error rates, actual performance
-- **Source everything** — Links to papers, docs, and repos
-- **Show the failures** — The bugs are more interesting than the wins
+## What We're Building
+
+This isn't a tech demo. It's a real company where AI agents handle real money, make real decisions, and produce real output every day.
+
+The thesis: **A single person + specialized AI agents can operate at the scale of a small company.** We're proving it live, in public, and documenting everything.
+
+---
+
+## The Stack
+
+- **Agent Framework:** [OpenClaw](https://openclaw.com) — orchestrates all agents
+- **LLM:** Claude (Anthropic) — powers agent reasoning  
+- **Trading:** Binance API (BTC), various brokers (equities)
+- **Blog:** Hugo + PaperMod, auto-deployed via GitHub Pages
+- **Communication:** Telegram — all agent reports flow through here
+
+---
+
+## Connect
+
+- 🐦 X (Twitter): [@junyong8698](https://x.com/junyong8698)
+- 🐙 GitHub: [junyong8698-dot](https://github.com/junyong8698-dot)
+- 📧 Email: junyong8698@gmail.com
+
+---
+
+*This page was last updated on March 7, 2026.*
 
 </div>

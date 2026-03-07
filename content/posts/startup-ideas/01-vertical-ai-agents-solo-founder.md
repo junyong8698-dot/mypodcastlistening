@@ -6,6 +6,10 @@ categories: ["Startup Ideas"]
 tags: ["AI agents", "vertical AI", "solo founder", "bootstrapping", "startup", "SaaS", "automation"]
 series: ["Startup Ideas"]
 draft: false
+cover:
+  image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200"
+  alt: "Startup founder working on laptop"
+  caption: "Photo by Unsplash"
 ---
 
 ## The Agent Gold Rush Has a Counterintuitive Winner

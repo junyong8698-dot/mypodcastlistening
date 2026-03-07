@@ -7,6 +7,10 @@ tags: ["ai-writing", "openclaw", "claude", "ai-agents", "book-writing", "automat
 series: ["AI Book"]
 series_order: 1
 draft: false
+cover:
+  image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200"
+  alt: "Open book with pages"
+  caption: "Photo by Unsplash"
 ---
 
 On February 16th, 2026, at 9:45 PM, I sat down and typed a message into a Telegram bot:

@@ -117,18 +117,38 @@ markup:
 
 menu:
   main:
-    - identifier: series
-      name: Series
-      url: /series/
+    - identifier: menu-owuw-beat
+      name: OWUW Beat
+      url: /posts/series/owuw-beat/
       weight: 10
+    - identifier: menu-industry
+      name: Industry
+      url: /posts/industry/
+      weight: 20
+    - identifier: menu-org-mgmt
+      name: Org Mgmt
+      url: /posts/org-management/
+      weight: 30
+    - identifier: menu-startups
+      name: Startups
+      url: /posts/startup-ideas/
+      weight: 40
+    - identifier: menu-ai-book
+      name: AI Book
+      url: /posts/series/ai-book/
+      weight: 50
+    - identifier: menu-daily
+      name: Daily Log
+      url: /posts/daily/
+      weight: 60
     - identifier: about
       name: About
       url: /about/
-      weight: 20
+      weight: 70
     - identifier: search
       name: Search
       url: /search/
-      weight: 30
+      weight: 80
 
 taxonomies:
   category: categories

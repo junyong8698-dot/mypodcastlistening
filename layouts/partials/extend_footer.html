@@ -1,38 +1,37 @@
 {{ if .IsPage }}
-<!-- Series Navigation -->
-{{ with .Params.series }}
-{{ $seriesName := index . 0 }}
-{{ $allInSeries := where site.RegularPages "Params.series" "intersect" (slice $seriesName) }}
-{{ $sorted := sort $allInSeries "Params.weight" "asc" }}
-{{ $currentIndex := -1 }}
-{{ range $i, $p := $sorted }}
-  {{ if eq $p.Permalink $.Permalink }}
-    {{ $currentIndex = $i }}
-  {{ end }}
-{{ end }}
-{{ if ge $currentIndex 0 }}
-<div class="series-nav">
-  {{ if gt $currentIndex 0 }}
-    {{ $prev := index $sorted (sub $currentIndex 1) }}
-    <a href="{{ $prev.Permalink }}">← {{ $prev.Title | truncate 40 }}</a>
-  {{ else }}
-    <span></span>
-  {{ end }}
-  <span class="series-name">{{ $seriesName }}</span>
-  {{ if lt (add $currentIndex 1) (len $sorted) }}
-    {{ $next := index $sorted (add $currentIndex 1) }}
-    <a href="{{ $next.Permalink }}">{{ $next.Title | truncate 40 }} →</a>
-  {{ else }}
-    <span></span>
-  {{ end }}
-</div>
-{{ end }}
-{{ end }}
+<div class="footer-widgets">
 
-<!-- Share Buttons -->
-<div class="share-buttons">
-  <a class="share-btn" href="https://twitter.com/intent/tweet?text={{ .Title | querify "t" | replaceRE "^t=" "" }}&url={{ .Permalink }}" target="_blank" rel="noopener">𝕏 Share</a>
-  <a class="share-btn" href="https://reddit.com/submit?url={{ .Permalink }}&title={{ .Title | querify "t" | replaceRE "^t=" "" }}" target="_blank" rel="noopener">Reddit</a>
-  <button class="share-btn" onclick="navigator.clipboard.writeText('{{ .Permalink }}').then(()=>this.textContent='Copied!')">📋 Copy Link</button>
+  <div class="footer-widget">
+    <h3>📌 Popular Posts</h3>
+    <ul>
+      <li><a href="/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/">I Lost 40% on Emotional Trades. So I Built an AI Agent.</a></li>
+      <li><a href="/posts/industry/01-ai-agents-in-legal-discovery/">AI Is Replacing $200/Hour Legal Associates</a></li>
+      <li><a href="/posts/series/ai-book/01-why-write-a-book-with-ai-agents/">I Wrote a 250-Page Book in 6 Days Using AI Agents</a></li>
+      <li><a href="/posts/startup-ideas/01-vertical-ai-agents-solo-founder/">Vertical AI Agents: Solo Founder's Best Shot at $1M</a></li>
+      <li><a href="/posts/org-management/01-ai-flattening-org-chart-middle-management/">How AI Is Flattening the Org Chart</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-widget">
+    <h3>📚 Explore Series</h3>
+    <ul>
+      <li><a href="/posts/series/owuw-beat/">OWUW Beat — Autonomous BTC Trading</a></li>
+      <li><a href="/posts/industry/">Industry Deep Dives</a></li>
+      <li><a href="/posts/org-management/">Org Management × AI</a></li>
+      <li><a href="/posts/startup-ideas/">Startup Ideas</a></li>
+      <li><a href="/posts/series/ai-book/">AI Book</a></li>
+      <li><a href="/posts/daily/">Daily Trading Log</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-widget">
+    <h3>📬 Newsletter</h3>
+    <p style="font-size:0.9em;margin-bottom:12px;">Get weekly updates on AI agents, trading bots, and startup ideas.</p>
+    <form class="newsletter-form" action="#" method="post">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
 </div>
 {{ end }}

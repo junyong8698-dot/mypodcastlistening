@@ -8,9 +8,9 @@ categories: ["OWUW Beat Series"]
 series: ["Building OWUW Beat"]
 weight: 2
 cover:
-  image: ""
-  alt: ""
-  caption: ""
+  image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200"
+  alt: "Technology stack circuit board"
+  caption: "Photo by Unsplash"
 ShowToc: true
 TocOpen: true
 ---

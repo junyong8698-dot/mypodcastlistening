@@ -1,0 +1,10 @@
+{{ $type := .Get "type" | default "note" }}
+{{ $icons := dict "insight" "💡" "warning" "⚠️" "tip" "✅" "danger" "🚨" "note" "📝" }}
+{{ $titles := dict "insight" "Key Insight" "warning" "Warning" "tip" "Tip" "danger" "Danger" "note" "Note" }}
+<div class="callout callout-{{ $type }}">
+  <div class="callout-title">
+    <span class="callout-icon">{{ index $icons $type }}</span>
+    {{ index $titles $type }}
+  </div>
+  <div class="callout-content">{{ .Inner | markdownify }}</div>
+</div>

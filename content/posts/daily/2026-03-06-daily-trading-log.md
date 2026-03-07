@@ -5,6 +5,10 @@ draft: false
 tags: ["daily-log", "trading", "btc", "stocks", "ai-agents", "owuw"]
 categories: ["Daily Log"]
 description: "Full company daily log covering OWUW Beat (BTC), BlackJyong/OWUW Stock (equities), R&D research, satellite universe launch, agent collaboration, and multi-agent operations."
+cover:
+  image: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=1200"
+  alt: "Financial trading dashboard"
+  caption: "Photo by Unsplash"
 ---
 
 # 📊 Daily Trading Log — March 6, 2026 (Friday)

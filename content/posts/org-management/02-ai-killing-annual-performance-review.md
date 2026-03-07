@@ -9,6 +9,10 @@ series: ["AI & Organization Management"]
 weight: 2
 ShowToc: true
 TocOpen: true
+cover:
+  image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200"
+  alt: "Performance review meeting"
+  caption: "Photo by Unsplash"
 ---
 
 ## The Annual Review Is a Ritual Everyone Hates

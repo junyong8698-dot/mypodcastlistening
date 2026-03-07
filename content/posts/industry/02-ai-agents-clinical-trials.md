@@ -6,6 +6,10 @@ categories: ["Industry Deep Dives"]
 tags: ["AI agents", "clinical trials", "drug development", "healthcare AI", "agentic AI", "patient recruitment", "pharma"]
 series: ["Industry Deep Dives"]
 draft: false
+cover:
+  image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200"
+  alt: "Medical research laboratory"
+  caption: "Photo by Unsplash"
 ---
 
 ## The $2 Billion Problem That Takes a Decade to Solve

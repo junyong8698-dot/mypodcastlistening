@@ -8,9 +8,9 @@ categories: ["OWUW Beat Series"]
 series: ["Building OWUW Beat"]
 weight: 1
 cover:
-  image: ""
-  alt: ""
-  caption: ""
+  image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200"
+  alt: "Bitcoin trading chart on screen"
+  caption: "Photo by Unsplash"
 ShowToc: true
 TocOpen: true
 ---

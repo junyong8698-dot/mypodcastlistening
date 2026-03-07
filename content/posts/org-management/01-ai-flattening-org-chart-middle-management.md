@@ -9,6 +9,10 @@ series: ["AI & Organization Management"]
 weight: 1
 ShowToc: true
 TocOpen: true
+cover:
+  image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200"
+  alt: "Team organization and management"
+  caption: "Photo by Unsplash"
 ---
 
 ## The Prediction That Got Everyone's Attention
