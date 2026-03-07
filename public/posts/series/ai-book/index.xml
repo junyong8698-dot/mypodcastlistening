@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI Book — Writing a Book with AI Agents on The Multi-Agent Future</title>
+    <link>https://www.mypodcastlistening.com/posts/series/ai-book/</link>
+    <description>Recent content in AI Book — Writing a Book with AI Agents on The Multi-Agent Future</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Mar 2026 09:00:00 +0900</lastBuildDate>
+    <atom:link href="https://www.mypodcastlistening.com/posts/series/ai-book/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I Wrote a 250-Page Book in 6 Days Using AI Agents</title>
+      <link>https://www.mypodcastlistening.com/posts/series/ai-book/01-why-write-a-book-with-ai-agents/</link>
+      <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/series/ai-book/01-why-write-a-book-with-ai-agents/</guid>
+      <description>How I used OpenClaw, Claude, and a team of six AI sub-agents to write a full-length book about AI automation — and what I learned about the future of creative work.</description>
+    </item>
+  </channel>
+</rss>

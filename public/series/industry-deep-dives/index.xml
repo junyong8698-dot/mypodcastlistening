@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Industry Deep Dives on The Multi-Agent Future</title>
+    <link>https://www.mypodcastlistening.com/series/industry-deep-dives/</link>
+    <description>Recent content in Industry Deep Dives on The Multi-Agent Future</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 Mar 2026 09:00:00 +0900</lastBuildDate>
+    <atom:link href="https://www.mypodcastlistening.com/series/industry-deep-dives/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Agents in Clinical Trials: From White Space to Warp Speed</title>
+      <link>https://www.mypodcastlistening.com/posts/industry/02-ai-agents-clinical-trials/</link>
+      <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/industry/02-ai-agents-clinical-trials/</guid>
+      <description>How agentic AI is cutting clinical trial timelines, automating CRA workflows, and reshaping drug development from recruitment to database lock.</description>
+    </item>
+  </channel>
+</rss>
