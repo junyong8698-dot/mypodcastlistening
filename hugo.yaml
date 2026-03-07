@@ -29,6 +29,10 @@ params:
     - LLM agents
     - autonomous AI
   author: "JY"
+  label:
+    text: "Multi-Agent Future"
+    icon: /images/logo-light.webp
+    iconHeight: 35
   defaultTheme: light
   ShowReadingTime: true
   ShowShareButtons: true

@@ -741,3 +741,12 @@ img[loading="lazy"] { opacity: 1; }
 .dark .featured-card:hover {
   box-shadow: 0 6px 28px rgba(0,0,0,0.35);
 }
+
+/* --- Logo: dark mode swap --- */
+.dark .logo-img {
+  content: url('/images/logo-dark.webp');
+}
+.logo-img {
+  height: 35px !important;
+  width: auto !important;
+}
