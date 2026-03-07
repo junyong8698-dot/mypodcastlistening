@@ -42,6 +42,7 @@
 
 ### ⑦ Startup Ideas
 - [x] 01: Vertical AI Agents — Solo Founder's Best Shot at $1M (published 2026-03-04)
+- [x] 02: AI Compliance Is a $23B Market — Here's How to Build In It (published 2026-03-07)
 
 ## Content Rules
 - Language: English
