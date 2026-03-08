@@ -490,28 +490,27 @@ img[loading="lazy"] { opacity: 1; }
    V5 DESIGN OVERHAUL — Cards, Featured, Series
    ============================================ */
 
-/* --- Hero Banner --- */
+/* --- Hero Banner — Soft Gradient --- */
 .hero-banner {
-  background: #0d1117;
+  background: linear-gradient(180deg, #f6f8fa 0%, #ffffff 100%);
   width: 100vw;
   position: relative;
   left: 50%;
-  right: 50%;
   margin-left: -50vw;
-  margin-right: -50vw;
+  border-bottom: 1px solid var(--border);
 }
 .hero-inner {
   max-width: 680px;
   margin: 0 auto;
-  padding: 40px 20px 36px;
+  padding: 44px 20px 36px;
   text-align: center;
 }
 .hero-tagline {
   font-family: 'Lora', Georgia, serif;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   line-height: 1.7;
-  color: #e6edf3;
-  margin: 0 0 16px;
+  color: var(--text);
+  margin: 0 0 14px;
   font-weight: 400;
 }
 .hero-stats {
@@ -525,7 +524,7 @@ img[loading="lazy"] { opacity: 1; }
   font-family: 'Inter', sans-serif;
   font-size: 0.78rem;
   font-weight: 500;
-  color: #8b949e;
+  color: var(--text-muted);
   letter-spacing: 0.01em;
   display: inline-flex;
   align-items: center;
@@ -534,7 +533,7 @@ img[loading="lazy"] { opacity: 1; }
 .hero-stat-dot {
   width: 6px;
   height: 6px;
-  background: #3fb950;
+  background: #1a8917;
   border-radius: 50%;
   display: inline-block;
   animation: pulse-dot 2s ease-in-out infinite;
@@ -544,12 +543,18 @@ img[loading="lazy"] { opacity: 1; }
   50% { opacity: 0.4; }
 }
 .hero-stat-sep {
-  color: #484f58;
+  color: #c0c0c0;
   font-size: 0.75rem;
 }
-/* dark mode — banner stays dark, just tweak if needed */
 .dark .hero-banner {
-  background: #010409;
+  background: linear-gradient(180deg, #161b22 0%, var(--bg) 100%);
+  border-bottom-color: var(--border);
+}
+.dark .hero-stat-dot {
+  background: #3fb950;
+}
+.dark .hero-stat-sep {
+  color: #484f58;
 }
 
 /* --- Site Desc (subtitle only, no duplicate title) --- */
