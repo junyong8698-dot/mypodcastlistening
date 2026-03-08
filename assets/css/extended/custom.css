@@ -332,6 +332,8 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   color: var(--text-muted);
+  margin-top: 16px;
+  padding-top: 8px;
 }
 
 /* --- Footer --- */
