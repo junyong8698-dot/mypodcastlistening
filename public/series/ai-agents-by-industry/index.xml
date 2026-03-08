@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Sun, 08 Mar 2026 06:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2026 06:24:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/series/ai-agents-by-industry/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How Multi-Agent AI Is Replacing $200/Hour Legal Associates in Document Review</title>
@@ -446,6 +446,177 @@ to reach readiness within 90 days.
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;Next in the Industry Deep Dives series: AI Agents in Commercial Real Estate — how autonomous systems are transforming property valuation, lease analysis, and portfolio optimization. &lt;a href=&#34;https://www.mypodcastlistening.com/categories/industry-deep-dives/&#34;&gt;Follow the series →&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;https://www.mypodcastlistening.com/posts/industry/02-ai-agents-clinical-trials/&#34;&gt;AI Agents in Clinical Trials: From White Space to Warp Speed&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>AI Is Designing Drugs Now — And the First Ones Are Working</title>
+      <link>https://www.mypodcastlistening.com/posts/industry/04-ai-agents-drug-discovery/</link>
+      <pubDate>Mon, 09 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/industry/04-ai-agents-drug-discovery/</guid>
+      <description>&lt;h2 id=&#34;a-drug-designed-by-ai-just-passed-a-human-trial&#34;&gt;A Drug Designed by AI Just Passed a Human Trial&lt;/h2&gt;
+&lt;p&gt;In mid-2025, Insilico Medicine published results in &lt;em&gt;Nature Medicine&lt;/em&gt; for rentosertib (ISM001-055) — a drug where both the target and the molecule were discovered using generative AI. The Phase IIa trial showed improved lung function in patients with idiopathic pulmonary fibrosis after just 12 weeks of treatment (&lt;a href=&#34;https://insilico.com/news/tnrecuxsc1-insilico-announces-nature-medicine-publi&#34;&gt;Insilico Medicine, 2025&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;That sentence deserves a second read. Not &amp;ldquo;AI helped screen a library.&amp;rdquo; Not &amp;ldquo;AI suggested modifications to an existing compound.&amp;rdquo; AI identified a novel biological target (TNIK), generated a new molecule to hit it, and that molecule worked in humans.&lt;/p&gt;</description>
+      <content:encoded>&lt;h2 id=&#34;a-drug-designed-by-ai-just-passed-a-human-trial&#34;&gt;A Drug Designed by AI Just Passed a Human Trial&lt;/h2&gt;
+&lt;p&gt;In mid-2025, Insilico Medicine published results in &lt;em&gt;Nature Medicine&lt;/em&gt; for rentosertib (ISM001-055) — a drug where both the target and the molecule were discovered using generative AI. The Phase IIa trial showed improved lung function in patients with idiopathic pulmonary fibrosis after just 12 weeks of treatment (&lt;a href=&#34;https://insilico.com/news/tnrecuxsc1-insilico-announces-nature-medicine-publi&#34;&gt;Insilico Medicine, 2025&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;That sentence deserves a second read. Not &amp;ldquo;AI helped screen a library.&amp;rdquo; Not &amp;ldquo;AI suggested modifications to an existing compound.&amp;rdquo; AI identified a novel biological target (TNIK), generated a new molecule to hit it, and that molecule worked in humans.&lt;/p&gt;
+&lt;p&gt;This is new territory. And it changes the economics of an industry that spends &lt;a href=&#34;https://aspe.hhs.gov/reports/examination-clinical-trial-costs-barriers-drug-development-0&#34;&gt;$2.6 billion and 12 years&lt;/a&gt; to bring a single drug to market — with a 90% failure rate.&lt;/p&gt;
+&lt;h2 id=&#34;the-traditional-drug-discovery-pipeline-is-broken&#34;&gt;The Traditional Drug Discovery Pipeline Is Broken&lt;/h2&gt;
+&lt;p&gt;Before we talk about what AI changes, it helps to understand what it&amp;rsquo;s replacing.&lt;/p&gt;
+&lt;p&gt;Traditional drug discovery follows a brutal funnel:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Target identification&lt;/strong&gt; (1-2 years): Find a protein or pathway involved in a disease&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hit discovery&lt;/strong&gt; (1-2 years): Screen millions of compounds to find ones that interact with the target&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lead optimization&lt;/strong&gt; (1-3 years): Modify the best hits to improve potency, selectivity, and drug-like properties&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preclinical&lt;/strong&gt; (1-2 years): Test in animal models for safety and efficacy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clinical trials&lt;/strong&gt; (6-10 years): Phase I (safety), Phase II (efficacy), Phase III (large-scale confirmation)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The median time from target identification to IND (Investigational New Drug) filing is about 4.5 years. The total cost of failure — all the compounds that die along the way — gets folded into the ones that survive. That&amp;rsquo;s why bringing a single drug to approval costs billions.&lt;/p&gt;
+&lt;p&gt;The failure rate is the real killer. Roughly 90% of drugs that enter Phase I never make it to approval (&lt;a href=&#34;https://academic.oup.com/biostatistics/article/20/2/273/4817524&#34;&gt;Wong et al., 2019&lt;/a&gt;). Many of those failures happen because the target was wrong, the molecule had off-target effects nobody predicted, or the drug couldn&amp;rsquo;t reach the right tissue at the right concentration.&lt;/p&gt;
+&lt;p&gt;Each of those failure modes is, at its core, a prediction problem. And prediction problems are exactly where machine learning excels.&lt;/p&gt;
+&lt;h2 id=&#34;how-ai-actually-fits-into-drug-discovery&#34;&gt;How AI Actually Fits Into Drug Discovery&lt;/h2&gt;
+&lt;p&gt;AI in pharma isn&amp;rsquo;t one thing. It&amp;rsquo;s a stack of different technologies applied at different stages. Here&amp;rsquo;s what&amp;rsquo;s actually working:&lt;/p&gt;
+&lt;h3 id=&#34;target-identification-finding-what-to-hit&#34;&gt;Target Identification: Finding What to Hit&lt;/h3&gt;
+&lt;p&gt;The first question in drug discovery is: what protein, receptor, or pathway should we target? Get this wrong and nothing downstream matters.&lt;/p&gt;
+&lt;p&gt;Traditional approaches rely on published literature, genetic association studies (GWAS), and known disease biology. The problem is that human biologists can only hold so many relationships in their heads. The interactome — the map of all protein-protein interactions in a human cell — has roughly 600,000 documented interactions (&lt;a href=&#34;https://thebiogrid.org/&#34;&gt;BioGRID&lt;/a&gt;), and likely many more undiscovered.&lt;/p&gt;
+&lt;p&gt;AI approaches to target identification include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Knowledge graph mining&lt;/strong&gt;: Companies like &lt;a href=&#34;https://www.benevolent.com/&#34;&gt;BenevolentAI&lt;/a&gt; build massive graphs linking genes, proteins, diseases, pathways, and drugs. Their system famously identified baricitinib as a potential COVID-19 treatment in February 2020 — before most pharma companies had pivoted — by tracing the virus&amp;rsquo;s entry mechanism through the knowledge graph (&lt;a href=&#34;https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30132-8/fulltext&#34;&gt;The Lancet, 2020&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Causal inference models&lt;/strong&gt;: Rather than just finding correlations (Gene X is associated with Disease Y), newer models try to establish directionality. Recursion Pharmaceuticals uses what they call a &amp;ldquo;biological map&amp;rdquo; built from petabytes of cellular imaging data — they&amp;rsquo;ve imaged cells under millions of genetic and chemical perturbations to build causal models of how biology responds (&lt;a href=&#34;https://www.recursion.com/&#34;&gt;Recursion, 2024&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Multi-omics integration&lt;/strong&gt;: Combining genomics, proteomics, transcriptomics, and metabolomics data to find convergent signals. Insilico Medicine&amp;rsquo;s PandaOmics platform does exactly this, scoring potential targets based on dozens of data streams simultaneously (&lt;a href=&#34;https://insilico.com/pandaomics&#34;&gt;Insilico Medicine&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The practical impact: Insilico claims their AI identified TNIK as a fibrosis target and validated it in roughly 18 months — work that would typically take 3-5 years.&lt;/p&gt;
+&lt;h3 id=&#34;molecular-design-generating-new-drugs-from-scratch&#34;&gt;Molecular Design: Generating New Drugs From Scratch&lt;/h3&gt;
+&lt;p&gt;This is where generative AI has made the most dramatic impact. Instead of screening millions of existing compounds to find ones that bind a target, you can now generate novel molecules designed specifically for that target.&lt;/p&gt;
+&lt;p&gt;The key architectures:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Variational autoencoders (VAEs)&lt;/strong&gt;: Encode known drug molecules into a continuous mathematical space, then sample new points in that space to generate novel molecules with desired properties.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Generative adversarial networks (GANs)&lt;/strong&gt;: A generator creates candidate molecules while a discriminator evaluates them, iterating toward molecules that look &amp;ldquo;drug-like&amp;rdquo; while hitting the target.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transformer models&lt;/strong&gt;: Treat molecular structures (in SMILES notation) as sequences, similar to how GPT treats text. Generate new sequences that represent valid, synthesizable molecules.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Diffusion models&lt;/strong&gt;: Adapted from image generation (think Stable Diffusion but for 3D molecular structures). These have become increasingly popular since 2024 for generating molecules with specific binding properties.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Insilico Medicine&amp;rsquo;s Chemistry42 platform uses a combination of these approaches. For the rentosertib program, it generated candidate molecules targeting TNIK and optimized them across multiple properties simultaneously — binding affinity, selectivity, ADMET properties (absorption, distribution, metabolism, excretion, toxicity), and synthetic accessibility (&lt;a href=&#34;https://pubmed.ncbi.nlm.nih.gov/40461817/&#34;&gt;PubMed, 2025&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The timeline comparison is stark: traditional hit-to-lead optimization takes 1-3 years. Insilico went from target to preclinical candidate in about 18 months total, at roughly one-tenth the typical cost.&lt;/p&gt;
+&lt;h3 id=&#34;structure-prediction-alphafold-changed-everything&#34;&gt;Structure Prediction: AlphaFold Changed Everything&lt;/h3&gt;
+&lt;p&gt;You can&amp;rsquo;t design a drug to fit a protein if you don&amp;rsquo;t know the protein&amp;rsquo;s 3D shape. Before 2020, experimental methods (X-ray crystallography, cryo-EM) were the only reliable way to determine protein structures. These methods are slow, expensive, and don&amp;rsquo;t work for every protein.&lt;/p&gt;
+&lt;p&gt;DeepMind&amp;rsquo;s &lt;a href=&#34;https://www.nature.com/articles/s41586-021-03819-2&#34;&gt;AlphaFold 2&lt;/a&gt; solved protein structure prediction in 2020. AlphaFold 3, released in May 2024, extended this to predict interactions between proteins and small molecules, nucleic acids, and other biomolecules (&lt;a href=&#34;https://www.isomorphiclabs.com/our-tech&#34;&gt;Isomorphic Labs&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;In February 2026, Isomorphic Labs (DeepMind&amp;rsquo;s drug discovery spinoff) unveiled their &amp;ldquo;Drug Design Engine,&amp;rdquo; which reportedly doubles AlphaFold 3&amp;rsquo;s accuracy in predicting protein-ligand binding (&lt;a href=&#34;https://winbuzzer.com/2026/02/11/isomorphic-labs-ai-doubles-alphafold-3-drug-discovery-accuracy-xcxwbn/&#34;&gt;WinBuzzer, 2026&lt;/a&gt;). The company has partnerships with Eli Lilly and Novartis worth up to $3 billion combined and expects its first AI-designed molecules to enter Phase I clinical trials by late 2026 (&lt;a href=&#34;https://www.reuters.com/business/healthcare-pharmaceuticals/google-backed-ai-drug-discovery-startup-isomorphic-labs-delays-clinical-trial-2026-01-20/&#34;&gt;Reuters, 2026&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This is the infrastructure layer. AlphaFold didn&amp;rsquo;t design any drugs directly, but it made structure-based drug design accessible to every lab on the planet. Before AlphaFold, we had experimental structures for maybe 20% of the human proteome. Now we have predicted structures for essentially all of it.&lt;/p&gt;
+&lt;h3 id=&#34;admet-prediction-killing-bad-molecules-early&#34;&gt;ADMET Prediction: Killing Bad Molecules Early&lt;/h3&gt;
+&lt;p&gt;A huge percentage of drug failures happen not because the molecule doesn&amp;rsquo;t hit its target, but because it has problems with absorption, distribution, metabolism, excretion, or toxicity (ADMET). Roughly &lt;a href=&#34;https://www.nature.com/articles/nrd4609&#34;&gt;40% of clinical failures&lt;/a&gt; are due to safety issues that weren&amp;rsquo;t caught in preclinical testing.&lt;/p&gt;
+&lt;p&gt;AI models trained on historical ADMET data can predict these properties for novel molecules before any lab work is done. This means you can filter out problematic candidates computationally, saving years of wasted preclinical and clinical work.&lt;/p&gt;
+&lt;p&gt;Schrödinger, a publicly traded computational chemistry company, has built an extensive ADMET prediction platform that&amp;rsquo;s integrated into several major pharma pipelines. Their approach combines physics-based molecular simulations with machine learning, and they now have their own clinical-stage pipeline with multiple programs (&lt;a href=&#34;https://www.schrodinger.com/drug-discovery/&#34;&gt;Schrödinger&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;whos-actually-winning&#34;&gt;Who&amp;rsquo;s Actually Winning&lt;/h2&gt;
+&lt;p&gt;The AI drug discovery landscape has consolidated significantly since the hype cycle of 2021-2022. Here&amp;rsquo;s where the major players stand as of early 2026:&lt;/p&gt;
+&lt;h3 id=&#34;tier-1-clinical-validation&#34;&gt;Tier 1: Clinical Validation&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Insilico Medicine&lt;/strong&gt; is the current frontrunner by one critical metric: they have the most advanced AI-native drug (where both target and molecule were AI-generated) in clinical development. Rentosertib&amp;rsquo;s positive Phase IIa data, published in &lt;em&gt;Nature Medicine&lt;/em&gt; with an impact factor of 58.7, is the strongest clinical evidence yet that end-to-end AI drug discovery works.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Relay Therapeutics&lt;/strong&gt; takes a different approach — using AI to understand protein motion (not just static structures) to design precision medicines. Their lead program, RLY-2608, is a mutant-selective PI3Kα inhibitor in Phase I/II for breast cancer. The company generated $15.6 million in collaboration revenue in 2024 and has multiple programs advancing (&lt;a href=&#34;https://relaytx.com/&#34;&gt;Relay Therapeutics&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Schrödinger&lt;/strong&gt; straddles the line between software vendor and drug company. Their computational platform is used by most major pharma companies, and they&amp;rsquo;re advancing their own pipeline with clinical candidates in oncology.&lt;/p&gt;
+&lt;h3 id=&#34;tier-2-platform-scale&#34;&gt;Tier 2: Platform Scale&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Recursion-Exscientia&lt;/strong&gt; merged in late 2024 to create the largest AI drug discovery platform by data scale. Recursion&amp;rsquo;s massive cellular imaging dataset combined with Exscientia&amp;rsquo;s automated precision chemistry creates an end-to-end pipeline. They have partnerships with Roche-Genentech, Sanofi, and Bayer, and multiple programs in clinical trials including REC-994 for cerebral cavernous malformation and REC-394 for C. difficile (&lt;a href=&#34;https://ir.recursion.com/news-releases/news-release-details/recursion-and-exscientia-two-leaders-ai-drug-discovery-space&#34;&gt;Recursion IR, 2025&lt;/a&gt;). Revenue for Q1 2025 was $15 million, largely from partnership milestones (&lt;a href=&#34;https://www.fiercebiotech.com/biotech/several-months-after-exscientia-merge-ai-outfit-recursion-reworks-pipeline&#34;&gt;Fierce Biotech, 2025&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Isomorphic Labs&lt;/strong&gt; has the deepest pockets (Google backing) and arguably the best foundational technology (AlphaFold lineage). But they&amp;rsquo;re pre-clinical. The $3 billion in partnership deals with Lilly and Novartis signal confidence, but clinical data is what matters, and that&amp;rsquo;s still at least a year away.&lt;/p&gt;
+&lt;h3 id=&#34;tier-3-emerging&#34;&gt;Tier 3: Emerging&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Atomwise&lt;/strong&gt; focuses on structure-based drug design using convolutional neural networks for binding affinity prediction. &lt;strong&gt;Generate Biomedicines&lt;/strong&gt; (acquired by Novartis in 2024 for $1 billion) applies generative AI to protein therapeutics rather than small molecules. &lt;strong&gt;BPGbio&lt;/strong&gt; is pushing Bayesian causal AI specifically for clinical trial design and patient selection.&lt;/p&gt;
+&lt;h2 id=&#34;the-market-numbers&#34;&gt;The Market Numbers&lt;/h2&gt;
+&lt;p&gt;The AI drug discovery market is growing fast, though analysts can&amp;rsquo;t seem to agree on exactly how fast:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Grand View Research estimates the market at &lt;strong&gt;$2.35 billion in 2025&lt;/strong&gt;, growing to $2.91 billion in 2026 (&lt;a href=&#34;https://www.grandviewresearch.com/industry-analysis/artificial-intelligence-drug-discovery-market&#34;&gt;Grand View Research&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Drug Target Review projects the broader AI drug discovery space at &lt;strong&gt;$5-7 billion in 2025&lt;/strong&gt;, reaching $8-10 billion in 2026 (&lt;a href=&#34;https://www.drugtargetreview.com/article/192962/ai-in-drug-discovery-predictions-for-2026/&#34;&gt;Drug Target Review, 2026&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;McKinsey estimates generative AI could deliver &lt;strong&gt;$60-110 billion annually&lt;/strong&gt; in value for pharma overall, including drug discovery, clinical development, and commercial operations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The discrepancy in market sizing comes from what you include. Narrow definitions (just AI software for drug discovery) give you the lower numbers. Broader definitions (including AI-enabled CRO services, computational chemistry, and partnership deal values) push toward the higher end.&lt;/p&gt;
+&lt;p&gt;What&amp;rsquo;s not disputed: every major pharmaceutical company now has AI drug discovery partnerships or internal programs. Pfizer, Novartis, Roche, Sanofi, AstraZeneca, Merck, Bristol-Myers Squibb — all of them. This stopped being optional around 2023.&lt;/p&gt;
+&lt;h2 id=&#34;whats-actually-different-about-ai-designed-drugs&#34;&gt;What&amp;rsquo;s Actually Different About AI-Designed Drugs&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s the question skeptics ask, and it&amp;rsquo;s a good one: if AI just finds molecules that bind to targets, how is that fundamentally different from high-throughput screening? Pharma has been using computational chemistry for decades.&lt;/p&gt;
+&lt;p&gt;Three things are genuinely new:&lt;/p&gt;
+&lt;h3 id=&#34;1-generative-design-vs-screening&#34;&gt;1. Generative Design vs. Screening&lt;/h3&gt;
+&lt;p&gt;Traditional computational chemistry starts with existing molecules and asks &amp;ldquo;which of these might work?&amp;rdquo; Generative AI starts with a target and asks &amp;ldquo;what molecule should I create?&amp;rdquo; The search space for drug-like molecules is estimated at 10^60 — far larger than any library you could physically create or computationally screen. Generative models can explore this space efficiently by learning the underlying patterns of drug chemistry.&lt;/p&gt;
+&lt;h3 id=&#34;2-multi-objective-optimization&#34;&gt;2. Multi-Objective Optimization&lt;/h3&gt;
+&lt;p&gt;Real drug design requires optimizing dozens of properties simultaneously — binding affinity, selectivity, solubility, metabolic stability, lack of toxicity, synthetic accessibility. Improving one often worsens another. Traditional medicinal chemistry handles this through sequential iteration: make a change, test it, see what breaks, try to fix it.&lt;/p&gt;
+&lt;p&gt;AI models can optimize across all these properties simultaneously, exploring the Pareto frontier of tradeoffs much more efficiently than human chemists iterating one variable at a time. This is where the 10x speedup claims come from.&lt;/p&gt;
+&lt;h3 id=&#34;3-novel-chemical-space&#34;&gt;3. Novel Chemical Space&lt;/h3&gt;
+&lt;p&gt;Perhaps most importantly, AI-designed molecules tend to be structurally different from known drugs. They occupy regions of chemical space that human chemists wouldn&amp;rsquo;t typically explore because their intuition is trained on existing drug structures. Rentosertib&amp;rsquo;s chemical scaffold is unlike any existing drug — it came from a region of chemical space that a generative model explored because it had no human biases about what a drug &amp;ldquo;should&amp;rdquo; look like.&lt;/p&gt;
+&lt;h2 id=&#34;the-honest-limitations&#34;&gt;The Honest Limitations&lt;/h2&gt;
+&lt;p&gt;This field has suffered from hype, and a balanced view requires acknowledging what AI still can&amp;rsquo;t do:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Clinical outcomes are still sparse.&lt;/strong&gt; Rentosertib&amp;rsquo;s Phase IIa results are promising but small-scale. We don&amp;rsquo;t yet have a fully AI-designed drug that&amp;rsquo;s been approved by the FDA. The closest is probably DSP-1181 (designed by Exscientia for Sumitomo Dainippon), which entered Phase I in 2020 but was eventually discontinued — not because the AI design failed, but because the target biology didn&amp;rsquo;t pan out.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Biology is still hard.&lt;/strong&gt; AI can design molecules with incredible precision, but predicting how those molecules will behave in the complexity of a human body — across different tissues, metabolic states, genetic backgrounds, and disease stages — remains enormously challenging. Most clinical failures are biology failures, not chemistry failures.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data quality limits model quality.&lt;/strong&gt; AI models are only as good as their training data. Much of the public data on drug-target interactions is noisy, incomplete, or measured under inconsistent conditions. Companies like Recursion have invested hundreds of millions in generating proprietary, standardized datasets precisely because public data isn&amp;rsquo;t good enough.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Regulatory frameworks are evolving.&lt;/strong&gt; The FDA has been receptive to AI-discovered drugs (they&amp;rsquo;re evaluated on the same safety and efficacy criteria as any other drug), but questions about explainability and validation of AI methods in regulatory submissions are still being worked out.&lt;/p&gt;
+&lt;p&gt;Drug Target Review&amp;rsquo;s forecast for 2026 is blunt: &amp;ldquo;validation and disappointment in roughly equal measure&amp;rdquo; (&lt;a href=&#34;https://www.drugtargetreview.com/article/192962/ai-in-drug-discovery-predictions-for-2026/&#34;&gt;Drug Target Review, 2026&lt;/a&gt;). Some programs will produce positive Phase III data. Others will fail. That&amp;rsquo;s drug development. The question is whether the batting average improves over time.&lt;/p&gt;
+&lt;h2 id=&#34;what-this-means-for-builders&#34;&gt;What This Means for Builders&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re a developer or technical founder looking at this space, here&amp;rsquo;s where the opportunities are:&lt;/p&gt;
+&lt;h3 id=&#34;data-infrastructure&#34;&gt;Data Infrastructure&lt;/h3&gt;
+&lt;p&gt;The biggest bottleneck in AI drug discovery isn&amp;rsquo;t algorithms — it&amp;rsquo;s data. Companies need:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Standardized assay data pipelines&lt;/li&gt;
+&lt;li&gt;Automated lab data capture and annotation&lt;/li&gt;
+&lt;li&gt;Integration layers between electronic lab notebooks, LIMS, and ML training pipelines&lt;/li&gt;
+&lt;li&gt;Data quality monitoring and drift detection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is essentially MLOps for biology, and it&amp;rsquo;s badly underserved.&lt;/p&gt;
+&lt;h3 id=&#34;specialized-foundation-models&#34;&gt;Specialized Foundation Models&lt;/h3&gt;
+&lt;p&gt;The general-purpose LLM approach (fine-tune GPT on chemistry papers) doesn&amp;rsquo;t work well for drug discovery. The field needs domain-specific models trained on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Molecular structures and properties&lt;/li&gt;
+&lt;li&gt;Protein sequences and structures&lt;/li&gt;
+&lt;li&gt;Biological pathway data&lt;/li&gt;
+&lt;li&gt;Clinical trial outcomes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Companies building these specialized models — or the infrastructure to train and deploy them — are well-positioned.&lt;/p&gt;
+&lt;h3 id=&#34;clinical-trial-optimization&#34;&gt;Clinical Trial Optimization&lt;/h3&gt;
+&lt;p&gt;Even with a perfect molecule, clinical trials remain the bottleneck. AI for trial design, patient recruitment, site selection, and real-time monitoring is a massive market. See our &lt;a href=&#34;https://www.mypodcastlistening.com/posts/industry/02-ai-agents-clinical-trials/&#34;&gt;previous deep dive on AI in clinical trials&lt;/a&gt; for specifics.&lt;/p&gt;
+&lt;h3 id=&#34;execution-prompts&#34;&gt;Execution Prompts&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re exploring this space, here are starting points:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PROMPT: Target Identification Research Agent
+
+You are a drug target identification specialist. Given a disease
+indication, analyze:
+1. Known genetic associations (GWAS hits, Mendelian genetics)
+2. Expression data (differential expression in disease vs. healthy)
+3. Protein-protein interaction networks
+4. Existing druggability assessment
+5. Competitive landscape (who else is targeting this)
+
+Disease: [INSERT INDICATION]
+
+Output a ranked list of potential targets with:
+- Biological rationale
+- Strength of genetic evidence
+- Druggability score (1-10)
+- Competitive risk assessment
+- Key papers to review
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PROMPT: Molecular Property Multi-Objective Analysis
+
+Evaluate the following molecular properties for drug candidate
+[INSERT SMILES STRING]:
+
+1. Lipinski Rule of Five compliance
+2. Predicted solubility (LogS)
+3. Predicted membrane permeability (LogP)
+4. Predicted metabolic stability (CYP450 interactions)
+5. Predicted hERG liability (cardiac toxicity risk)
+6. Synthetic accessibility score
+
+Flag any properties outside acceptable ranges and suggest
+structural modifications to address them.
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;the-timeline-that-matters&#34;&gt;The Timeline That Matters&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s what to watch for through the rest of 2026:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Q1-Q2 2026&lt;/strong&gt;: Recursion&amp;rsquo;s Phase 2 update on REC-394 for C. difficile. This tests whether their cellular imaging-derived drug design translates to human efficacy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;H2 2026&lt;/strong&gt;: Isomorphic Labs expects first clinical trials for AlphaFold-designed molecules. If Demis Hassabis&amp;rsquo;s timeline holds, we&amp;rsquo;ll see the first Phase I data from a purely structure-prediction-driven drug design pipeline.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ongoing&lt;/strong&gt;: Insilico Medicine will likely advance rentosertib to Phase IIb/III. Positive results here would be the strongest validation yet for end-to-end AI drug discovery.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The pharmaceutical industry moves in decade-long cycles. The AI drug discovery wave started around 2017-2018 with the first major funding rounds. We&amp;rsquo;re now entering the clinical validation phase — the period where the technology either proves itself in human trials or doesn&amp;rsquo;t.&lt;/p&gt;
+&lt;p&gt;Based on what we&amp;rsquo;ve seen so far — particularly rentosertib&amp;rsquo;s Phase IIa results — the early signal is positive. But &amp;ldquo;early signal&amp;rdquo; is the operative phrase. Drug development humbles everyone eventually.&lt;/p&gt;
+&lt;h2 id=&#34;what-comes-next&#34;&gt;What Comes Next&lt;/h2&gt;
+&lt;p&gt;In our next Industry Deep Dive, we&amp;rsquo;ll examine how AI agents are transforming financial services — from autonomous trading systems to AI-powered compliance monitoring. &lt;a href=&#34;https://www.mypodcastlistening.com/categories/industry-deep-dives/&#34;&gt;Follow the series&lt;/a&gt; to catch every post.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is part of our &lt;a href=&#34;https://www.mypodcastlistening.com/categories/industry-deep-dives/&#34;&gt;AI Agents by Industry&lt;/a&gt; series, exploring how autonomous AI systems are reshaping specific sectors with real implementations, not speculation.&lt;/em&gt;&lt;/p&gt;
 </content:encoded>
     </item>
   </channel>

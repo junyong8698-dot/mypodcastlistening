@@ -12,7 +12,7 @@
 ### ① OWUW Beat (10 parts)
 - [x] Part 1: Why I built it (published)
 - [x] Part 2: Choosing the stack (published 2026-03-04)
-- [ ] Part 3: First agent — regime detection
+- [x] Part 3: First agent — regime detection (published 2026-03-09)
 - [ ] Part 4: Data collection
 - [ ] Part 5: R&D agent
 - [ ] Part 6: AI board of directors

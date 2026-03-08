@@ -8,13 +8,61 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2026 06:24:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ai-Agents</title>
+      <title>AI Agents</title>
       <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 09 Mar 2026 06:24:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>AlphaFold</title>
+      <link>https://www.mypodcastlistening.com/tags/alphafold/</link>
+      <pubDate>Mon, 09 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/alphafold/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Biotech</title>
+      <link>https://www.mypodcastlistening.com/tags/biotech/</link>
+      <pubDate>Mon, 09 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/biotech/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Drug Discovery</title>
+      <link>https://www.mypodcastlistening.com/tags/drug-discovery/</link>
+      <pubDate>Mon, 09 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/drug-discovery/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Generative AI</title>
+      <link>https://www.mypodcastlistening.com/tags/generative-ai/</link>
+      <pubDate>Mon, 09 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/generative-ai/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Insilico Medicine</title>
+      <link>https://www.mypodcastlistening.com/tags/insilico-medicine/</link>
+      <pubDate>Mon, 09 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/insilico-medicine/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Pharma AI</title>
+      <link>https://www.mypodcastlistening.com/tags/pharma-ai/</link>
+      <pubDate>Mon, 09 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/pharma-ai/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -43,7 +91,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
       <pubDate>Mon, 09 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
@@ -323,7 +371,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Llm</title>
+      <title>LLM</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>
