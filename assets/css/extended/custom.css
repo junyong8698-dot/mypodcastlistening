@@ -257,6 +257,11 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   font-size: 0.95rem;
 }
 
+/* --- Kill list background difference --- */
+.list {
+  background: var(--theme) !important;
+}
+
 /* --- PaperMod homeInfoParams override --- */
 .first-entry {
   border: none;
