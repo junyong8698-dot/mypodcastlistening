@@ -257,20 +257,28 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   font-size: 0.95rem;
 }
 
-/* --- Kill list background difference --- */
+/* --- Kill ALL background/border differences between hero & list --- */
 .list {
-  background: var(--theme) !important;
+  background: transparent !important;
+}
+
+body {
+  background: var(--bg) !important;
+}
+
+.main {
+  background: transparent !important;
 }
 
 /* --- PaperMod homeInfoParams override --- */
 .first-entry {
-  border: none;
-  box-shadow: none;
-  background: none;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
   min-height: auto;
   padding: 48px 0 32px;
   text-align: center;
-  border-bottom: none;
+  border-bottom: none !important;
   margin-bottom: 16px;
 }
 
