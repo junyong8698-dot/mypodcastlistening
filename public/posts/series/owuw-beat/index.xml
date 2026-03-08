@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Wed, 04 Mar 2026 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/posts/series/owuw-beat/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>I Lost 40% of My Savings on Emotional Trades. So I Built an AI Agent to Trade For Me.</title>
@@ -573,6 +573,375 @@ Next Rebalance: March 8
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;This is Part 2 of a 10-part series on building an autonomous BTC trading system. &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/01-why-i-built-a-btc-trading-bot/&#34;&gt;Start from Part 1&lt;/a&gt; if you haven&amp;rsquo;t read it.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;If you&amp;rsquo;re evaluating agent frameworks for your own automation project, I&amp;rsquo;d love to hear what you chose and why. Every use case is different.&lt;/em&gt;&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>Building a Regime Detection Agent for BTC Trading</title>
+      <link>https://www.mypodcastlistening.com/posts/series/owuw-beat/03-regime-detection-first-agent/</link>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/series/owuw-beat/03-regime-detection-first-agent/</guid>
+      <description>&lt;h2 id=&#34;the-problem-with-trading-bitcoin-without-knowing-what-market-youre-in&#34;&gt;The Problem With Trading Bitcoin Without Knowing What Market You&amp;rsquo;re In&lt;/h2&gt;
+&lt;p&gt;After &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/02-choosing-the-stack/&#34;&gt;choosing the stack&lt;/a&gt; — OpenClaw as the agent runtime, Telegram as the interface, Binance as the execution layer — I needed to answer the most fundamental question in systematic trading: &lt;strong&gt;what kind of market are we in right now?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t philosophical. The answer directly determines whether your strategy should be fully invested, partially hedged, or sitting in cash. And for Bitcoin specifically, getting this wrong is catastrophic. BTC dropped 64% in 2022. If your system was fully long during that drawdown because it couldn&amp;rsquo;t distinguish a bear market from a bull market pullback, no amount of clever position sizing saves you.&lt;/p&gt;</description>
+      <content:encoded>&lt;h2 id=&#34;the-problem-with-trading-bitcoin-without-knowing-what-market-youre-in&#34;&gt;The Problem With Trading Bitcoin Without Knowing What Market You&amp;rsquo;re In&lt;/h2&gt;
+&lt;p&gt;After &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/02-choosing-the-stack/&#34;&gt;choosing the stack&lt;/a&gt; — OpenClaw as the agent runtime, Telegram as the interface, Binance as the execution layer — I needed to answer the most fundamental question in systematic trading: &lt;strong&gt;what kind of market are we in right now?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t philosophical. The answer directly determines whether your strategy should be fully invested, partially hedged, or sitting in cash. And for Bitcoin specifically, getting this wrong is catastrophic. BTC dropped 64% in 2022. If your system was fully long during that drawdown because it couldn&amp;rsquo;t distinguish a bear market from a bull market pullback, no amount of clever position sizing saves you.&lt;/p&gt;
+&lt;p&gt;I spent the first 12 iterations of the model — phases 1 through 12, spanning everything from macro liquidity analysis to short-term futures models — learning one painful lesson: &lt;strong&gt;individual signals don&amp;rsquo;t beat buy-and-hold for Bitcoin.&lt;/strong&gt; Not sentiment. Not RSI. Not funding rates. Not on-chain metrics alone.&lt;/p&gt;
+&lt;p&gt;It was Phase 13, the regime switching model, that finally cracked it. Here&amp;rsquo;s exactly how it works, why it works, and the prompts I used to build it.&lt;/p&gt;
+&lt;h2 id=&#34;why-regime-detection-matters-more-than-signal-generation&#34;&gt;Why Regime Detection Matters More Than Signal Generation&lt;/h2&gt;
+&lt;p&gt;Most quantitative trading content focuses on alpha signals — finding some indicator or pattern that predicts future price movement. For crypto, the typical approach is: calculate RSI, check if it&amp;rsquo;s oversold, buy the dip, profit.&lt;/p&gt;
+&lt;p&gt;That approach has a structural problem with Bitcoin.&lt;/p&gt;
+&lt;p&gt;BTC&amp;rsquo;s annualized volatility sits between 60% and 100% most of the time. Compare that to the S&amp;amp;P 500 at 15-20%. When you&amp;rsquo;re dealing with daily price swings of 3-7%, any signal-based approach that tries to time entries and exits on a daily basis gets destroyed by noise. I tested this extensively. A daily-rebalanced leveraged strategy underperforms buy-and-hold because &lt;a href=&#34;https://www.investopedia.com/articles/financial-advisors/082515/why-leveraged-etfs-are-not-longterm-bet.asp&#34;&gt;volatility decay&lt;/a&gt; eats your returns alive.&lt;/p&gt;
+&lt;p&gt;The insight that changed everything: &lt;strong&gt;stop trying to predict tomorrow&amp;rsquo;s price. Instead, figure out what regime the market is in, and size your position accordingly.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A regime-based approach accepts that you can&amp;rsquo;t time short-term moves. Instead, it asks: are we in a structural bull market, a structural bear market, or something in between? Then it adjusts allocation on a weekly — not daily — basis. This dramatically reduces the impact of volatility decay while still capturing the regime-level alpha.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the actual performance comparison from the OWUW Beat backtest (2020-2026):&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Strategy&lt;/th&gt;
+          &lt;th&gt;Total Return&lt;/th&gt;
+          &lt;th&gt;Sharpe&lt;/th&gt;
+          &lt;th&gt;Max Drawdown&lt;/th&gt;
+          &lt;th&gt;Calmar&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Buy &amp;amp; Hold&lt;/td&gt;
+          &lt;td&gt;+834%&lt;/td&gt;
+          &lt;td&gt;0.75&lt;/td&gt;
+          &lt;td&gt;-75.1%&lt;/td&gt;
+          &lt;td&gt;0.58&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Regime Conservative (1x)&lt;/td&gt;
+          &lt;td&gt;+493%&lt;/td&gt;
+          &lt;td&gt;0.96&lt;/td&gt;
+          &lt;td&gt;-27.5%&lt;/td&gt;
+          &lt;td&gt;1.22&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Regime Smart Leverage (2x)&lt;/td&gt;
+          &lt;td&gt;+168%&lt;/td&gt;
+          &lt;td&gt;0.44&lt;/td&gt;
+          &lt;td&gt;-41.3%&lt;/td&gt;
+          &lt;td&gt;—&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Regime Aggressive (3x)&lt;/td&gt;
+          &lt;td&gt;+161%&lt;/td&gt;
+          &lt;td&gt;0.26&lt;/td&gt;
+          &lt;td&gt;-66.9%&lt;/td&gt;
+          &lt;td&gt;—&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Read that table carefully. &lt;strong&gt;Higher leverage produced lower returns.&lt;/strong&gt; The conservative 1x strategy crushed both leveraged variants. This is counterintuitive until you understand volatility decay in a high-vol asset. BTC&amp;rsquo;s daily volatility makes leverage a losing proposition over any meaningful time horizon. The &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3198882&#34;&gt;leverage paradox&lt;/a&gt; is well-documented in academic literature, but most crypto traders still haven&amp;rsquo;t internalized it.&lt;/p&gt;
+&lt;p&gt;The regime-based 1x strategy returned less than buy-and-hold in absolute terms (493% vs 834%), but look at the risk metrics. A max drawdown of -27.5% versus -75.1% means your portfolio dropped by roughly a quarter at worst, while a buy-and-hold investor watched three-quarters of their money evaporate in 2022. The Sharpe ratio of 0.96 versus 0.75 tells you the risk-adjusted return is significantly better. And the Calmar ratio — annualized return divided by max drawdown — is more than double: 1.22 versus 0.58.&lt;/p&gt;
+&lt;p&gt;For someone managing real money rather than playing with paper trades, that drawdown difference is the whole game.&lt;/p&gt;
+&lt;h2 id=&#34;the-four-pillars-of-regime-detection&#34;&gt;The Four Pillars of Regime Detection&lt;/h2&gt;
+&lt;p&gt;The regime detection model uses four inputs, each contributing to a composite score that determines the current market regime:&lt;/p&gt;
+&lt;h3 id=&#34;1-the-200-day-moving-average-position&#34;&gt;1. The 200-Day Moving Average Position&lt;/h3&gt;
+&lt;p&gt;This is the heaviest-weighted factor, and intentionally so. The &lt;a href=&#34;https://www.investopedia.com/terms/m/movingaverage.asp&#34;&gt;200-day moving average&lt;/a&gt; is the single most widely watched technical level in all of finance. Whether price is above or below the 200-day MA is a binary signal that captures structural trend direction.&lt;/p&gt;
+&lt;p&gt;When BTC is above its 200-day MA, the regime score gets +2. Below gets -2. Simple, but effective — this single factor correctly identified every major bear market (2018, 2022) with minimal lag.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;MA200&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Close&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rolling&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ABOVE_MA200&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Close&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;MA200&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;astype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# In detect_regime():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ABOVE_MA200&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-the-50-day-ma-slope-momentum&#34;&gt;2. The 50-Day MA Slope (Momentum)&lt;/h3&gt;
+&lt;p&gt;Position relative to the 200-day MA tells you the trend. The slope of the 50-day MA tells you momentum — is the trend accelerating or decelerating?&lt;/p&gt;
+&lt;p&gt;I calculate this as the 20-day percentage change of the 50-day moving average. A strongly positive slope (+2% over 20 days) adds +2 to the score. A strongly negative slope subtracts -2. The gradations in between provide nuance.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;MA50&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Close&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rolling&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;MA50_SLOPE&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;MA50&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pct_change&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# In detect_regime():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;slope&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;MA50_SLOPE&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;slope&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.02&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;slope&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;slope&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.02&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This factor catches regime transitions faster than the 200-day MA alone. When BTC starts a new uptrend, the 50-day MA slope turns positive weeks before price crosses above the 200-day MA. That lead time matters.&lt;/p&gt;
+&lt;h3 id=&#34;3-net-liquidity-trend&#34;&gt;3. Net Liquidity Trend&lt;/h3&gt;
+&lt;p&gt;This is where the model diverges from pure technical analysis. Net liquidity — defined as Federal Reserve balance sheet minus the Treasury General Account minus reverse repo — is the &lt;a href=&#34;https://fred.stlouisfed.org/series/WALCL&#34;&gt;macro factor most correlated with risk asset performance&lt;/a&gt; over the past decade.&lt;/p&gt;
+&lt;p&gt;The logic: when the Fed is expanding its balance sheet and money isn&amp;rsquo;t being drained into TGA or reverse repo, there&amp;rsquo;s more liquidity sloshing around the financial system. That liquidity finds its way into risk assets, including crypto.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Data from FRED API&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fed_bs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;WALCL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;# Fed balance sheet&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;tga&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;WTREGEN&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;# Treasury General Account&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rrp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;RRPONTSYD&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;# Reverse repo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;NET_LIQ&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;FED_BS&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;TGA&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;RRP&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;NET_LIQ_4W&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;NET_LIQ&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pct_change&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# In detect_regime():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;NET_LIQ_4W&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I pull this data from the &lt;a href=&#34;https://fred.stlouisfed.org/&#34;&gt;St. Louis Fed&amp;rsquo;s FRED API&lt;/a&gt; — free, reliable, updated weekly. The 4-week percentage change smooths out noise while capturing meaningful shifts in liquidity conditions.&lt;/p&gt;
+&lt;h3 id=&#34;4-financial-conditions-nfci&#34;&gt;4. Financial Conditions (NFCI)&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&#34;https://fred.stlouisfed.org/series/NFCI&#34;&gt;Chicago Fed National Financial Conditions Index&lt;/a&gt; aggregates 105 financial indicators into a single number. Negative values indicate accommodative conditions (loose financial environment); positive values indicate tighter conditions.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nfci&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;NFCI&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# In detect_regime():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nfci_val&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;NFCI&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nfci_val&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;# Accommodative&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nfci_val&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;# Tightening&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;NFCI adds confirmation. It rarely flips the regime classification on its own, but it prevents false positives — situations where technical indicators look bullish but underlying financial conditions are deteriorating.&lt;/p&gt;
+&lt;h3 id=&#34;combining-into-regime-classification&#34;&gt;Combining Into Regime Classification&lt;/h3&gt;
+&lt;p&gt;The four factors produce a composite score ranging roughly from -6 to +6:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;detect_regime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# ... (all four factors above) ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;BULL&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;BEAR&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;NEUTRAL&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Notice the asymmetry: it takes a score of +3 to declare BULL but only -2 for BEAR. This is deliberate conservatism. In crypto, being wrong about a bull market costs you opportunity (you miss some upside). Being wrong about a bear market costs you capital (you ride a drawdown). The asymmetric threshold reflects this asymmetric risk.&lt;/p&gt;
+&lt;h2 id=&#34;the-macro-signal-layer-seven-factors-scoring--85-to-85&#34;&gt;The Macro Signal Layer: Seven Factors Scoring -85 to +85&lt;/h2&gt;
+&lt;p&gt;On top of regime detection, the model runs a separate macro signal that determines exact position sizing within each regime. This is where the nuance lives.&lt;/p&gt;
+&lt;p&gt;Seven macro factors contribute to a composite score:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Factor&lt;/th&gt;
+          &lt;th&gt;Source&lt;/th&gt;
+          &lt;th&gt;Weight&lt;/th&gt;
+          &lt;th&gt;Bullish Signal&lt;/th&gt;
+          &lt;th&gt;Bearish Signal&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Net Liquidity (4W change)&lt;/td&gt;
+          &lt;td&gt;FRED&lt;/td&gt;
+          &lt;td&gt;±25&lt;/td&gt;
+          &lt;td&gt;&amp;gt;2% expansion&lt;/td&gt;
+          &lt;td&gt;&amp;gt;2% contraction&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Fear &amp;amp; Greed Index&lt;/td&gt;
+          &lt;td&gt;alternative.me&lt;/td&gt;
+          &lt;td&gt;±15&lt;/td&gt;
+          &lt;td&gt;Extreme fear (&amp;lt;15)&lt;/td&gt;
+          &lt;td&gt;Extreme greed (&amp;gt;85)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;HY Credit Spread&lt;/td&gt;
+          &lt;td&gt;FRED BAMLH0A0HYM2&lt;/td&gt;
+          &lt;td&gt;±12&lt;/td&gt;
+          &lt;td&gt;&amp;lt;3.5% (tight)&lt;/td&gt;
+          &lt;td&gt;&amp;gt;6% (wide)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;DXY Momentum (4W)&lt;/td&gt;
+          &lt;td&gt;Yahoo Finance&lt;/td&gt;
+          &lt;td&gt;±10&lt;/td&gt;
+          &lt;td&gt;Falling &amp;gt;2%&lt;/td&gt;
+          &lt;td&gt;Rising &amp;gt;2%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Economic Policy Uncertainty&lt;/td&gt;
+          &lt;td&gt;FRED GEPUCURRENT&lt;/td&gt;
+          &lt;td&gt;±8&lt;/td&gt;
+          &lt;td&gt;&amp;gt;350 (contrarian)&lt;/td&gt;
+          &lt;td&gt;&amp;lt;250&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Real Interest Rate (10Y TIPS)&lt;/td&gt;
+          &lt;td&gt;FRED DFII10&lt;/td&gt;
+          &lt;td&gt;±7&lt;/td&gt;
+          &lt;td&gt;Negative&lt;/td&gt;
+          &lt;td&gt;&amp;gt;2%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;S&amp;amp;P 500 Momentum (4W)&lt;/td&gt;
+          &lt;td&gt;Yahoo Finance&lt;/td&gt;
+          &lt;td&gt;±8&lt;/td&gt;
+          &lt;td&gt;&amp;gt;4% gain&lt;/td&gt;
+          &lt;td&gt;&amp;gt;4% loss&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;A few things worth noting about these choices:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fear &amp;amp; Greed is contrarian.&lt;/strong&gt; When the index reads extreme fear (below 15), that&amp;rsquo;s a buy signal. When it reads extreme greed (above 85), that&amp;rsquo;s a warning. This is textbook &lt;a href=&#34;https://www.investopedia.com/terms/c/contrarian.asp&#34;&gt;contrarian investing&lt;/a&gt;, and it works particularly well in crypto where retail sentiment overshoots in both directions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Economic Policy Uncertainty is also contrarian.&lt;/strong&gt; High EPU (above 350) historically precedes Fed intervention — rate cuts, QE, emergency lending facilities. The market panics, policymakers respond, and risk assets rally. This factor has correctly flagged entry points during COVID (March 2020) and the banking crisis (March 2023).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The DXY relationship is inverse.&lt;/strong&gt; A weakening dollar is good for Bitcoin. This is structural — BTC is priced in dollars, and a falling dollar mechanically increases dollar-denominated prices of scarce assets. The &lt;a href=&#34;https://fred.stlouisfed.org/series/DTWEXBGS&#34;&gt;DXY-BTC inverse correlation&lt;/a&gt; has been consistently negative since 2020.&lt;/p&gt;
+&lt;p&gt;The composite macro signal ranges from -85 to +85 and determines allocation within each regime:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;regime_conservative&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;regime&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;REGIME&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;macro&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;MACRO&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;regime&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;BULL&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;macro&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;# Full allocation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;macro&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;macro&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.6&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;regime&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;NEUTRAL&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;macro&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;macro&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# BEAR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;macro&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.3&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;# Contrarian entry&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;macro&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.15&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;              &lt;span class=&#34;c1&#34;&gt;# Full cash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is the final allocation function for the conservative (no leverage) strategy. The key insight: even in a bear market, if the macro signal is extremely positive (score above 40), the system allocates up to 30%. This catches bear market rally entries — the contrarian trades that produce outsized returns.&lt;/p&gt;
+&lt;h2 id=&#34;weekly-rebalancing-why-not-daily&#34;&gt;Weekly Rebalancing: Why Not Daily?&lt;/h2&gt;
+&lt;p&gt;The model rebalances weekly, not daily. This was one of the most important discoveries in the entire development process.&lt;/p&gt;
+&lt;p&gt;When I first built the strategy, I backtested daily rebalancing. The results were significantly worse. A daily-rebalanced 2x leveraged strategy returned +168% versus +493% for the weekly 1x strategy. The 3x daily strategy returned only +161% — barely beating the unlevered weekly approach in absolute terms, with catastrophic drawdowns.&lt;/p&gt;
+&lt;p&gt;The mathematical explanation is &lt;a href=&#34;https://www.investopedia.com/articles/financial-advisors/082515/why-leveraged-etfs-are-not-longterm-bet.asp&#34;&gt;volatility drag&lt;/a&gt;. If an asset goes up 10% and then down 10%, you haven&amp;rsquo;t broken even — you&amp;rsquo;re at 99% of your starting value. With leverage, this effect compounds. At BTC&amp;rsquo;s typical daily volatility of 3-7%, daily rebalancing creates enormous drag.&lt;/p&gt;
+&lt;p&gt;Weekly rebalancing reduces trading frequency by 5x, which:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Cuts volatility drag&lt;/strong&gt; — fewer rebalance points means less compounding of the up-down-up-down drag effect&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reduces transaction costs&lt;/strong&gt; — fewer trades, less slippage, lower exchange fees&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Improves signal quality&lt;/strong&gt; — weekly data is less noisy than daily data, leading to fewer regime flip-flops&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simplifies operations&lt;/strong&gt; — one rebalancing event per week is manageable for a solo operator&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The implementation is straightforward:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;weekly&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resample&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;W&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dropna&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Close&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;weekly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;W_RETURN&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weekly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Close&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pct_change&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;backtest_weekly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;weekly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alloc_fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;alloc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weekly&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;apply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;alloc_fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;alloc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alloc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shift&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fillna&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Apply next week&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;strat_ret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alloc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weekly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;W_RETURN&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Cash earns 4% annualized&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cash_ret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alloc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.04&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;52&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;total_ret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;strat_ret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cash_ret&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cum&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;total_ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cumprod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# ... metrics calculation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Notice that cash allocation earns 4% annualized return. This isn&amp;rsquo;t theoretical — the system automatically parks unused USDT in Binance Flexible Earn, which yields approximately 1.1% APR. The 4% in the backtest is conservative modeling of what a money market equivalent would return. In practice, the cash yield is lower but still positive.&lt;/p&gt;
+&lt;h2 id=&#34;building-this-as-an-openclaw-agent&#34;&gt;Building This as an OpenClaw Agent&lt;/h2&gt;
+&lt;p&gt;The regime detection model is a Python script (&lt;code&gt;regime_switching_model.py&lt;/code&gt;). But a script isn&amp;rsquo;t an agent. The agent layer — built on OpenClaw — turns this script into a living system that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Runs the model daily at 07:00 KST&lt;/strong&gt; via a cron job, producing a morning market report&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sends the regime classification, macro signal, and recommended allocation&lt;/strong&gt; to Telegram&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stores results in JSON&lt;/strong&gt; for the dashboard and performance tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Triggers rebalancing&lt;/strong&gt; every Monday at 09:00 KST when the recommended allocation differs from the current position&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here&amp;rsquo;s the cron job configuration in OpenClaw:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schedule&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;kind&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;cron&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;expr&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0 22 * * *&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;tz&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;UTC&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;payload&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;kind&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;agentTurn&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Run the daily market analysis. Execute regime_switching_model.py, read the output, and send a formatted report to Telegram with: current price, regime, macro signal score, recommended allocation, key factor readings, and any regime changes from yesterday.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;sessionTarget&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;isolated&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The agent doesn&amp;rsquo;t just execute the script — it interprets the output. When the regime flips from NEUTRAL to BEAR, the morning report highlights this with context: what changed, which factors drove the transition, and what the recommended action is. This is where having an LLM as the &amp;ldquo;brain&amp;rdquo; of the system adds genuine value over a simple cron + script setup.&lt;/p&gt;
+&lt;h2 id=&#34;the-prompt-that-built-the-model&#34;&gt;The Prompt That Built the Model&lt;/h2&gt;
+&lt;p&gt;I didn&amp;rsquo;t hand-write &lt;code&gt;regime_switching_model.py&lt;/code&gt; from scratch. The AI agent — running on Claude via OpenClaw — built it through an iterative process spanning 13 phases. Here&amp;rsquo;s the actual prompt sequence that led to the regime detection breakthrough:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Phase 1-7 prompts&lt;/strong&gt; focused on individual factor analysis:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Analyze the correlation between Federal Reserve net liquidity 
+(WALCL - WTREGEN - RRPONTSYD) and BTC price since 2018. 
+Pull data from FRED API. Calculate rolling correlations at 
+30/60/90/180 day windows. Output statistical significance.
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Build a Fear &amp;amp; Greed Index analysis tool. Pull from alternative.me API. 
+Test if extreme readings (&amp;lt;15 or &amp;gt;85) predict 30-day forward returns. 
+Include win rate, average return, and statistical significance.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Phase 8-12 prompts&lt;/strong&gt; tried signal-based approaches:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Build a daily trading signal model using all factors we&amp;#39;ve analyzed. 
+Use logistic regression or gradient boosting to predict next-day direction. 
+Backtest from 2020, report accuracy, Sharpe, and max drawdown.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;These phases all underperformed buy-and-hold. The ML approaches achieved ~52-54% accuracy — barely above coin-flip and insufficient to overcome transaction costs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Phase 13 prompt&lt;/strong&gt; — the one that worked:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Every approach so far has failed to beat buy-and-hold on a risk-adjusted basis. 
+The problem might be the framework, not the features. 
+
+Try a regime switching approach instead:
+1. Define 3 regimes: BULL, NEUTRAL, BEAR
+2. Use MA200 position, MA50 slope, net liquidity trend, and NFCI as regime indicators
+3. Within each regime, use the macro signal to determine allocation (0-100%)
+4. Rebalance WEEKLY, not daily — daily rebalancing with leverage creates volatility decay
+5. Test conservative (1x), smart leverage (up to 2x in bull), and aggressive (up to 3x)
+6. Include cash yield for unallocated capital
+7. Compare total return, Sharpe, MDD, Calmar vs buy-and-hold
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The breakthrough wasn&amp;rsquo;t a smarter signal. It was reframing the problem from &amp;ldquo;predict direction&amp;rdquo; to &amp;ldquo;identify environment and size accordingly.&amp;rdquo; Sometimes the most important contribution an AI agent makes is exploring a large enough solution space to stumble into the right framing.&lt;/p&gt;
+&lt;h2 id=&#34;year-by-year-performance-where-regime-detection-earns-its-keep&#34;&gt;Year-by-Year Performance: Where Regime Detection Earns Its Keep&lt;/h2&gt;
+&lt;p&gt;The backtest results by year tell the real story:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Year&lt;/th&gt;
+          &lt;th&gt;Buy &amp;amp; Hold&lt;/th&gt;
+          &lt;th&gt;Regime Strategy&lt;/th&gt;
+          &lt;th&gt;Excess Return&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2020&lt;/td&gt;
+          &lt;td&gt;+305%&lt;/td&gt;
+          &lt;td&gt;+198%&lt;/td&gt;
+          &lt;td&gt;-107%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2021&lt;/td&gt;
+          &lt;td&gt;+62%&lt;/td&gt;
+          &lt;td&gt;+85%&lt;/td&gt;
+          &lt;td&gt;+23%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2022&lt;/td&gt;
+          &lt;td&gt;-64%&lt;/td&gt;
+          &lt;td&gt;-11%&lt;/td&gt;
+          &lt;td&gt;+53%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2023&lt;/td&gt;
+          &lt;td&gt;+157%&lt;/td&gt;
+          &lt;td&gt;+72%&lt;/td&gt;
+          &lt;td&gt;-85%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2024&lt;/td&gt;
+          &lt;td&gt;+121%&lt;/td&gt;
+          &lt;td&gt;+89%&lt;/td&gt;
+          &lt;td&gt;-32%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2025 (partial)&lt;/td&gt;
+          &lt;td&gt;-28%&lt;/td&gt;
+          &lt;td&gt;+2.3%&lt;/td&gt;
+          &lt;td&gt;+30.5%&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;In raging bull markets (2020, 2023), the regime strategy underperforms. It&amp;rsquo;s not fully invested during the initial rally because the regime indicators lag — they need to confirm the trend before going long. By the time the model is fully allocated, buy-and-hold has already captured the first 20-30% of the move.&lt;/p&gt;
+&lt;p&gt;But in bear markets and corrections (2022, 2025), the strategy dramatically outperforms. A -64% drawdown becomes -11%. A -28% decline becomes +2.3%. &lt;strong&gt;This is the entire value proposition.&lt;/strong&gt; You give up some upside in exchange for massive downside protection.&lt;/p&gt;
+&lt;p&gt;For a real portfolio — not a backtest — this tradeoff is worth it every single time. A 75% drawdown requires a 300% recovery to break even. A 27.5% drawdown requires only a 38% recovery. The math of losses is asymmetric, and the regime strategy exploits this asymmetry.&lt;/p&gt;
+&lt;h2 id=&#34;what-i-got-wrong-and-fixed&#34;&gt;What I Got Wrong (and Fixed)&lt;/h2&gt;
+&lt;p&gt;The first version of the regime model had a critical bug that inflated returns by 3x. Here&amp;rsquo;s what happened.&lt;/p&gt;
+&lt;p&gt;Phase 13&amp;rsquo;s initial output showed the aggressive 3x leveraged strategy returning +2,140% — absolutely crushing buy-and-hold. I was ecstatic. Then I looked at the conservative 1x strategy: +493%. The 2x strategy: +168%. The 3x: +161%.&lt;/p&gt;
+&lt;p&gt;Wait. 3x leverage produced &lt;em&gt;lower&lt;/em&gt; returns than 2x? And 2x produced lower returns than 1x? That&amp;rsquo;s the volatility decay effect I described earlier, but the initial +2,140% figure was clearly wrong.&lt;/p&gt;
+&lt;p&gt;The bug: the 3x backtest was applying leverage to the &lt;em&gt;cumulative&lt;/em&gt; return rather than the &lt;em&gt;periodic&lt;/em&gt; return. Once fixed, the actual 3x return was +161% — worse than no leverage at all. This confirmed the volatility decay thesis and led to adopting the conservative 1x approach.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lesson: always sanity-check results that look too good.&lt;/strong&gt; If a simple leveraged strategy is returning 10x the underlying, something is wrong with the backtest, not right with the strategy.&lt;/p&gt;
+&lt;p&gt;I caught this because the CEO reviewed the numbers and asked: &amp;ldquo;Why does 3x leverage return less than 2x?&amp;rdquo; That question forced a code review that found the bug. Having a human in the loop — even (especially) for automated systems — catches errors that pure automation misses.&lt;/p&gt;
+&lt;h2 id=&#34;deploying-the-model-from-script-to-live-system&#34;&gt;Deploying the Model: From Script to Live System&lt;/h2&gt;
+&lt;p&gt;Once the regime model was validated, deploying it as a live system required several additional components:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Signal API endpoint&lt;/strong&gt; (&lt;code&gt;/api/signal&lt;/code&gt;): The dashboard and morning report both need the current regime and allocation. Rather than running the full model each time, the signal endpoint reads cached results from the latest daily run.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Performance tracking&lt;/strong&gt; (&lt;code&gt;performance_tracker.py&lt;/code&gt;): Uses Time-Weighted Return (TWR) to handle deposits without distorting performance measurement. This is important because we started with $33.97 and planned to add capital over time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Flexible Earn integration&lt;/strong&gt; (&lt;code&gt;earn_manager.py&lt;/code&gt;): Automatically moves idle USDT to Binance Flexible Earn (~1.1% APR) and withdraws before rebalancing. Small optimization, but it compounds.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Telegram reporting&lt;/strong&gt;: Every morning at 07:00 KST, the CEO receives a formatted message with current price, regime, macro signal, recommended allocation, and any changes from the previous day.&lt;/p&gt;
+&lt;p&gt;The first live day — February 16, 2026 — the model classified the market as BEAR with a macro signal of +26 and recommended 0-30% allocation. BTC was at $69,311 with RSI at 37.3 and annualized volatility of 96%. The system held nearly all capital in cash (Flexible Earn). Over the next day, BTC dropped 1.76%. OWUW Beat&amp;rsquo;s return: 0.00%. &lt;strong&gt;Excess return: +1.76% on day one.&lt;/strong&gt; The bear regime cash strategy was already working.&lt;/p&gt;
+&lt;h2 id=&#34;what-this-means-for-readers-building-their-own&#34;&gt;What This Means for Readers Building Their Own&lt;/h2&gt;
+&lt;p&gt;If you want to build a similar regime detection system, here&amp;rsquo;s the minimal viable version:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Get a FRED API key&lt;/strong&gt; — free at &lt;a href=&#34;https://fred.stlouisfed.org/&#34;&gt;fred.stlouisfed.org&lt;/a&gt;. You need this for net liquidity and NFCI data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use yfinance for price data&lt;/strong&gt; — &lt;code&gt;pip install yfinance&lt;/code&gt;. Pulls BTC, DXY, and S&amp;amp;P 500 data for free.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Start with just two factors&lt;/strong&gt; — 200-day MA position and net liquidity trend. These two alone capture 80% of the regime detection value.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rebalance weekly, not daily.&lt;/strong&gt; This is the single most impactful design decision.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Run it through OpenClaw&lt;/strong&gt; — the cron scheduling and Telegram integration turn a script into a system you actually check every day.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The full model — seven macro factors, four regime indicators, weekly rebalancing, Binance integration — took about 10 hours to build across 13 iterative phases. But a simpler version with just MA200 + net liquidity + weekly rebalancing would take an afternoon and capture most of the benefit.&lt;/p&gt;
+&lt;h2 id=&#34;next-in-the-series&#34;&gt;Next in the Series&lt;/h2&gt;
+&lt;p&gt;In &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/&#34;&gt;Part 4&lt;/a&gt;, I&amp;rsquo;ll cover the data collection infrastructure — the five data collectors that feed on-chain metrics, derivatives data, Reddit sentiment, Google Trends, and market dominance into the model. Building the plumbing isn&amp;rsquo;t glamorous, but it&amp;rsquo;s what separates a backtested model from a live system.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is Part 3 of the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/&#34;&gt;Building OWUW Beat&lt;/a&gt; series, documenting how I built an autonomous BTC trading agent with OpenClaw + Telegram + Binance.&lt;/em&gt;&lt;/p&gt;
 </content:encoded>
     </item>
   </channel>
