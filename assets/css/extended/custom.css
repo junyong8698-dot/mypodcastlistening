@@ -223,10 +223,10 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 /* --- No card styling — override PaperMod entry cards --- */
 .post-entry {
   background: transparent !important;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  border-bottom: 1px solid var(--border);
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid var(--border) !important;
   margin: 0;
   padding: 24px 0;
 }
