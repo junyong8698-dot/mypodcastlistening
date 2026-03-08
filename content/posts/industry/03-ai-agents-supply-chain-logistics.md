@@ -1,6 +1,6 @@
 ---
 title: "AI Agents Are Replacing Your Supply Chain Control Tower"
-date: 2026-03-08T15:00:00+09:00
+date: 2026-03-08T06:00:00+09:00
 draft: false
 description: "Agentic AI systems now monitor shipments, resolve disruptions, and orchestrate cross-department workflows autonomously. Here's how supply chains are becoming self-driving."
 tags: ["AI agents", "supply chain", "logistics", "agentic AI", "autonomous operations", "enterprise AI", "multi-agent systems"]

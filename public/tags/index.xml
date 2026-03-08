@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Sat, 07 Mar 2026 15:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 08 Mar 2026 06:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agentic AI</title>
+      <link>https://www.mypodcastlistening.com/tags/agentic-ai/</link>
+      <pubDate>Sun, 08 Mar 2026 06:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/agentic-ai/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Ai-Agents</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
+      <pubDate>Sun, 08 Mar 2026 06:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Autonomous Operations</title>
+      <link>https://www.mypodcastlistening.com/tags/autonomous-operations/</link>
+      <pubDate>Sun, 08 Mar 2026 06:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/autonomous-operations/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Enterprise AI</title>
+      <link>https://www.mypodcastlistening.com/tags/enterprise-ai/</link>
+      <pubDate>Sun, 08 Mar 2026 06:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/enterprise-ai/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Logistics</title>
+      <link>https://www.mypodcastlistening.com/tags/logistics/</link>
+      <pubDate>Sun, 08 Mar 2026 06:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/logistics/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Multi-Agent Systems</title>
+      <link>https://www.mypodcastlistening.com/tags/multi-agent-systems/</link>
+      <pubDate>Sun, 08 Mar 2026 06:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/multi-agent-systems/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Supply Chain</title>
+      <link>https://www.mypodcastlistening.com/tags/supply-chain/</link>
+      <pubDate>Sun, 08 Mar 2026 06:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/supply-chain/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>AI Compliance</title>
       <link>https://www.mypodcastlistening.com/tags/ai-compliance/</link>
@@ -63,14 +119,6 @@
       <link>https://www.mypodcastlistening.com/tags/startup/</link>
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/startup/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>AI Agents</title>
-      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
-      <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -211,18 +259,10 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Agentic AI</title>
-      <link>https://www.mypodcastlistening.com/tags/agentic-ai/</link>
-      <pubDate>Thu, 05 Mar 2026 09:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/agentic-ai/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -383,14 +423,6 @@
       <link>https://www.mypodcastlistening.com/tags/legal-tech/</link>
       <pubDate>Mon, 02 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/legal-tech/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Multi-Agent Systems</title>
-      <link>https://www.mypodcastlistening.com/tags/multi-agent-systems/</link>
-      <pubDate>Mon, 02 Mar 2026 15:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/multi-agent-systems/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
