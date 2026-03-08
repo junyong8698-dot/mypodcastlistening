@@ -236,6 +236,17 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   box-shadow: none;
 }
 
+/* --- Card cover image — compact --- */
+.post-entry .entry-cover img {
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.post-entry .entry-cover {
+  margin-bottom: 12px;
+}
+
 .entry-header h2 {
   font-size: 1.35rem;
   margin-bottom: 4px;
@@ -252,9 +263,10 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   box-shadow: none;
   background: none;
   min-height: auto;
-  padding: 48px 0 24px;
+  padding: 48px 0 32px;
   text-align: center;
   border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
 }
 
 .first-entry .entry-header h1 {
