@@ -265,7 +265,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   min-height: auto;
   padding: 48px 0 32px;
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: none;
   margin-bottom: 16px;
 }
 
