@@ -3,8 +3,19 @@
 {{- $posts := where site.RegularPages "Section" "posts" }}
 {{- $posts = $posts.ByDate.Reverse }}
 
-{{- /* Hero subtitle only — title comes from header */ -}}
-<p class="site-desc">Real money. Real agents. Real losses. A developer's unfiltered lab notes.</p>
+{{- /* Hero Banner */ -}}
+<section class="hero-banner">
+  <div class="hero-inner">
+    <p class="hero-tagline">Real money. Real agents. Real losses.<br>A developer's unfiltered lab notes.</p>
+    <div class="hero-stats">
+      <span class="hero-stat"><span class="hero-stat-dot"></span>6 AI agents running</span>
+      <span class="hero-stat-sep">·</span>
+      <span class="hero-stat">Daily BTC signals</span>
+      <span class="hero-stat-sep">·</span>
+      <span class="hero-stat">Real P&amp;L tracked</span>
+    </div>
+  </div>
+</section>
 
 {{- if $posts }}
 

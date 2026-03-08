@@ -490,6 +490,64 @@ img[loading="lazy"] { opacity: 1; }
    V5 DESIGN OVERHAUL — Cards, Featured, Series
    ============================================ */
 
+/* --- Hero Banner --- */
+.hero-banner {
+  background: #0d1117;
+  margin: 0 calc(-50vw + 50%);
+  padding: 0 calc(50vw - 50%);
+}
+.hero-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 20px 36px;
+  text-align: center;
+}
+.hero-tagline {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #e6edf3;
+  margin: 0 0 16px;
+  font-weight: 400;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #8b949e;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.hero-stat-dot {
+  width: 6px;
+  height: 6px;
+  background: #3fb950;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero-stat-sep {
+  color: #484f58;
+  font-size: 0.75rem;
+}
+/* dark mode — banner stays dark, just tweak if needed */
+.dark .hero-banner {
+  background: #010409;
+}
+
 /* --- Site Desc (subtitle only, no duplicate title) --- */
 .site-desc {
   text-align: center;
