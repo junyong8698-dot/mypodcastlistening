@@ -493,8 +493,12 @@ img[loading="lazy"] { opacity: 1; }
 /* --- Hero Banner --- */
 .hero-banner {
   background: #0d1117;
-  margin: 0 calc(-50vw + 50%);
-  padding: 0 calc(50vw - 50%);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 .hero-inner {
   max-width: 680px;
