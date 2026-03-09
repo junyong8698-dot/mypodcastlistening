@@ -1,0 +1,52 @@
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ site.Title | jsonify }},
+  "url": {{ site.Home.Permalink | jsonify }},
+  "description": {{ site.Params.description | plainify | truncate 180 | jsonify }}
+}
+</script>
+{{- else if .IsPage }}
+{{/* BreadcrumbList — handled by extend_head.html, skip here */}}
+{{/* BlogPosting */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | plainify | jsonify }},
+  "name": {{ .Title | plainify | jsonify }},
+  "description": {{ with .Description | plainify }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
+  "keywords": [{{ range $i, $e := (.Params.tags | default .Params.keywords) }}{{ if $i }}, {{ end }}{{ $e | jsonify }}{{ end }}],
+  "articleBody": {{ .Content | safeJS | htmlUnescape | plainify | jsonify }},
+  "wordCount": {{ .WordCount }},
+  "inLanguage": {{ .Language.Lang | default "en-us" | jsonify }},
+  {{ if .Params.cover.image -}}
+  "image": {{ .Params.cover.image | absURL | jsonify }},
+  {{- end }}
+  "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  {{- with (.Params.author | default site.Params.author) }}
+  "author": {
+    "@type": "Person",
+    "name": {{ . | jsonify }}
+  },
+  {{- end }}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.Title | jsonify }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ site.Params.assets.favicon | default "favicon.ico" | absURL | jsonify }}
+    }
+  }
+}
+</script>
+{{- else if .IsSection }}
+{{/* Section pages — minimal breadcrumb only */}}
+{{- end -}}

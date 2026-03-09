@@ -9,6 +9,7 @@ buildFuture: false
 
 minify:
   disableXML: true
+  disableJSON: true
   minifyOutput: true
 
 outputs:
