@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2026 06:24:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI HR Automation</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-hr-automation/</link>
+      <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-hr-automation/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Hiring Bias</title>
+      <link>https://www.mypodcastlistening.com/tags/hiring-bias/</link>
+      <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/hiring-bias/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>HR Transformation</title>
+      <link>https://www.mypodcastlistening.com/tags/hr-transformation/</link>
+      <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/hr-transformation/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>IBM AskHR</title>
+      <link>https://www.mypodcastlistening.com/tags/ibm-askhr/</link>
+      <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ibm-askhr/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Organizational Design</title>
+      <link>https://www.mypodcastlistening.com/tags/organizational-design/</link>
+      <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/organizational-design/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Talent Acquisition</title>
+      <link>https://www.mypodcastlistening.com/tags/talent-acquisition/</link>
+      <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/talent-acquisition/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Workday Lawsuit</title>
+      <link>https://www.mypodcastlistening.com/tags/workday-lawsuit/</link>
+      <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/workday-lawsuit/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>AI Agents</title>
       <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
@@ -35,7 +91,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
       <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
@@ -363,14 +419,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Organizational Design</title>
-      <link>https://www.mypodcastlistening.com/tags/organizational-design/</link>
-      <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/organizational-design/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Performance Management</title>
       <link>https://www.mypodcastlistening.com/tags/performance-management/</link>
       <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
@@ -411,7 +459,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Llm</title>
+      <title>LLM</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>

@@ -8,8 +8,16 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2026 06:24:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Org Management</title>
+      <link>https://www.mypodcastlistening.com/categories/org-management/</link>
+      <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/categories/org-management/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>BlackJyong Series</title>
       <link>https://www.mypodcastlistening.com/categories/blackjyong-series/</link>
@@ -55,14 +63,6 @@
       <link>https://www.mypodcastlistening.com/categories/daily-log/</link>
       <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/daily-log/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Org Management</title>
-      <link>https://www.mypodcastlistening.com/categories/org-management/</link>
-      <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/categories/org-management/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>

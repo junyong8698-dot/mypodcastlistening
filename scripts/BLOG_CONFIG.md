@@ -22,7 +22,7 @@
 - [ ] Part 10: 60-day results
 
 ### ② BlackJyong (10 parts)
-- [ ] Part 1: From BTC to stocks
+- [x] Part 1: From BTC to stocks (published 2026-03-10)
 - [ ] Part 2-10: TBD
 
 ### ③ AI Book (5 parts)

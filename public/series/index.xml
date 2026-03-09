@@ -8,8 +8,16 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2026 06:24:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI &amp; Organization Management</title>
+      <link>https://www.mypodcastlistening.com/series/ai--organization-management/</link>
+      <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/series/ai--organization-management/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Building BlackJyong</title>
       <link>https://www.mypodcastlistening.com/series/building-blackjyong/</link>
@@ -39,14 +47,6 @@
       <link>https://www.mypodcastlistening.com/series/startup-ideas/</link>
       <pubDate>Sat, 07 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/series/startup-ideas/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>AI &amp; Organization Management</title>
-      <link>https://www.mypodcastlistening.com/series/ai--organization-management/</link>
-      <pubDate>Fri, 06 Mar 2026 15:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/series/ai--organization-management/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
