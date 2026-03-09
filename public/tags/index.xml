@@ -8,21 +8,69 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Mon, 09 Mar 2026 13:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Bitcoin</title>
-      <link>https://www.mypodcastlistening.com/tags/bitcoin/</link>
-      <pubDate>Mon, 09 Mar 2026 13:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/bitcoin/</guid>
+      <title>AI Agents</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>AI Investing</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-investing/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-investing/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
     <item>
       <title>Blackjyong</title>
       <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
-      <pubDate>Mon, 09 Mar 2026 13:00:00 +0900</pubDate>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>OpenClaw</title>
+      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Portfolio Management</title>
+      <link>https://www.mypodcastlistening.com/tags/portfolio-management/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/portfolio-management/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Stock Trading</title>
+      <link>https://www.mypodcastlistening.com/tags/stock-trading/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/stock-trading/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Tilted Index</title>
+      <link>https://www.mypodcastlistening.com/tags/tilted-index/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/tilted-index/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Bitcoin</title>
+      <link>https://www.mypodcastlistening.com/tags/bitcoin/</link>
+      <pubDate>Mon, 09 Mar 2026 13:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/bitcoin/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -63,14 +111,6 @@
       <link>https://www.mypodcastlistening.com/tags/trading/</link>
       <pubDate>Mon, 09 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/trading/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Ai-Agents</title>
-      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
-      <pubDate>Mon, 09 Mar 2026 06:24:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -143,14 +183,6 @@
       <link>https://www.mypodcastlistening.com/tags/market-regimes/</link>
       <pubDate>Mon, 09 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/market-regimes/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>OpenClaw</title>
-      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>

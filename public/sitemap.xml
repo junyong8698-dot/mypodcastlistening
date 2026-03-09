@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.mypodcastlistening.com/posts/series/blackjyong/01-from-btc-to-stocks/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
     <loc>https://www.mypodcastlistening.com/posts/org-management/01-ai-flattening-org-chart-middle-management/</loc>
     <lastmod>2026-03-03T06:00:00+09:00</lastmod>
   </url><url>
@@ -26,13 +29,52 @@
     <loc>https://www.mypodcastlistening.com/posts/industry/04-ai-agents-drug-discovery/</loc>
     <lastmod>2026-03-09T06:24:00+09:00</lastmod>
   </url><url>
-    <loc>https://www.mypodcastlistening.com/tags/bitcoin/</loc>
-    <lastmod>2026-03-09T13:00:00+09:00</lastmod>
+    <loc>https://www.mypodcastlistening.com/tags/ai-agents/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/tags/ai-investing/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/series/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://www.mypodcastlistening.com/tags/blackjyong/</loc>
-    <lastmod>2026-03-09T13:00:00+09:00</lastmod>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/categories/blackjyong-series/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/posts/series/blackjyong/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/series/building-blackjyong/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://www.mypodcastlistening.com/categories/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/tags/openclaw/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/tags/portfolio-management/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/posts/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/tags/stock-trading/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/tags/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/tags/tilted-index/</loc>
+    <lastmod>2026-03-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://www.mypodcastlistening.com/tags/bitcoin/</loc>
     <lastmod>2026-03-09T13:00:00+09:00</lastmod>
   </url><url>
     <loc>https://www.mypodcastlistening.com/tags/crypto/</loc>
@@ -53,28 +95,13 @@
     <loc>https://www.mypodcastlistening.com/tags/infrastructure/</loc>
     <lastmod>2026-03-09T13:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://www.mypodcastlistening.com/</loc>
-    <lastmod>2026-03-09T13:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://www.mypodcastlistening.com/tags/owuw/</loc>
-    <lastmod>2026-03-09T13:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://www.mypodcastlistening.com/posts/</loc>
-    <lastmod>2026-03-09T13:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://www.mypodcastlistening.com/tags/</loc>
     <lastmod>2026-03-09T13:00:00+09:00</lastmod>
   </url><url>
     <loc>https://www.mypodcastlistening.com/tags/trading/</loc>
     <lastmod>2026-03-09T13:00:00+09:00</lastmod>
   </url><url>
     <loc>https://www.mypodcastlistening.com/series/ai-agents-by-industry/</loc>
-    <lastmod>2026-03-09T06:24:00+09:00</lastmod>
-  </url><url>
-    <loc>https://www.mypodcastlistening.com/tags/ai-agents/</loc>
-    <lastmod>2026-03-09T06:24:00+09:00</lastmod>
-  </url><url>
-    <loc>https://www.mypodcastlistening.com/series/</loc>
     <lastmod>2026-03-09T06:24:00+09:00</lastmod>
   </url><url>
     <loc>https://www.mypodcastlistening.com/tags/alphafold/</loc>
@@ -111,9 +138,6 @@
     <lastmod>2026-03-09T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://www.mypodcastlistening.com/tags/market-regimes/</loc>
-    <lastmod>2026-03-09T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://www.mypodcastlistening.com/tags/openclaw/</loc>
     <lastmod>2026-03-09T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://www.mypodcastlistening.com/posts/series/owuw-beat/</loc>
