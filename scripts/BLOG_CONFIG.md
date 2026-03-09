@@ -35,7 +35,9 @@
 ## Evergreen Tracker
 ### ⑤ Industry Deep Dives
 - [x] 01: AI Agents in Legal Discovery (published)
+- [x] 02: AI Agents in Clinical Trials (published 2026-03-05)
 - [x] 03: AI Agents in Supply Chain & Logistics (published 2026-03-08)
+- [x] 04: AI Agents in Drug Discovery (published 2026-03-09)
 
 ### ⑥ Org Management
 - [x] 01: AI Flattening the Org Chart — Middle Management (published 2026-03-03)
