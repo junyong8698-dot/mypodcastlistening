@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Wed, 11 Mar 2026 00:00:47 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 06:30:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Agents</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
+      <pubDate>Wed, 11 Mar 2026 06:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Bland AI</title>
+      <link>https://www.mypodcastlistening.com/tags/bland-ai/</link>
+      <pubDate>Wed, 11 Mar 2026 06:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/bland-ai/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Retell AI</title>
+      <link>https://www.mypodcastlistening.com/tags/retell-ai/</link>
+      <pubDate>Wed, 11 Mar 2026 06:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/retell-ai/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Startup Ideas</title>
+      <link>https://www.mypodcastlistening.com/tags/startup-ideas/</link>
+      <pubDate>Wed, 11 Mar 2026 06:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/startup-ideas/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Vapi</title>
+      <link>https://www.mypodcastlistening.com/tags/vapi/</link>
+      <pubDate>Wed, 11 Mar 2026 06:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/vapi/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Voice AI</title>
+      <link>https://www.mypodcastlistening.com/tags/voice-ai/</link>
+      <pubDate>Wed, 11 Mar 2026 06:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/voice-ai/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Voice Automation</title>
+      <link>https://www.mypodcastlistening.com/tags/voice-automation/</link>
+      <pubDate>Wed, 11 Mar 2026 06:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/voice-automation/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>API Integration</title>
       <link>https://www.mypodcastlistening.com/tags/api-integration/</link>
@@ -63,14 +119,6 @@
       <link>https://www.mypodcastlistening.com/tags/quantitative-trading/</link>
       <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/quantitative-trading/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>AI Agents</title>
-      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
-      <pubDate>Tue, 10 Mar 2026 13:03:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -187,7 +235,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
       <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
