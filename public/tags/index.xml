@@ -8,10 +8,66 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Tue, 10 Mar 2026 13:03:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 00:00:47 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ai-Agents</title>
+      <title>API Integration</title>
+      <link>https://www.mypodcastlistening.com/tags/api-integration/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/api-integration/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Binance API</title>
+      <link>https://www.mypodcastlistening.com/tags/binance-api/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/binance-api/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>BTC Trading</title>
+      <link>https://www.mypodcastlistening.com/tags/btc-trading/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/btc-trading/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Data Pipeline</title>
+      <link>https://www.mypodcastlistening.com/tags/data-pipeline/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/data-pipeline/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>FRED</title>
+      <link>https://www.mypodcastlistening.com/tags/fred/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/fred/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>On-Chain Data</title>
+      <link>https://www.mypodcastlistening.com/tags/on-chain-data/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/on-chain-data/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Quantitative Trading</title>
+      <link>https://www.mypodcastlistening.com/tags/quantitative-trading/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/quantitative-trading/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>AI Agents</title>
       <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
       <pubDate>Tue, 10 Mar 2026 13:03:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
@@ -235,14 +291,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>BTC Trading</title>
-      <link>https://www.mypodcastlistening.com/tags/btc-trading/</link>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/btc-trading/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Macro Liquidity</title>
       <link>https://www.mypodcastlistening.com/tags/macro-liquidity/</link>
       <pubDate>Mon, 09 Mar 2026 00:00:00 +0900</pubDate>
@@ -255,14 +303,6 @@
       <link>https://www.mypodcastlistening.com/tags/market-regimes/</link>
       <pubDate>Mon, 09 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/market-regimes/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Quantitative Trading</title>
-      <link>https://www.mypodcastlistening.com/tags/quantitative-trading/</link>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/quantitative-trading/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -543,14 +583,6 @@
       <link>https://www.mypodcastlistening.com/tags/vertical-ai/</link>
       <pubDate>Wed, 04 Mar 2026 15:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/vertical-ai/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Binance API</title>
-      <link>https://www.mypodcastlistening.com/tags/binance-api/</link>
-      <pubDate>Wed, 04 Mar 2026 09:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/binance-api/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
