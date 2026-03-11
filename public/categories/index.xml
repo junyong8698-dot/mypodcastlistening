@@ -8,8 +8,16 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Wed, 11 Mar 2026 06:30:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 13:03:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Daily Trading Log</title>
+      <link>https://www.mypodcastlistening.com/categories/daily-trading-log/</link>
+      <pubDate>Wed, 11 Mar 2026 13:03:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/categories/daily-trading-log/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Startup Ideas</title>
       <link>https://www.mypodcastlistening.com/categories/startup-ideas/</link>
@@ -23,14 +31,6 @@
       <link>https://www.mypodcastlistening.com/categories/owuw-beat-series/</link>
       <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/owuw-beat-series/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Daily Trading Log</title>
-      <link>https://www.mypodcastlistening.com/categories/daily-trading-log/</link>
-      <pubDate>Tue, 10 Mar 2026 13:03:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/categories/daily-trading-log/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
