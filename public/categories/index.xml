@@ -8,8 +8,16 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Thu, 12 Mar 2026 13:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Book</title>
+      <link>https://www.mypodcastlistening.com/categories/ai-book/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/categories/ai-book/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Trading Log</title>
       <link>https://www.mypodcastlistening.com/categories/trading-log/</link>
@@ -71,14 +79,6 @@
       <link>https://www.mypodcastlistening.com/categories/daily-log/</link>
       <pubDate>Sat, 07 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/daily-log/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>AI Book</title>
-      <link>https://www.mypodcastlistening.com/categories/ai-book/</link>
-      <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/categories/ai-book/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>

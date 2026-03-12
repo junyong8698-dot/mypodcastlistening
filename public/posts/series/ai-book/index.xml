@@ -8,8 +8,252 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Fri, 06 Mar 2026 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/posts/series/ai-book/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw Technical Setup: Agents, Memory, and Architecture</title>
+      <link>https://www.mypodcastlistening.com/posts/series/ai-book/02-technical-setup-openclaw-agents-memory/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/series/ai-book/02-technical-setup-openclaw-agents-memory/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/ai-book/01-why-write-a-book-with-ai-agents/&#34;&gt;Part 1&lt;/a&gt;, I told the story of writing a 250-page book in six days with AI agents. The response I got was predictable: &amp;ldquo;Cool story, but how does the actual setup work?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Fair question. The book project didn&amp;rsquo;t start with writing. It started with infrastructure. Before a single word of manuscript existed, I&amp;rsquo;d spent months building a multi-agent system that could run autonomously, retain memory across conversations, execute scheduled tasks, and communicate through Telegram. The book was a byproduct of that system working well enough that it had documented its own construction.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;In &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/ai-book/01-why-write-a-book-with-ai-agents/&#34;&gt;Part 1&lt;/a&gt;, I told the story of writing a 250-page book in six days with AI agents. The response I got was predictable: &amp;ldquo;Cool story, but how does the actual setup work?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Fair question. The book project didn&amp;rsquo;t start with writing. It started with infrastructure. Before a single word of manuscript existed, I&amp;rsquo;d spent months building a multi-agent system that could run autonomously, retain memory across conversations, execute scheduled tasks, and communicate through Telegram. The book was a byproduct of that system working well enough that it had documented its own construction.&lt;/p&gt;
+&lt;p&gt;This post is the technical walkthrough. No hand-waving, no &amp;ldquo;just plug in an API key&amp;rdquo; oversimplification. I&amp;rsquo;ll cover the actual architecture, the file layouts, the configuration decisions, and the memory system that makes long-running AI agents viable.&lt;/p&gt;
+&lt;h2 id=&#34;the-core-problem-ai-agents-forget-everything&#34;&gt;The Core Problem: AI Agents Forget Everything&lt;/h2&gt;
+&lt;p&gt;Every developer who has worked with LLMs hits the same wall. You have a great conversation with Claude or GPT-4. You work through a complex problem. The model gives you exactly what you need. Then you close the tab, open a new session, and it has no idea who you are.&lt;/p&gt;
+&lt;p&gt;This is the fundamental limitation of stateless API calls. The model&amp;rsquo;s &amp;ldquo;memory&amp;rdquo; is just the context window — a fixed-size buffer that gets wiped between sessions and truncated within them. For a one-off coding question, this is fine. For running a trading operation, managing a portfolio, or writing a book over multiple weeks, it&amp;rsquo;s a dealbreaker.&lt;/p&gt;
+&lt;p&gt;The industry&amp;rsquo;s answer has been RAG (Retrieval-Augmented Generation) — vector databases, embedding pipelines, semantic search over stored documents. It works, but it&amp;rsquo;s complex to set up, expensive to run, and brittle in practice. Embeddings drift. Retrieval relevance degrades. You end up spending more time tuning the retrieval pipeline than using the agent.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/openclaw/openclaw&#34;&gt;OpenClaw&lt;/a&gt; takes a different approach. Memory is plain Markdown files on disk. No vector database required (though one is available as an optional layer). The model reads files at session start, writes notes during conversations, and the file system becomes the persistent brain. Simple, auditable, and version-controllable with Git.&lt;/p&gt;
+&lt;h2 id=&#34;what-openclaw-actually-is&#34;&gt;What OpenClaw Actually Is&lt;/h2&gt;
+&lt;p&gt;OpenClaw is a self-hosted gateway that connects chat applications — Telegram, WhatsApp, Discord, Signal, iMessage — to AI models like Claude. You run a single daemon process on your machine, and it becomes the bridge between your messaging apps and an always-available AI agent.&lt;/p&gt;
+&lt;p&gt;The key architectural decision is that the Gateway owns everything. It maintains provider connections, manages sessions, handles message routing, and orchestrates agent runs. UI clients (the macOS app, CLI, web dashboard, or your phone&amp;rsquo;s Telegram app) are just thin interfaces that talk to the Gateway over WebSocket.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the component layout:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;┌─────────────────────────────────────────────┐
+│                   Gateway                    │
+│  (single daemon on Mac Mini / VPS / Pi)      │
+│                                              │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐   │
+│  │ Telegram  │  │ WhatsApp │  │ Discord  │   │
+│  │ (grammY)  │  │ (Baileys)│  │          │   │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘   │
+│       └──────────────┼─────────────┘         │
+│                      ▼                       │
+│              Session Manager                 │
+│              ┌──────────────┐                │
+│              │  Agent Loop  │                │
+│              │  (Claude/    │                │
+│              │   GPT/etc)   │                │
+│              └──────┬───────┘                │
+│                     ▼                        │
+│              File System (Workspace)         │
+│              memory/ + MEMORY.md             │
+└─────────────────────────────────────────────┘
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For my setup, the Gateway runs on a Mac Mini sitting on my desk in Seoul. It&amp;rsquo;s been running continuously since late 2025. Three agents share the same Gateway process but operate with fully isolated workspaces, sessions, and credentials.&lt;/p&gt;
+&lt;h2 id=&#34;installation-and-initial-configuration&#34;&gt;Installation and Initial Configuration&lt;/h2&gt;
+&lt;p&gt;Getting OpenClaw running is straightforward if you have Node.js 22+ installed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -fsSL https://openclaw.ai/install.sh &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; bash
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openclaw onboard --install-daemon
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The onboard wizard walks through model provider authentication (I use Anthropic&amp;rsquo;s Claude directly), channel setup, and workspace initialization. After onboarding, you have a running Gateway and can immediately chat through the web dashboard at &lt;code&gt;http://127.0.0.1:18789/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;But the web dashboard isn&amp;rsquo;t the point. The real power comes from connecting Telegram.&lt;/p&gt;
+&lt;h3 id=&#34;telegram-bot-setup&#34;&gt;Telegram Bot Setup&lt;/h3&gt;
+&lt;p&gt;Creating a Telegram bot takes about two minutes. You message &lt;a href=&#34;https://t.me/BotFather&#34;&gt;@BotFather&lt;/a&gt; on Telegram, run &lt;code&gt;/newbot&lt;/code&gt;, pick a name, and get a token. Then you add it to your OpenClaw config:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-json5&#34; data-lang=&#34;json5&#34;&gt;{
+  channels: {
+    telegram: {
+      enabled: true,
+      botToken: &amp;#34;YOUR_TOKEN_HERE&amp;#34;,
+      dmPolicy: &amp;#34;pairing&amp;#34;,
+      groups: {
+        &amp;#34;*&amp;#34;: { requireMention: true }
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;dmPolicy: &amp;quot;pairing&amp;quot;&lt;/code&gt; setting means the bot won&amp;rsquo;t respond to random strangers. When someone messages it for the first time, OpenClaw holds the message and waits for you to approve the pairing:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openclaw pairing list telegram
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openclaw pairing approve telegram &amp;lt;CODE&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After approval, that user&amp;rsquo;s DMs are routed to the agent. This is the security model — no API keys exposed, no public endpoints, just a Telegram bot that only responds to approved users.&lt;/p&gt;
+&lt;p&gt;The result: you open Telegram on your phone, type a message to your bot, and Claude responds. With full context, persistent memory, file system access, tool use, web search, and whatever other capabilities you&amp;rsquo;ve configured. From your pocket.&lt;/p&gt;
+&lt;h2 id=&#34;the-workspace-where-memory-lives&#34;&gt;The Workspace: Where Memory Lives&lt;/h2&gt;
+&lt;p&gt;Every OpenClaw agent has a workspace directory. This is the agent&amp;rsquo;s home — its working directory for all file operations and the source of all persistent context. The default location is &lt;code&gt;~/.openclaw/workspace&lt;/code&gt;, but you can point it anywhere.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s what the workspace looks like for my book-writing agent:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/Users/ayintoayin/Desktop/OWUW_Book/
+├── AGENTS.md          # Operating instructions
+├── SOUL.md            # Persona and tone
+├── USER.md            # Who the user is
+├── IDENTITY.md        # Agent&amp;#39;s name and vibe
+├── TOOLS.md           # Tool usage notes
+├── MEMORY.md          # Long-term curated memory
+├── memory/
+│   ├── 2026-02-19.md  # Daily notes
+│   ├── 2026-02-22.md
+│   ├── 2026-03-09.md
+│   └── ...
+├── drafts/            # Book chapter drafts
+└── logs/              # Reference materials
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Each file has a specific role in the system prompt assembly:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AGENTS.md&lt;/strong&gt; is the operating manual. It tells the agent what to do at session start (read memory files), what resources it can access (other agent workspaces, read-only), and safety rules (don&amp;rsquo;t modify other agents&amp;rsquo; files). This is loaded at the start of every session.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SOUL.md&lt;/strong&gt; defines persona and tone. For the book agent, this means &amp;ldquo;engaging, practical, storyteller.&amp;rdquo; For my trading agent, it&amp;rsquo;s more analytical and terse. The persona file lets you run dramatically different agents from the same Gateway.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;USER.md&lt;/strong&gt; tells the agent who it&amp;rsquo;s talking to. My name, how to address me, my timezone, communication preferences (I send Korean voice messages), and project context. This prevents the agent from asking &amp;ldquo;Who are you?&amp;rdquo; every session.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MEMORY.md&lt;/strong&gt; is the long-term memory store. Curated, edited, and treated as the canonical record of important decisions, preferences, and facts. Only loaded in the main private session to avoid leaking personal context into group chats.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;memory/YYYY-MM-DD.md&lt;/strong&gt; files are daily logs. Append-only during the day, read at session start (today + yesterday). This is where running context lives — what happened in the last conversation, what tasks are pending, what decisions were made.&lt;/p&gt;
+&lt;h3 id=&#34;why-plain-markdown-beats-vector-databases&#34;&gt;Why Plain Markdown Beats Vector Databases&lt;/h3&gt;
+&lt;p&gt;I want to be specific about why this design works better than the alternatives for my use case.&lt;/p&gt;
+&lt;p&gt;With a vector database (Pinecone, Weaviate, Chroma), you embed chunks of text, store them, and retrieve semantically similar chunks at query time. The problems:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Embedding quality degrades for domain-specific content.&lt;/strong&gt; When my trading agent discusses &amp;ldquo;regime switching models&amp;rdquo; or &amp;ldquo;macro factor exposure,&amp;rdquo; general-purpose embeddings don&amp;rsquo;t reliably surface the right context.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Retrieval is probabilistic.&lt;/strong&gt; You never know with certainty what the model will see. A critical decision from three weeks ago might not surface because the embedding similarity score is 0.01 below threshold.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;No editability.&lt;/strong&gt; Try correcting a wrong memory in a vector store. You have to find the chunk, delete it, re-embed the corrected version, and hope the new embedding lands in the right neighborhood.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Operational overhead.&lt;/strong&gt; A vector database is another service to run, monitor, and pay for.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;With Markdown files:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;You can read exactly what the agent knows.&lt;/strong&gt; Open &lt;code&gt;MEMORY.md&lt;/code&gt; in any text editor and see every piece of long-term context.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Edits are trivial.&lt;/strong&gt; Wrong information? Open the file, fix the line, save. The agent picks up the correction on the next session.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Git-trackable.&lt;/strong&gt; I version-control my agent workspaces. Every memory change has a commit hash, timestamp, and diff. I can roll back the agent&amp;rsquo;s knowledge to any point in time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Zero infrastructure.&lt;/strong&gt; No database to run. No embeddings to compute. No retrieval pipeline to tune.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The tradeoff is that Markdown memory doesn&amp;rsquo;t scale to millions of documents. But for a personal agent system — even one running multiple agents with months of history — the files stay manageable. My OWUW Beat agent&amp;rsquo;s &lt;code&gt;MEMORY.md&lt;/code&gt; is about 15KB. The daily memory files average 2-3KB each. The entire memory footprint for three agents over four months fits in a single megabyte.&lt;/p&gt;
+&lt;p&gt;OpenClaw does offer optional vector search via its &lt;code&gt;memory-core&lt;/code&gt; plugin for cases where you need semantic retrieval across large memory stores. But the base layer is always files, and for most use cases, files are enough.&lt;/p&gt;
+&lt;h2 id=&#34;multi-agent-architecture&#34;&gt;Multi-Agent Architecture&lt;/h2&gt;
+&lt;p&gt;This is where the setup gets interesting. I don&amp;rsquo;t run one agent. I run three, each with a completely isolated brain:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Marie&lt;/strong&gt; — Personal assistant. Handles scheduling, research, communication drafting, and general-purpose tasks. Workspace at &lt;code&gt;/Users/ayintoayin/Desktop/Marie_Beta/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OWUW Beat&lt;/strong&gt; — BTC quantitative trading agent. Runs daily market analysis, regime detection, R&amp;amp;D research sessions, and a weekly governance board with nine AI members voting on strategy changes. Workspace at &lt;code&gt;/Users/ayintoayin/Desktop/OWUW_Beat/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OWUW Stock&lt;/strong&gt; — AI-themed equity trading agent. Focused on Korean and US stocks in the AI supply chain. Newer and still being developed. Workspace at &lt;code&gt;/Users/ayintoayin/Desktop/OWUW_Stock/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Each agent is a fully scoped entity with its own:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workspace&lt;/strong&gt; (separate files, persona, memory)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State directory&lt;/strong&gt; (auth profiles, model registry, per-agent config)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Session store&lt;/strong&gt; (chat history and routing state)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Telegram bot&lt;/strong&gt; (separate bot token, separate chat)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The isolation is real. OWUW Beat cannot read Marie&amp;rsquo;s memory. Marie cannot modify OWUW Stock&amp;rsquo;s files. Each agent has its own auth credentials and model configuration. They share a Gateway process for efficiency, but operationally they&amp;rsquo;re independent systems.&lt;/p&gt;
+&lt;p&gt;Setting up a new agent is one command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openclaw agents add owuw_book
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then you configure bindings to route inbound Telegram messages to the correct agent based on which bot received the message. Verify with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openclaw agents list --bindings
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The multi-agent architecture was critical for the book project. The book agent (OWUW Book) could &lt;em&gt;read&lt;/em&gt; the other agents&amp;rsquo; workspaces — their memory files, decision logs, code artifacts — without having write access. This meant the book agent could pull real conversation logs and trading decisions from OWUW Beat&amp;rsquo;s memory as source material, without any risk of corrupting the trading system&amp;rsquo;s state.&lt;/p&gt;
+&lt;h2 id=&#34;session-management-and-compaction&#34;&gt;Session Management and Compaction&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s a problem that doesn&amp;rsquo;t show up in demos but dominates real-world agent usage: context window limits.&lt;/p&gt;
+&lt;p&gt;Claude&amp;rsquo;s context window is large (200K tokens for Claude 3.5 Sonnet, even more for Opus), but it&amp;rsquo;s not infinite. A productive agent session accumulates context fast. Tool calls, file reads, web searches, long responses — each one eats tokens. After a few hours of active use, you hit the ceiling.&lt;/p&gt;
+&lt;p&gt;OpenClaw handles this with &lt;strong&gt;automatic compaction&lt;/strong&gt;. When a session approaches its context limit, the Gateway triggers a compaction cycle:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;A &lt;strong&gt;memory flush&lt;/strong&gt; fires first — a silent agent turn that reminds the model to write any important context to &lt;code&gt;memory/YYYY-MM-DD.md&lt;/code&gt; before the context is trimmed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The session history is then compacted: older messages are summarized, tool call details are condensed, and the working context is reduced to fit within the window.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The agent continues with the compacted context plus whatever it wrote to memory files during the flush.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The configuration looks like this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-json5&#34; data-lang=&#34;json5&#34;&gt;{
+  agents: {
+    defaults: {
+      compaction: {
+        reserveTokensFloor: 20000,
+        memoryFlush: {
+          enabled: true,
+          softThresholdTokens: 4000,
+          systemPrompt: &amp;#34;Session nearing compaction. Store durable memories now.&amp;#34;,
+          prompt: &amp;#34;Write any lasting notes to memory/YYYY-MM-DD.md; reply NO_REPLY.&amp;#34;
+        }
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;memoryFlush&lt;/code&gt; is the key innovation. Without it, compaction just discards old context and the agent loses important details. With it, the agent gets a chance to persist anything it considers durable before the trim happens. The user never sees this turn — it&amp;rsquo;s silent, handled entirely between the Gateway and the model.&lt;/p&gt;
+&lt;p&gt;During the book project, compaction happened dozens of times. Each chapter draft required multiple rounds of research, outlining, writing, and revision. A single chapter could consume 100K+ tokens of context. Without automatic memory flush, the agent would have lost track of the outline, the style decisions, the source material references — everything that makes a multi-session writing project coherent.&lt;/p&gt;
+&lt;h2 id=&#34;cron-jobs-the-autonomous-layer&#34;&gt;Cron Jobs: The Autonomous Layer&lt;/h2&gt;
+&lt;p&gt;Memory and sessions give you a persistent agent. Cron jobs give you an autonomous one.&lt;/p&gt;
+&lt;p&gt;OpenClaw&amp;rsquo;s cron system lets you schedule agent turns — messages that fire on a schedule and trigger the agent to do work without human prompting. This is how OWUW Beat generates daily market reports at 8 AM, runs R&amp;amp;D research sessions every Wednesday, and convenes its governance board every Sunday.&lt;/p&gt;
+&lt;p&gt;For the book project, cron jobs handled:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Daily writing sessions&lt;/strong&gt; — the book agent would wake up, check its progress tracker, and draft the next section.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Review passes&lt;/strong&gt; — scheduled re-reads of completed chapters to check for consistency.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Source material updates&lt;/strong&gt; — pulling the latest trading logs from OWUW Beat&amp;rsquo;s workspace to keep the book&amp;rsquo;s data sections current.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A cron job definition looks like this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-json5&#34; data-lang=&#34;json5&#34;&gt;{
+  name: &amp;#34;daily_writing_session&amp;#34;,
+  schedule: { kind: &amp;#34;cron&amp;#34;, expr: &amp;#34;0 9 * * *&amp;#34;, tz: &amp;#34;Asia/Seoul&amp;#34; },
+  sessionTarget: &amp;#34;isolated&amp;#34;,
+  payload: {
+    kind: &amp;#34;agentTurn&amp;#34;,
+    message: &amp;#34;Continue writing the next section of the book. Check MEMORY.md for progress tracker.&amp;#34;,
+    timeoutSeconds: 600
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;sessionTarget: &amp;quot;isolated&amp;quot;&lt;/code&gt; is important. It means each cron run gets its own session, separate from my main conversation with the agent. The agent does its work, and when it finishes, the result is announced back to my Telegram chat. I wake up to a completed chapter draft in my messages.&lt;/p&gt;
+&lt;p&gt;This is fundamentally different from a chatbot. A chatbot waits for you to say something. An agent with cron jobs works while you sleep. The book was largely written between midnight and 6 AM Seoul time, with me reviewing and providing feedback during waking hours.&lt;/p&gt;
+&lt;h2 id=&#34;the-system-prompt-assembly&#34;&gt;The System Prompt Assembly&lt;/h2&gt;
+&lt;p&gt;One detail that matters more than people expect: how the system prompt is constructed.&lt;/p&gt;
+&lt;p&gt;OpenClaw doesn&amp;rsquo;t use a static system prompt. It assembles one dynamically for every agent run, pulling from multiple sources:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Tooling section&lt;/strong&gt; — lists available tools (file read/write, exec, web search, browser control, etc.)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Safety guardrails&lt;/strong&gt; — no self-preservation, no power-seeking, comply with stop requests&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Skills&lt;/strong&gt; — loaded on demand when a task matches a skill description&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workspace section&lt;/strong&gt; — working directory path&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bootstrap files&lt;/strong&gt; — AGENTS.md, SOUL.md, USER.md, IDENTITY.md injected as &amp;ldquo;Project Context&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Runtime metadata&lt;/strong&gt; — host OS, model name, channel, capabilities&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Date/time&lt;/strong&gt; — current time in the user&amp;rsquo;s timezone&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Memory recall instructions&lt;/strong&gt; — when and how to search memory files&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The bootstrap file injection is what makes the agent &amp;ldquo;know&amp;rdquo; who it is and who it&amp;rsquo;s talking to from the first message. There&amp;rsquo;s no warmup period, no &amp;ldquo;remind me what we were working on.&amp;rdquo; The agent reads its identity, its user profile, and its operating instructions before processing the first human message.&lt;/p&gt;
+&lt;p&gt;For sub-agents (spawned for background tasks), OpenClaw uses a minimal prompt mode that strips out skills, memory recall, self-update instructions, and messaging — keeping the context lean for focused tasks.&lt;/p&gt;
+&lt;h2 id=&#34;practical-setup-prompt&#34;&gt;Practical Setup Prompt&lt;/h2&gt;
+&lt;p&gt;If you want to replicate this setup, here&amp;rsquo;s the prompt I&amp;rsquo;d give to configure a new OpenClaw agent for book writing:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;You are a book-writing agent. Your workspace is at [PATH].
+
+At the start of every session:
+1. Read MEMORY.md for long-term context
+2. Read memory/[today].md and memory/[yesterday].md for recent context
+3. Check drafts/ for current manuscript state
+
+When writing:
+- Pull source material from [SOURCE_AGENT_WORKSPACE] (read only)
+- Write drafts to drafts/[chapter]-[section].md
+- Update MEMORY.md progress tracker after each completed section
+- Log daily work to memory/[date].md
+
+Never modify files in other agent workspaces.
+Ask before any external actions (publishing, API calls).
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Save this as &lt;code&gt;AGENTS.md&lt;/code&gt; in your workspace, and the agent will follow it from the first session.&lt;/p&gt;
+&lt;h2 id=&#34;what-this-architecture-enables&#34;&gt;What This Architecture Enables&lt;/h2&gt;
+&lt;p&gt;The technical setup I&amp;rsquo;ve described here — Gateway, Telegram, Markdown memory, multi-agent isolation, compaction with memory flush, cron jobs — isn&amp;rsquo;t complex individually. Each component is simple. The power comes from the composition.&lt;/p&gt;
+&lt;p&gt;With this running, I have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Three specialized agents&lt;/strong&gt; I can message from my phone at any time&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Persistent memory&lt;/strong&gt; that survives across sessions, compactions, and restarts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Autonomous operation&lt;/strong&gt; via cron jobs that run daily, weekly, or on custom schedules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Full audit trail&lt;/strong&gt; in version-controlled Markdown files&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-agent visibility&lt;/strong&gt; where the book agent can reference trading logs and the assistant can check on the trading agent&amp;rsquo;s status&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The book project proved this architecture works for creative work, not just operational automation. The same memory system that tracks BTC trading regimes can track chapter outlines and style decisions. The same cron system that triggers market analysis can trigger writing sessions.&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/ai-book/&#34;&gt;Part 3&lt;/a&gt;, I&amp;rsquo;ll get into the actual writing process — the prompts that worked, the iteration cycles, and the quality control workflow that turned raw AI output into publishable chapters. That&amp;rsquo;s where things got messy, and where the real lessons are.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is Part 2 of the &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/ai-book/&#34;&gt;AI Book series&lt;/a&gt; — documenting how I wrote a book using AI agents. &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/ai-book/01-why-write-a-book-with-ai-agents/&#34;&gt;Part 1: I Wrote a 250-Page Book in 6 Days Using AI Agents&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</content:encoded>
+    </item>
     <item>
       <title>I Wrote a 250-Page Book in 6 Days Using AI Agents</title>
       <link>https://www.mypodcastlistening.com/posts/series/ai-book/01-why-write-a-book-with-ai-agents/</link>

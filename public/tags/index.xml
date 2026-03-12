@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Thu, 12 Mar 2026 13:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai-Agents</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Claude</title>
+      <link>https://www.mypodcastlistening.com/tags/claude/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/claude/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Memory-Architecture</title>
+      <link>https://www.mypodcastlistening.com/tags/memory-architecture/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/memory-architecture/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Multi-Agent</title>
+      <link>https://www.mypodcastlistening.com/tags/multi-agent/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/multi-agent/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>OpenClaw</title>
+      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Technical-Setup</title>
+      <link>https://www.mypodcastlistening.com/tags/technical-setup/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/technical-setup/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Telegram-Bot</title>
+      <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Bear-Market</title>
       <link>https://www.mypodcastlistening.com/tags/bear-market/</link>
@@ -55,14 +111,6 @@
       <link>https://www.mypodcastlistening.com/tags/agentic-ai/</link>
       <pubDate>Thu, 12 Mar 2026 06:25:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/agentic-ai/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>AI Agents</title>
-      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
-      <pubDate>Thu, 12 Mar 2026 06:25:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -347,14 +395,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Openclaw</title>
-      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Portfolio Management</title>
       <link>https://www.mypodcastlistening.com/tags/portfolio-management/</link>
       <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
@@ -635,15 +675,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Claude</title>
-      <link>https://www.mypodcastlistening.com/tags/claude/</link>
-      <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/claude/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>LLM</title>
+      <title>Llm</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>
@@ -719,14 +751,6 @@
       <link>https://www.mypodcastlistening.com/tags/tech-stack/</link>
       <pubDate>Wed, 04 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/tech-stack/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Telegram Bot</title>
-      <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
-      <pubDate>Wed, 04 Mar 2026 09:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
