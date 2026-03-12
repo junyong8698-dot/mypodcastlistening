@@ -28,7 +28,7 @@
 
 ### ③ AI Book (5 parts)
 - [x] Part 1: Why write a book with AI (published 2026-03-06)
-- [ ] Part 2: Technical setup — OpenClaw, agents, memory architecture
+- [x] Part 2: Technical setup — OpenClaw, agents, memory architecture (published 2026-03-13)
 - [ ] Part 3: The writing process — prompts, iteration, quality control
 - [ ] Part 4: What went wrong — failures, hallucinations, rewrites
 - [ ] Part 5: Results and honest assessment

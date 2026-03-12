@@ -8,10 +8,66 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 06:24:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ai-Agents</title>
+      <title>AI Coordination</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-coordination/</link>
+      <pubDate>Fri, 13 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-coordination/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>AI Project Management</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-project-management/</link>
+      <pubDate>Fri, 13 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-project-management/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>AI Scheduling</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-scheduling/</link>
+      <pubDate>Fri, 13 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-scheduling/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Gartner AI Management</title>
+      <link>https://www.mypodcastlistening.com/tags/gartner-ai-management/</link>
+      <pubDate>Fri, 13 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/gartner-ai-management/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Organizational Restructuring</title>
+      <link>https://www.mypodcastlistening.com/tags/organizational-restructuring/</link>
+      <pubDate>Fri, 13 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/organizational-restructuring/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>PM Career</title>
+      <link>https://www.mypodcastlistening.com/tags/pm-career/</link>
+      <pubDate>Fri, 13 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/pm-career/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Project Manager Automation</title>
+      <link>https://www.mypodcastlistening.com/tags/project-manager-automation/</link>
+      <pubDate>Fri, 13 Mar 2026 06:24:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/project-manager-automation/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>AI Agents</title>
       <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
@@ -43,7 +99,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
@@ -59,7 +115,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Telegram-Bot</title>
+      <title>Telegram Bot</title>
       <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
@@ -163,7 +219,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Blackjyong</title>
+      <title>BlackJyong</title>
       <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
       <pubDate>Thu, 12 Mar 2026 00:00:34 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
@@ -675,7 +731,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Llm</title>
+      <title>LLM</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>
