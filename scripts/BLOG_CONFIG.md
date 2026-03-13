@@ -45,6 +45,7 @@
 - [x] 01: AI Flattening the Org Chart — Middle Management (published 2026-03-03)
 - [x] 02: AI Is Killing the Annual Performance Review (published 2026-03-06)
 - [x] 03: AI Is Gutting HR Departments (published 2026-03-10)
+- [x] 04: AI Is Killing the Project Manager Role (published 2026-03-13)
 
 ### ⑦ Startup Ideas
 - [x] 01: Vertical AI Agents — Solo Founder's Best Shot at $1M (published 2026-03-04)
