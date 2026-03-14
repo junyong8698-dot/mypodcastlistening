@@ -40,6 +40,7 @@
 - [x] 03: AI Agents in Supply Chain & Logistics (published 2026-03-08)
 - [x] 04: AI Agents in Drug Discovery (published 2026-03-09)
 - [x] 05: AI Agents in Insurance Underwriting (published 2026-03-12)
+- [x] 06: AI Agents in Precision Agriculture (published 2026-03-15)
 
 ### ⑥ Org Management
 - [x] 01: AI Flattening the Org Chart — Middle Management (published 2026-03-03)

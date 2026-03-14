@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Sun, 15 Mar 2026 08:27:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 08:30:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bear-Market</title>
+      <link>https://www.mypodcastlistening.com/tags/bear-market/</link>
+      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/bear-market/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Board-Meeting</title>
+      <link>https://www.mypodcastlistening.com/tags/board-meeting/</link>
+      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/board-meeting/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Btc</title>
+      <link>https://www.mypodcastlistening.com/tags/btc/</link>
+      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/btc/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Daily-Log</title>
+      <link>https://www.mypodcastlistening.com/tags/daily-log/</link>
+      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/daily-log/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Quant</title>
+      <link>https://www.mypodcastlistening.com/tags/quant/</link>
+      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/quant/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>https://www.mypodcastlistening.com/tags/research/</link>
+      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/research/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Weekly-Proposal</title>
+      <link>https://www.mypodcastlistening.com/tags/weekly-proposal/</link>
+      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/weekly-proposal/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Agentic AI</title>
       <link>https://www.mypodcastlistening.com/tags/agentic-ai/</link>
@@ -67,50 +123,10 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Bear-Market</title>
-      <link>https://www.mypodcastlistening.com/tags/bear-market/</link>
-      <pubDate>Fri, 13 Mar 2026 13:10:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/bear-market/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Btc</title>
-      <link>https://www.mypodcastlistening.com/tags/btc/</link>
-      <pubDate>Fri, 13 Mar 2026 13:10:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/btc/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Daily-Log</title>
-      <link>https://www.mypodcastlistening.com/tags/daily-log/</link>
-      <pubDate>Fri, 13 Mar 2026 13:10:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/daily-log/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Kelly-Criterion</title>
       <link>https://www.mypodcastlistening.com/tags/kelly-criterion/</link>
       <pubDate>Fri, 13 Mar 2026 13:10:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/kelly-criterion/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Quant</title>
-      <link>https://www.mypodcastlistening.com/tags/quant/</link>
-      <pubDate>Fri, 13 Mar 2026 13:10:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/quant/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Research</title>
-      <link>https://www.mypodcastlistening.com/tags/research/</link>
-      <pubDate>Fri, 13 Mar 2026 13:10:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/research/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -195,7 +211,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
@@ -211,7 +227,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Telegram Bot</title>
+      <title>Telegram-Bot</title>
       <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
@@ -779,7 +795,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>LLM</title>
+      <title>Llm</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>
