@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>OpenClaw on Multi-Agent Future</title>
+    <title>Openclaw on Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
     <description>Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 00:00:05 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/openclaw/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From BTC Bot to AI Stock Firm: Why I Built BlackJyong</title>
@@ -1115,6 +1115,278 @@ Try a regime switching approach instead:
 &lt;p&gt;In &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/&#34;&gt;Part 4&lt;/a&gt;, I&amp;rsquo;ll cover the data collection infrastructure — the five data collectors that feed on-chain metrics, derivatives data, Reddit sentiment, Google Trends, and market dominance into the model. Building the plumbing isn&amp;rsquo;t glamorous, but it&amp;rsquo;s what separates a backtested model from a live system.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;This is Part 3 of the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/&#34;&gt;Building OWUW Beat&lt;/a&gt; series, documenting how I built an autonomous BTC trading agent with OpenClaw + Telegram + Binance.&lt;/em&gt;&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>Building an Autonomous R&amp;D Agent for BTC Strategy Research</title>
+      <link>https://www.mypodcastlistening.com/posts/series/owuw-beat/05-rd-research-agent/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/series/owuw-beat/05-rd-research-agent/</guid>
+      <description>&lt;h2 id=&#34;the-model-is-never-done&#34;&gt;The Model Is Never Done&lt;/h2&gt;
+&lt;p&gt;In the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/04-data-collection-pipeline/&#34;&gt;previous post&lt;/a&gt;, I walked through the data pipeline that feeds OWUW Beat&amp;rsquo;s regime detection model. At that point, I had a working system: six macro factors, three regimes (bull/bear/neutral), a 10-day rebalancing cycle, and a production model (V5.3) delivering a backtest Sharpe of 2.43 with -13.6% max drawdown.&lt;/p&gt;
+&lt;p&gt;Most people would stop there. Ship it, monitor it, move on.&lt;/p&gt;
+&lt;p&gt;I didn&amp;rsquo;t. Not because V5.3 was bad — it was genuinely the best model I&amp;rsquo;d built. But I&amp;rsquo;d spent enough time in quantitative research to know that every model has a shelf life. Markets change. Regime transitions get faster. Factor correlations shift. The edge you found six months ago might be gone tomorrow.&lt;/p&gt;</description>
+      <content:encoded>&lt;h2 id=&#34;the-model-is-never-done&#34;&gt;The Model Is Never Done&lt;/h2&gt;
+&lt;p&gt;In the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/04-data-collection-pipeline/&#34;&gt;previous post&lt;/a&gt;, I walked through the data pipeline that feeds OWUW Beat&amp;rsquo;s regime detection model. At that point, I had a working system: six macro factors, three regimes (bull/bear/neutral), a 10-day rebalancing cycle, and a production model (V5.3) delivering a backtest Sharpe of 2.43 with -13.6% max drawdown.&lt;/p&gt;
+&lt;p&gt;Most people would stop there. Ship it, monitor it, move on.&lt;/p&gt;
+&lt;p&gt;I didn&amp;rsquo;t. Not because V5.3 was bad — it was genuinely the best model I&amp;rsquo;d built. But I&amp;rsquo;d spent enough time in quantitative research to know that every model has a shelf life. Markets change. Regime transitions get faster. Factor correlations shift. The edge you found six months ago might be gone tomorrow.&lt;/p&gt;
+&lt;p&gt;So instead of treating V5.3 as the final answer, I built something more interesting: an autonomous R&amp;amp;D agent that runs continuously during market hours, exploring new strategies, testing new factors, and trying to beat the production model. Every single day. Without me touching it.&lt;/p&gt;
+&lt;p&gt;This post covers how that R&amp;amp;D agent works, what it&amp;rsquo;s discovered (and failed to discover), and why having an AI do systematic research turned out to be more valuable than I expected.&lt;/p&gt;
+&lt;h2 id=&#34;why-automate-research-at-all&#34;&gt;Why Automate Research at All?&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s the honest version of how quantitative research usually works for a solo operator.&lt;/p&gt;
+&lt;p&gt;You have an idea. Maybe you read a paper about volatility targeting, or you notice Bitcoin correlating with Japanese CPI data. You fire up a Jupyter notebook. You spend three hours writing a backtest. You get excited about the results. Then you realize you forgot to account for look-ahead bias, or your train/test split is wrong, or the result doesn&amp;rsquo;t survive transaction costs. You fix those things. Another two hours. The result is marginal. You feel deflated. You close the notebook and don&amp;rsquo;t come back for a week.&lt;/p&gt;
+&lt;p&gt;This cycle — enthusiasm, coding, disappointment, procrastination — is the default mode for solo quant researchers. I went through it dozens of times building V5.1 through V5.3. Each version took weeks of manual experimentation, and most of that time was wasted on ideas that didn&amp;rsquo;t work.&lt;/p&gt;
+&lt;p&gt;The R&amp;amp;D agent exists to break this cycle. Its job is simple: run experiments continuously, log everything, and surface anything worth looking at. It removes the emotional friction of research entirely. The agent doesn&amp;rsquo;t get discouraged when an idea fails. It doesn&amp;rsquo;t procrastinate. It doesn&amp;rsquo;t cherry-pick results that look good. It just runs the next experiment.&lt;/p&gt;
+&lt;h2 id=&#34;the-architecture&#34;&gt;The Architecture&lt;/h2&gt;
+&lt;p&gt;The R&amp;amp;D agent is an &lt;a href=&#34;https://github.com/nicepkg/openclaw&#34;&gt;OpenClaw&lt;/a&gt; cron job that fires every 30 minutes between 08:00 and 18:00 KST, Monday through Friday. That&amp;rsquo;s 22 experiment slots per day, 110 per week.&lt;/p&gt;
+&lt;p&gt;Each invocation gets a detailed task prompt that includes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;The current production benchmark&lt;/strong&gt; — V5.3&amp;rsquo;s exact metrics (Sharpe 2.43, MDD -13.6%, CAGR 76.3%, Calmar 5.60)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A list of research directions&lt;/strong&gt; — everything from new data sources to leverage strategies to ML approaches&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Previous experiment results&lt;/strong&gt; — so it doesn&amp;rsquo;t repeat work&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Six adoption criteria&lt;/strong&gt; that any new model must pass before it can go to the board for a vote&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The agent runs in an isolated session, meaning it gets a fresh context each time but can read files from the workspace. It writes Python scripts, executes them, captures the results, and saves everything to a structured JSON file.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a simplified version of the cron configuration:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Schedule: */30 8-18 * * 1-5  (every 30min, 8am-6pm, weekdays)
+Session: isolated
+Timeout: 1800 seconds (30 minutes per experiment)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The task prompt is stored in &lt;code&gt;research/research_agent_task.md&lt;/code&gt; — a living document that gets updated every time the production model changes. When V5.2 was replaced by V5.3, every reference in the task file was updated to reflect the new benchmark. This prevents the agent from optimizing against an outdated target.&lt;/p&gt;
+&lt;h2 id=&#34;what-the-agent-actually-does-each-session&#34;&gt;What the Agent Actually Does Each Session&lt;/h2&gt;
+&lt;p&gt;A typical R&amp;amp;D session follows this pattern:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Read the task file&lt;/strong&gt; — understand the current benchmark, research directions, and constraints&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pick a research direction&lt;/strong&gt; — the agent chooses based on what hasn&amp;rsquo;t been explored recently&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Write a Python experiment&lt;/strong&gt; — a self-contained backtest script that tests a specific hypothesis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Execute it&lt;/strong&gt; — run the script against 2017-2026 BTC data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Analyze results&lt;/strong&gt; — compare to V5.3 on all six criteria&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Save results&lt;/strong&gt; — write to &lt;code&gt;research/daily_research/&lt;/code&gt; as both a &lt;code&gt;.py&lt;/code&gt; file and a &lt;code&gt;.json&lt;/code&gt; summary&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Over the first few weeks, the agent produced 62 experiment scripts. Some were simple parameter sweeps. Others were sophisticated multi-factor overlays. A few were genuinely creative approaches I wouldn&amp;rsquo;t have tried myself.&lt;/p&gt;
+&lt;p&gt;Let me walk through some real examples.&lt;/p&gt;
+&lt;h2 id=&#34;experiment-category-1-leverage--the-persistent-temptation&#34;&gt;Experiment Category 1: Leverage — The Persistent Temptation&lt;/h2&gt;
+&lt;p&gt;One of the first things the R&amp;amp;D agent explored was leverage. This makes intuitive sense: if your model has a positive expected return, leveraging it should amplify gains. The agent tested six variants of regime-conditional leverage:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fixed BULL leverage&lt;/strong&gt;: 1.3x, 1.5x, and 2.0x during bull regimes only&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Asymmetric leverage&lt;/strong&gt;: 1.5x in BULL, 0.5x in NEUTRAL, 0x in BEAR&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Volatility-targeted dynamic leverage&lt;/strong&gt;: scale leverage inversely to 30-day realized volatility&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Faster rebalancing with leverage&lt;/strong&gt;: daily rebalancing at 1.3x&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The results were unambiguous. Here&amp;rsquo;s what the 1.3x BULL variant produced:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Metric&lt;/th&gt;
+          &lt;th&gt;V5.3 (1x)&lt;/th&gt;
+          &lt;th&gt;1.3x BULL&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Total Return&lt;/td&gt;
+          &lt;td&gt;+17,921%&lt;/td&gt;
+          &lt;td&gt;+1,540%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Sharpe&lt;/td&gt;
+          &lt;td&gt;2.43&lt;/td&gt;
+          &lt;td&gt;0.83&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;MDD&lt;/td&gt;
+          &lt;td&gt;-13.6%&lt;/td&gt;
+          &lt;td&gt;-79.8%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Calmar&lt;/td&gt;
+          &lt;td&gt;5.60&lt;/td&gt;
+          &lt;td&gt;0.45&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Read that again. Adding just 30% leverage to the BULL regime &lt;em&gt;destroyed&lt;/em&gt; the strategy. Total return dropped by an order of magnitude. Max drawdown went from -13.6% to -79.8%. The Sharpe ratio fell from 2.43 to 0.83.&lt;/p&gt;
+&lt;p&gt;The 2.0x variant was even worse: +168% total return versus +17,921% unlevered. Leverage in crypto doesn&amp;rsquo;t just reduce risk-adjusted returns — it reduces &lt;em&gt;absolute&lt;/em&gt; returns over long periods because volatility decay compounds ruthlessly.&lt;/p&gt;
+&lt;p&gt;This was a result I already knew from manual research (it&amp;rsquo;s documented in my &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/03-regime-detection-first-agent/&#34;&gt;earlier post on regime detection&lt;/a&gt;). But the R&amp;amp;D agent proved it rigorously across six different leverage implementations. There was no clever way to make leverage work for a BTC regime-switching strategy with 10-day rebalancing. The math simply doesn&amp;rsquo;t support it.&lt;/p&gt;
+&lt;p&gt;The agent flagged this as a dead end and moved on. No emotional attachment to the idea. No &amp;ldquo;but maybe if I tweak this one parameter.&amp;rdquo; Just: leverage doesn&amp;rsquo;t work, here are six ways I proved it, next.&lt;/p&gt;
+&lt;h2 id=&#34;experiment-category-2-alternative-rebalancing-frequencies&#34;&gt;Experiment Category 2: Alternative Rebalancing Frequencies&lt;/h2&gt;
+&lt;p&gt;V5.3 rebalances every 10 days. Why 10? Because it tested best across the full sample. But the R&amp;amp;D agent explored this more systematically, testing rebalancing intervals from 1 day to 30 days:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# From exp_adaptive_rebal.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rebal_intervals&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;results&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;interval&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rebal_intervals&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;metrics&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;run_backtest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;regime_model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;v53&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rebal_days&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;results&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;sharpe&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;metrics&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sharpe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;mdd&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;metrics&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;max_drawdown&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;total_return&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;metrics&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;total_return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The findings were nuanced. Daily rebalancing had the worst Sharpe (0.71) due to transaction cost drag and whipsaw during regime transitions. Weekly (7-day) was decent (Sharpe 1.89) but missed the sweet spot. 10-day came out ahead (Sharpe 2.43), and 14-day was surprisingly close (Sharpe 2.31) with slightly better MDD.&lt;/p&gt;
+&lt;p&gt;More interesting was the agent&amp;rsquo;s attempt at &lt;em&gt;adaptive&lt;/em&gt; rebalancing — shortening the interval when volatility spikes and lengthening it during calm markets. In theory, this should capture regime transitions faster while avoiding unnecessary trades during stable periods. In practice, the improvement was marginal (Sharpe 2.47 versus 2.43) and failed the parameter sensitivity test: changing the volatility threshold by ±30% caused Sharpe to swing between 1.8 and 2.6. Too fragile to trust.&lt;/p&gt;
+&lt;h2 id=&#34;experiment-category-3-new-factors&#34;&gt;Experiment Category 3: New Factors&lt;/h2&gt;
+&lt;p&gt;This is where the R&amp;amp;D agent earned its keep. While I was busy with other things, it was systematically testing new macro and on-chain factors that might improve regime detection.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ETF flow data&lt;/strong&gt; — The agent pulled Bitcoin ETF inflow/outflow data (IBIT, FBTC, ARKB) and tested whether net ETF flows predicted regime transitions. The hypothesis: institutional money flowing into spot Bitcoin ETFs should lead price. The result: ETF flows had mild predictive power for 5-day returns (r² = 0.08) but added nothing to regime classification beyond existing factors. ETF flows are too correlated with price momentum, which the MA50 slope already captures.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Options market signals&lt;/strong&gt; — Put/call ratio, implied volatility skew (25-delta), and max pain levels. The put/call ratio showed promise as a contrarian indicator at extremes (&amp;gt;1.5 or &amp;lt;0.3), but the options market for Bitcoin only became liquid enough for reliable data after 2021. Five years of data isn&amp;rsquo;t enough for the bootstrap confidence interval test.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stablecoin supply changes&lt;/strong&gt; — USDT and USDC market cap changes as a liquidity proxy. This was actually interesting: a rapid expansion in stablecoin supply preceded bull regime transitions by 2-3 weeks in four out of five historical instances. But the sample size (five regime transitions) was too small for statistical significance, and the data is only available from 2019 onward.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Miner outflow&lt;/strong&gt; — The volume of BTC leaving known miner wallets. Classic on-chain metric, often cited by crypto analysts. The R&amp;amp;D agent found zero predictive power after controlling for price momentum. Miners sell when price is high; price being high is already captured by the regime model. Miner outflow is a lagging indicator dressed up as a leading one.&lt;/p&gt;
+&lt;p&gt;None of these factors cleared the adoption criteria for V5.4. But the stablecoin supply signal went into a &amp;ldquo;watch list&amp;rdquo; for future exploration once more data accumulates.&lt;/p&gt;
+&lt;h2 id=&#34;experiment-category-4-machine-learning-approaches&#34;&gt;Experiment Category 4: Machine Learning Approaches&lt;/h2&gt;
+&lt;p&gt;I had already tried random forests and gradient boosting during the initial development phase and gotten nowhere — around 52% accuracy with ~300 weekly samples, barely better than a coin flip. But the R&amp;amp;D agent was instructed to try again with different approaches.&lt;/p&gt;
+&lt;p&gt;It tested:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;LSTM networks&lt;/strong&gt; on daily price sequences (60-day lookback)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XGBoost with engineered features&lt;/strong&gt; (rolling statistics, cross-correlations, regime dummies)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transformer-based models&lt;/strong&gt; (attention mechanism on macro factor time series)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ensemble methods&lt;/strong&gt; combining the ML predictions with the existing regime model&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The LSTM achieved 58% directional accuracy on out-of-sample data, which sounds better than 52% but doesn&amp;rsquo;t translate to meaningful trading improvement when you account for the model&amp;rsquo;s tendency to flip predictions rapidly (high turnover). XGBoost with the engineered features reached 61% accuracy but only on in-sample data; out-of-sample dropped to 53%.&lt;/p&gt;
+&lt;p&gt;The transformer approach was the most creative thing the agent tried. It treated the six macro factors as a multivariate time series and used self-attention to learn cross-factor relationships over time. The results were actually competitive in-sample (Sharpe 2.1) but the model had 12,000 parameters trained on 450 weekly observations. The ratio was absurd. Classic overfitting.&lt;/p&gt;
+&lt;p&gt;The honest conclusion: for BTC regime detection with limited historical data, traditional statistical methods (the factor-based scoring system in V5.3) outperform ML approaches. Machine learning needs more data than crypto markets can provide. This might change in five years when we have 15+ years of ETF-era Bitcoin data. For now, simpler is better.&lt;/p&gt;
+&lt;h2 id=&#34;experiment-category-5-crash-defense-variations&#34;&gt;Experiment Category 5: Crash Defense Variations&lt;/h2&gt;
+&lt;p&gt;V5.3&amp;rsquo;s crash defense mechanism triggers when BTC drops 5% within 3 days, cutting allocation to 10% and then re-entering in two stages. The R&amp;amp;D agent explored alternatives:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Trailing stop approach&lt;/strong&gt; — Instead of a fixed 5% threshold, use a trailing stop that tightens as unrealized gains increase. The backtest showed this &lt;em&gt;reduced&lt;/em&gt; returns because it triggered exits during normal bull market pullbacks (5-8% drops that recovered within a week). V5.3&amp;rsquo;s 3-day window filters these out; a trailing stop doesn&amp;rsquo;t.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ATR-based position sizing&lt;/strong&gt; — Scale position size inversely to the Average True Range. When ATR is high (volatile market), reduce exposure. When ATR is low (calm market), increase exposure. This is a well-known technique from &lt;a href=&#34;https://www.man.com/maninstitute/systematic-trading-the-basics&#34;&gt;commodity trading advisors (CTAs)&lt;/a&gt;. The agent&amp;rsquo;s backtest showed a Sharpe of 2.38 — close to V5.3 but not better, and the parameter sensitivity was marginal.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Composite overlay&lt;/strong&gt; — Combine crash defense, macro urgency, and vol-targeting into a single risk score rather than applying them sequentially. This sounded smart but performed identically to V5.3 in backtests (the overlays rarely trigger simultaneously, so the order of application doesn&amp;rsquo;t matter).&lt;/p&gt;
+&lt;h2 id=&#34;the-600-pm-daily-report&#34;&gt;The 6:00 PM Daily Report&lt;/h2&gt;
+&lt;p&gt;At the end of each trading day, the R&amp;amp;D agent compiles everything it explored into a structured report sent to my Telegram. The format follows a principle I borrowed from Korean business communication: &lt;em&gt;두괄식&lt;/em&gt; — conclusion first, then evidence, then methodology, then next steps.&lt;/p&gt;
+&lt;p&gt;A typical daily report looks like this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;📊 R&amp;amp;D Daily Summary — March 13, 2026
+
+CONCLUSION: No V5.4 candidate found today.
+Best result: Regime-Conditional Fractional Kelly (Sharpe 0.85)
+— fails bootstrap CI and MDD criteria.
+
+EXPERIMENTS (3 completed):
+1. Kelly Leverage (6 variants) → all underperform V5.3
+2. Volatility term structure signal → marginal (Sharpe 2.41)
+3. Z-score regime replacement → worse (Sharpe 1.92)
+
+NEXT DIRECTIONS:
+- Cross-asset momentum (BTC vs ETH vs SOL regime correlation)
+- Funding rate divergence as contrarian signal
+- Yield curve slope as macro factor replacement for NFCI
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Most days, the conclusion is &amp;ldquo;no candidate found.&amp;rdquo; This sounds discouraging, but it&amp;rsquo;s actually the most valuable output the agent produces. It&amp;rsquo;s systematically eliminating the search space. Every failed experiment is one less thing to wonder about.&lt;/p&gt;
+&lt;h2 id=&#34;the-weekly-governance-cycle&#34;&gt;The Weekly Governance Cycle&lt;/h2&gt;
+&lt;p&gt;The R&amp;amp;D agent doesn&amp;rsquo;t operate in isolation. It feeds into a weekly governance system that I described briefly in earlier posts but will cover in full detail in &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/06-ai-board-of-directors/&#34;&gt;Part 6&lt;/a&gt;. The short version:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Friday 8:00 PM&lt;/strong&gt;: The agent compiles the week&amp;rsquo;s best experiments into a formal proposal&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sunday 6:00 PM&lt;/strong&gt;: A 9-member AI board of directors votes on whether to adopt the proposal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The board has three progressive members, three conservative members, and three moderate members. A proposal needs a simple majority (5/9) to pass. Each board member evaluates the proposal against the six adoption criteria independently.&lt;/p&gt;
+&lt;p&gt;Since V5.3 was adopted on March 1st, no subsequent proposal has passed the board. This is actually correct behavior — the bar is high (all six criteria must be met), and incremental improvements are hard to find once you&amp;rsquo;ve already optimized the obvious things. The board&amp;rsquo;s conservatism protects against overfit strategies that look good in backtests but would fail in production.&lt;/p&gt;
+&lt;h2 id=&#34;the-six-adoption-criteria&#34;&gt;The Six Adoption Criteria&lt;/h2&gt;
+&lt;p&gt;Any strategy the R&amp;amp;D agent proposes must clear all six hurdles before it even reaches the board:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Bootstrap Sharpe 95% CI lower bound &amp;gt; 0.5&lt;/strong&gt; — The strategy&amp;rsquo;s risk-adjusted return must be statistically significant. A strategy with Sharpe 3.0 but a confidence interval of [-0.2, 6.2] doesn&amp;rsquo;t pass.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Monte Carlo MDD 95th percentile &amp;lt; -40%&lt;/strong&gt; — Under simulated worst-case scenarios, the max drawdown must stay above -40%. This eliminates strategies that look good on average but blow up in tail scenarios.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Positive returns with and without 2017 data&lt;/strong&gt; — 2017 was an exceptional bull run. Any strategy that only works when 2017 is included is overfitting to that specific cycle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CAGR equal or greater than current model&lt;/strong&gt; — The new strategy must match or exceed V5.3&amp;rsquo;s 76.3% CAGR. We don&amp;rsquo;t trade Sharpe for lower returns.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Out-of-sample validation&lt;/strong&gt; — 70% training / 30% test split. The test period Sharpe must exceed 0.3. This is deliberately lenient because crypto regime transitions are rare events; demanding high OOS Sharpe with limited data would reject everything.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Parameter sensitivity&lt;/strong&gt; — Change any key parameter by ±30% and the Sharpe ratio must not drop more than 20%. This prevents strategies that only work at one specific set of parameters.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;These criteria were developed iteratively. The first version had only three criteria and let through strategies that later proved fragile. Version 4 (the current set) was implemented during what I called &amp;ldquo;Phase 1 focused R&amp;amp;D&amp;rdquo; in late February 2026, where I froze the production model and spent two weeks building the validation framework.&lt;/p&gt;
+&lt;h2 id=&#34;what-the-rd-agent-cant-do&#34;&gt;What the R&amp;amp;D Agent Can&amp;rsquo;t Do&lt;/h2&gt;
+&lt;p&gt;The agent has real limitations that I want to be honest about.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It can&amp;rsquo;t generate truly novel ideas.&lt;/strong&gt; The agent explores variations within the research directions I specify. It won&amp;rsquo;t independently decide to look at, say, satellite data of Chinese mining facilities or social media sentiment from Weibo. Its creativity is bounded by the task prompt.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It can&amp;rsquo;t evaluate qualitative factors.&lt;/strong&gt; Some of the most important trading decisions are qualitative — a new regulation, a major exchange hack, a change in Federal Reserve communication style. The agent can backtest quantitative signals, but it can&amp;rsquo;t incorporate soft information.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It can&amp;rsquo;t run live experiments.&lt;/strong&gt; Everything the agent does is backtesting on historical data. The gap between backtest and live performance is real and well-documented in &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551&#34;&gt;quantitative finance literature&lt;/a&gt;. Slippage, execution timing, and data delays all degrade performance.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It hallucinates data sources.&lt;/strong&gt; On two occasions, the agent wrote scripts that attempted to pull data from APIs that don&amp;rsquo;t exist or endpoints that were deprecated. The scripts failed gracefully (try/except blocks), but I had to add explicit instructions about which data sources are actually available.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It can&amp;rsquo;t backtest options strategies.&lt;/strong&gt; Bitcoin options data with sufficient granularity for reliable backtesting simply doesn&amp;rsquo;t exist before 2021, and even post-2021 data from Deribit requires a paid API. The agent can theorize about options strategies but can&amp;rsquo;t validate them empirically.&lt;/p&gt;
+&lt;h2 id=&#34;the-prompt-that-drives-everything&#34;&gt;The Prompt That Drives Everything&lt;/h2&gt;
+&lt;p&gt;The full R&amp;amp;D task prompt is about 150 lines long, but here&amp;rsquo;s the core structure that makes it effective:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gh&#34;&gt;# Research Agent Task
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Mission
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Find strategies that beat the production model (V5.3).
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;V5.3 benchmark: Sharpe 2.43, MDD -13.6%, CAGR 76.3%, Calmar 5.60
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Constraints
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Long only + spot only (leverage/short proven failures)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Minimum 7 years of backtest data (2017-2026)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Must pass all 6 adoption criteria for board submission
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Research Directions
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Detailed list of 20+ specific ideas to explore, organized by category]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Previous Failures (DO NOT REPEAT)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[List of approaches already tested and their results]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Output Format
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Save experiment script to research/daily_research/exp_{name}.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Save results to research/daily_research/YYYY-MM-DD.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &amp;ldquo;Previous Failures&amp;rdquo; section is critical. Without it, the agent would repeatedly test the same ideas. I update this section weekly with anything definitively disproven.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re building your own research agent, here are the prompting principles that made the biggest difference:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Give an explicit benchmark to beat.&lt;/strong&gt; Vague instructions like &amp;ldquo;find good strategies&amp;rdquo; produce vague results. Specific numbers create focus.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;List what not to do.&lt;/strong&gt; The negative space matters as much as the positive space. Every failed approach documented saves a future session from wasting time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Require structured output.&lt;/strong&gt; JSON results files and standardized Python scripts make it possible to compare experiments across days and weeks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Set a timeout.&lt;/strong&gt; 30 minutes per session forces the agent to scope experiments tightly. Without a timeout, sessions would expand to fill available time with diminishing returns.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;cost-and-efficiency&#34;&gt;Cost and Efficiency&lt;/h2&gt;
+&lt;p&gt;Running 22 AI sessions per day isn&amp;rsquo;t free. Each session uses Claude as the underlying model through OpenClaw. At current pricing, the R&amp;amp;D agent costs roughly $3-5 per day in API calls, or about $100/month.&lt;/p&gt;
+&lt;p&gt;Is that worth it? Consider the alternative: me doing the same research manually. At 22 experiments per day, assuming each takes 30 minutes of focused work, that&amp;rsquo;s 11 hours of research. Per day. No human can sustain that pace, and even if I could, my time is worth more than $5/hour.&lt;/p&gt;
+&lt;p&gt;The R&amp;amp;D agent isn&amp;rsquo;t replacing a research team. It&amp;rsquo;s replacing the boring, systematic part of research — the parameter sweeps, the factor testing, the validation checks — and freeing me to think about the interesting questions: what new data sources exist? What structural changes in the market might invalidate the model? What am I not measuring?&lt;/p&gt;
+&lt;h2 id=&#34;what-happens-when-the-agent-finds-something-good&#34;&gt;What Happens When the Agent Finds Something Good&lt;/h2&gt;
+&lt;p&gt;It hasn&amp;rsquo;t happened yet for V5.4. But it happened for V5.3.&lt;/p&gt;
+&lt;p&gt;The crash defense mechanism that makes V5.3 special — the 5% / 3-day rule with two-stage re-entry — was discovered during automated R&amp;amp;D sessions in late February. The agent tested asymmetric exit/entry speeds (fast exit, slow re-entry) and found that combining this with a macro urgency overlay and bear volatility targeting produced a dramatic improvement over V5.2.&lt;/p&gt;
+&lt;p&gt;That finding went through the Friday proposal process, was evaluated by the 9-member AI board, and was approved 8-1 on March 1st, 2026. The lone dissenting vote came from a conservative board member who wanted three months of out-of-sample live data before deployment. (A reasonable objection that was overruled by the majority.)&lt;/p&gt;
+&lt;p&gt;The entire pipeline — from R&amp;amp;D discovery to board approval to production deployment — took 10 days. With a human-only process, that same cycle would have taken months. The speed advantage isn&amp;rsquo;t just about running experiments faster; it&amp;rsquo;s about the governance structure making decisions on a fixed schedule rather than waiting for someone to &amp;ldquo;feel ready.&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;building-your-own-rd-agent&#34;&gt;Building Your Own R&amp;amp;D Agent&lt;/h2&gt;
+&lt;p&gt;If you want to replicate this for your own trading system (or any other domain where systematic experimentation matters), here&amp;rsquo;s the minimal setup:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Define your benchmark clearly.&lt;/strong&gt; Pick 3-5 metrics that fully characterize &amp;ldquo;good&amp;rdquo; for your domain.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Write a task prompt&lt;/strong&gt; that includes the benchmark, research directions, and known failures. Store it as a file, not inline in the cron config, so it&amp;rsquo;s easy to update.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Set up a cron schedule&lt;/strong&gt; with appropriate frequency. For trading research, 30-minute intervals during market hours work well. For other domains, daily might be enough.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Create a structured output format.&lt;/strong&gt; JSON works well. Include timestamp, hypothesis, methodology, results, and verdict.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Build a review pipeline.&lt;/strong&gt; The R&amp;amp;D agent generates candidates; a separate process (human or AI board) evaluates them. Never let the research agent deploy its own findings directly to production.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Update the task prompt weekly.&lt;/strong&gt; Add new failures, remove solved problems, adjust research directions based on what you&amp;rsquo;re learning.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here&amp;rsquo;s a minimal OpenClaw cron setup:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# In your OpenClaw config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cron:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - name: &lt;span class=&#34;s2&#34;&gt;&amp;#34;R&amp;amp;D Agent&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    schedule: &lt;span class=&#34;s2&#34;&gt;&amp;#34;*/30 8-18 * * 1-5&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    sessionTarget: isolated
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    payload:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      kind: agentTurn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      message: &lt;span class=&#34;s2&#34;&gt;&amp;#34;[contents of your task prompt]&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      timeoutSeconds: &lt;span class=&#34;m&#34;&gt;1800&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;the-bigger-picture&#34;&gt;The Bigger Picture&lt;/h2&gt;
+&lt;p&gt;The R&amp;amp;D agent is the first piece of a larger system. In the next post, I&amp;rsquo;ll cover &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/06-ai-board-of-directors/&#34;&gt;the AI board of directors&lt;/a&gt; — the governance layer that decides whether the R&amp;amp;D agent&amp;rsquo;s discoveries get deployed to production. Together, the R&amp;amp;D agent and the board create something I hadn&amp;rsquo;t expected: an autonomous research-and-deployment pipeline that improves itself without constant human supervision.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s not perfect. The agent still can&amp;rsquo;t match a skilled quant researcher for creative insight. But for systematic, exhaustive, emotionally-detached exploration of the strategy space? It&amp;rsquo;s better than any human I know. Including me.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is Part 5 of the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/&#34;&gt;Building OWUW Beat&lt;/a&gt; series. Next up: &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/06-ai-board-of-directors/&#34;&gt;Part 6 — The AI Board of Directors&lt;/a&gt;, covering the 9-member governance system that votes on strategy changes every Sunday.&lt;/em&gt;&lt;/p&gt;
 </content:encoded>
     </item>
     <item>

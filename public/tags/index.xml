@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Sun, 15 Mar 2026 08:30:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 00:00:05 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Agent</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-agent/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-agent/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Autonomous Research</title>
+      <link>https://www.mypodcastlistening.com/tags/autonomous-research/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/autonomous-research/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>BTC Trading</title>
+      <link>https://www.mypodcastlistening.com/tags/btc-trading/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/btc-trading/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Openclaw</title>
+      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Quantitative Trading</title>
+      <link>https://www.mypodcastlistening.com/tags/quantitative-trading/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/quantitative-trading/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>R&amp;D Agent</title>
+      <link>https://www.mypodcastlistening.com/tags/rd-agent/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/rd-agent/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Strategy Optimization</title>
+      <link>https://www.mypodcastlistening.com/tags/strategy-optimization/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/strategy-optimization/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Agentic AI</title>
       <link>https://www.mypodcastlistening.com/tags/agentic-ai/</link>
@@ -19,7 +75,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Ai-Agents</title>
+      <title>AI Agents</title>
       <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
       <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
@@ -227,14 +283,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>OpenClaw</title>
-      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Technical-Setup</title>
       <link>https://www.mypodcastlistening.com/tags/technical-setup/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
@@ -299,7 +347,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>BlackJyong</title>
+      <title>Blackjyong</title>
       <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
       <pubDate>Thu, 12 Mar 2026 00:00:34 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
@@ -419,14 +467,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>BTC Trading</title>
-      <link>https://www.mypodcastlistening.com/tags/btc-trading/</link>
-      <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/btc-trading/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Data Pipeline</title>
       <link>https://www.mypodcastlistening.com/tags/data-pipeline/</link>
       <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
@@ -447,14 +487,6 @@
       <link>https://www.mypodcastlistening.com/tags/on-chain-data/</link>
       <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/on-chain-data/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Quantitative Trading</title>
-      <link>https://www.mypodcastlistening.com/tags/quantitative-trading/</link>
-      <pubDate>Wed, 11 Mar 2026 00:00:47 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/quantitative-trading/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
