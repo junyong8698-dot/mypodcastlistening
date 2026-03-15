@@ -14,7 +14,7 @@
 - [x] Part 2: Choosing the stack (published 2026-03-04)
 - [x] Part 3: First agent — regime detection (published 2026-03-09)
 - [x] Part 4: Data collection pipeline (published 2026-03-11)
-- [ ] Part 5: R&D agent
+- [x] Part 5: R&D agent (published 2026-03-16)
 - [ ] Part 6: AI board of directors
 - [ ] Part 7: Dashboard
 - [ ] Part 8: Rebalancing + Earn

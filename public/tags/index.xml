@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Mon, 16 Mar 2026 00:00:05 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 06:20:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agentic AI</title>
+      <link>https://www.mypodcastlistening.com/tags/agentic-ai/</link>
+      <pubDate>Mon, 16 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/agentic-ai/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Ai-Agents</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
+      <pubDate>Mon, 16 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Demand Response</title>
+      <link>https://www.mypodcastlistening.com/tags/demand-response/</link>
+      <pubDate>Mon, 16 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/demand-response/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Energy Grid</title>
+      <link>https://www.mypodcastlistening.com/tags/energy-grid/</link>
+      <pubDate>Mon, 16 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/energy-grid/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Predictive Maintenance</title>
+      <link>https://www.mypodcastlistening.com/tags/predictive-maintenance/</link>
+      <pubDate>Mon, 16 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/predictive-maintenance/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Smart Grid</title>
+      <link>https://www.mypodcastlistening.com/tags/smart-grid/</link>
+      <pubDate>Mon, 16 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/smart-grid/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Virtual Power Plants</title>
+      <link>https://www.mypodcastlistening.com/tags/virtual-power-plants/</link>
+      <pubDate>Mon, 16 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/virtual-power-plants/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>AI Agent</title>
       <link>https://www.mypodcastlistening.com/tags/ai-agent/</link>
@@ -63,22 +119,6 @@
       <link>https://www.mypodcastlistening.com/tags/strategy-optimization/</link>
       <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/strategy-optimization/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Agentic AI</title>
-      <link>https://www.mypodcastlistening.com/tags/agentic-ai/</link>
-      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/agentic-ai/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>AI Agents</title>
-      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
-      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -291,7 +331,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Telegram Bot</title>
+      <title>Telegram-Bot</title>
       <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
@@ -843,7 +883,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>LLM</title>
+      <title>Llm</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>
