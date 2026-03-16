@@ -24,7 +24,8 @@
 ### ② BlackJyong (10 parts)
 - [x] Part 1: From BTC to stocks (published 2026-03-10)
 - [x] Part 2: 21 Agents, One Portfolio — Tilted Index Architecture (published 2026-03-12)
-- [ ] Part 3-10: TBD
+- [x] Part 3: The AI Benefit Scoring Model (published 2026-03-17)
+- [ ] Part 4-10: TBD
 
 ### ③ AI Book (5 parts)
 - [x] Part 1: Why write a book with AI (published 2026-03-06)

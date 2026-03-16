@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Tue, 17 Mar 2026 00:01:34 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 06:20:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From BTC Bot to AI Stock Firm: Why I Built BlackJyong</title>
@@ -3475,6 +3475,186 @@ NEXT DIRECTIONS:
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;This is Part 5 of the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/&#34;&gt;Building OWUW Beat&lt;/a&gt; series. Next up: &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/06-ai-board-of-directors/&#34;&gt;Part 6 — The AI Board of Directors&lt;/a&gt;, covering the 9-member governance system that votes on strategy changes every Sunday.&lt;/em&gt;&lt;/p&gt;
 </content:encoded>
+    </item>
+    <item>
+      <title>AI Is Killing the SDR: 36% of B2B Companies Already Cut Teams</title>
+      <link>https://www.mypodcastlistening.com/posts/org-management/05-ai-killing-sdr-role/</link>
+      <pubDate>Tue, 17 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/org-management/05-ai-killing-sdr-role/</guid>
+      <description>&lt;p&gt;The math hit me when a RevOps lead shared her numbers on LinkedIn last month: her company&amp;rsquo;s AI SDR tool booked 41 meetings in 30 days at $1,200/month. Her human SDR team of three cost $22,000/month and booked 38. She didn&amp;rsquo;t fire anyone. She just stopped backfilling the rep who left in January.&lt;/p&gt;
+&lt;p&gt;That quiet math is playing out at thousands of companies right now. Not dramatic layoffs. Not angry Slack announcements. Just a slow, steady erosion of headcount through attrition, hiring freezes, and &amp;ldquo;restructuring.&amp;rdquo; The SDR role — long considered the entry point into tech sales careers — is being hollowed out from the inside.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;The math hit me when a RevOps lead shared her numbers on LinkedIn last month: her company&amp;rsquo;s AI SDR tool booked 41 meetings in 30 days at $1,200/month. Her human SDR team of three cost $22,000/month and booked 38. She didn&amp;rsquo;t fire anyone. She just stopped backfilling the rep who left in January.&lt;/p&gt;
+&lt;p&gt;That quiet math is playing out at thousands of companies right now. Not dramatic layoffs. Not angry Slack announcements. Just a slow, steady erosion of headcount through attrition, hiring freezes, and &amp;ldquo;restructuring.&amp;rdquo; The SDR role — long considered the entry point into tech sales careers — is being hollowed out from the inside.&lt;/p&gt;
+&lt;p&gt;And the data backs it up. &lt;a href=&#34;https://www.emcap.com/beyond-benchmarks&#34;&gt;Emergence Capital&amp;rsquo;s &amp;ldquo;Beyond Benchmarks&amp;rdquo; report&lt;/a&gt;, surveying 560+ venture-backed B2B software companies, found that &lt;strong&gt;36% of companies decreased their SDR/BDR headcount in 2025&lt;/strong&gt; — the highest percentage among all sales roles. Only 19% increased SDR headcount, the lowest growth rate of any sales function.&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t speculation anymore. It&amp;rsquo;s happening.&lt;/p&gt;
+&lt;h2 id=&#34;the-sdr-model-was-already-broken&#34;&gt;The SDR Model Was Already Broken&lt;/h2&gt;
+&lt;p&gt;Before blaming AI for everything, acknowledge the truth: the traditional SDR model was showing cracks long before ChatGPT existed.&lt;/p&gt;
+&lt;p&gt;The model worked like this. Hire 22-year-olds fresh out of college. Give them a list of 500 accounts. Tell them to send 100 emails a day, make 60 cold calls, and book 15 meetings a month. Pay them $55K base plus variable. Promote the top 20% to AE after 12-18 months. Burn through the rest.&lt;/p&gt;
+&lt;p&gt;The problems were structural:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Brutal economics.&lt;/strong&gt; The average fully-loaded cost of an SDR in a major metro runs $85,000-$110,000/year when you factor in base salary, benefits, tools (ZoomInfo, Outreach, Salesforce seats), management overhead, and office space. The &lt;a href=&#34;https://blog.bridgegroupinc.com/sdr-metrics&#34;&gt;Bridge Group&amp;rsquo;s annual SDR report&lt;/a&gt; consistently showed median ramp time of 3.2 months and average tenure of just 14 months. You&amp;rsquo;re spending $25K-$30K just getting someone productive, then losing them a year later.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Diminishing returns on volume.&lt;/strong&gt; Response rates to cold outbound have been declining for a decade. &lt;a href=&#34;https://www.gartner.com/en/sales/topics/sales-ai&#34;&gt;Gartner&amp;rsquo;s research&lt;/a&gt; shows that by 2025, 60% of B2B buyers preferred to complete their initial research without talking to a sales rep at all. Buyers got better at ignoring outreach. SDR teams responded by sending more emails, which trained buyers to ignore even harder. Classic death spiral.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The &amp;ldquo;spray and pray&amp;rdquo; ceiling.&lt;/strong&gt; When your SDR team&amp;rsquo;s primary metric is activity volume — emails sent, calls made, meetings booked — you optimize for quantity at the expense of quality. Marketing teams complained about lead waste. AEs complained about garbage meetings. CFOs looked at pipeline conversion rates and asked hard questions.&lt;/p&gt;
+&lt;p&gt;AI didn&amp;rsquo;t break the SDR model. It just made the broken model impossible to justify.&lt;/p&gt;
+&lt;h2 id=&#34;what-ai-sdr-tools-actually-do-now&#34;&gt;What AI SDR Tools Actually Do Now&lt;/h2&gt;
+&lt;p&gt;Forget the 2023-era &amp;ldquo;AI assistants&amp;rdquo; that just helped you write slightly better cold emails. The 2025-2026 generation of AI SDR platforms are fundamentally different. They&amp;rsquo;re autonomous agents that handle the full top-of-funnel workflow end to end.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s what the current landscape looks like, with real pricing:&lt;/p&gt;
+&lt;h3 id=&#34;tier-1-full-autonomous-ai-sdrs-18k-60kyear&#34;&gt;Tier 1: Full Autonomous AI SDRs ($18K-$60K/year)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://www.11x.ai/&#34;&gt;11x.ai&lt;/a&gt;&lt;/strong&gt; — Their &amp;ldquo;Alice&amp;rdquo; agent handles prospecting, research, email sequences, follow-ups, and meeting booking. Pricing runs $50,000-$60,000/year, which sounds expensive until you compare it to a fully-loaded human SDR at $90K+. Alice processes thousands of leads simultaneously, works 24/7, and never calls in sick. The catch: you still need humans for anything beyond initial meeting booking.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://www.artisan.co/&#34;&gt;Artisan&lt;/a&gt;&lt;/strong&gt; — &amp;ldquo;Ava&amp;rdquo; is positioned as &amp;ldquo;the AI SDR that stops you from having to hire humans.&amp;rdquo; Starting around $24,000/year, it combines a B2B contact database with AI-powered multichannel outreach (email + LinkedIn). Particularly strong for Series A-C companies that want capable AI outbound without the 11x price tag.&lt;/p&gt;
+&lt;h3 id=&#34;tier-2-mid-market-ai-sdr-platforms-5k-18kyear&#34;&gt;Tier 2: Mid-Market AI SDR Platforms ($5K-$18K/year)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://aisdr.com/&#34;&gt;AiSDR&lt;/a&gt;&lt;/strong&gt; — At $900/month ($10,800/year), this is probably the best value in the space right now. Focused specifically on outbound email automation with solid personalization. No frills, but the core email sequencing and response handling works.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://www.apollo.io/&#34;&gt;Apollo.io&lt;/a&gt;&lt;/strong&gt; — Already had the largest B2B contact database. Their AI SDR features now handle lead scoring, sequence creation, and automated follow-ups. Plans start much lower, making AI-augmented outbound accessible to almost anyone.&lt;/p&gt;
+&lt;h3 id=&#34;tier-3-ai-copilots-1k-5kyear&#34;&gt;Tier 3: AI Copilots ($1K-$5K/year)&lt;/h3&gt;
+&lt;p&gt;Tools like &lt;strong&gt;Lavender&lt;/strong&gt;, &lt;strong&gt;Regie.ai&lt;/strong&gt;, and &lt;strong&gt;Copy.ai&lt;/strong&gt; that augment human SDRs rather than replacing them. They help with email writing, research summaries, and prioritization. These are the &amp;ldquo;safe&amp;rdquo; option — they make your existing SDRs faster without eliminating headcount.&lt;/p&gt;
+&lt;p&gt;The pricing math is brutal for human SDRs. An AI SDR tool at $10K-$25K/year can handle the output of 3-5 human SDRs. Even at the premium end ($60K/year for 11x), you&amp;rsquo;re replacing $250K-$450K in human headcount. And the AI doesn&amp;rsquo;t need management, doesn&amp;rsquo;t need a career path, doesn&amp;rsquo;t generate HR issues, and scales instantly.&lt;/p&gt;
+&lt;h2 id=&#34;the-data-on-whats-actually-happening&#34;&gt;The Data on What&amp;rsquo;s Actually Happening&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s move beyond anecdotes to the hard numbers across the industry.&lt;/p&gt;
+&lt;h3 id=&#34;the-emergence-capital-data&#34;&gt;The Emergence Capital Data&lt;/h3&gt;
+&lt;p&gt;From their survey of 560+ B2B software companies, the SDR role saw the most dramatic shifts of any sales function in 2025:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Role&lt;/th&gt;
+          &lt;th&gt;Decreased&lt;/th&gt;
+          &lt;th&gt;Stayed Same&lt;/th&gt;
+          &lt;th&gt;Increased&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SDR/BDR&lt;/td&gt;
+          &lt;td&gt;36%&lt;/td&gt;
+          &lt;td&gt;44%&lt;/td&gt;
+          &lt;td&gt;19%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Account Executives&lt;/td&gt;
+          &lt;td&gt;25%&lt;/td&gt;
+          &lt;td&gt;47%&lt;/td&gt;
+          &lt;td&gt;28%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Sales Engineers&lt;/td&gt;
+          &lt;td&gt;14%&lt;/td&gt;
+          &lt;td&gt;69%&lt;/td&gt;
+          &lt;td&gt;17%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Professional Services&lt;/td&gt;
+          &lt;td&gt;17%&lt;/td&gt;
+          &lt;td&gt;49%&lt;/td&gt;
+          &lt;td&gt;34%&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;SDRs had the highest decrease rate and lowest increase rate. Sales Engineers had the lowest decrease rate and are increasingly the &amp;ldquo;growth&amp;rdquo; hire in technical sales orgs.&lt;/p&gt;
+&lt;h3 id=&#34;the-broader-workforce-data&#34;&gt;The Broader Workforce Data&lt;/h3&gt;
+&lt;p&gt;According to &lt;a href=&#34;https://www.challengergray.com/&#34;&gt;Challenger, Gray &amp;amp; Christmas&lt;/a&gt;, AI was cited in roughly 55,000 U.S. layoffs across all industries in 2025. No dataset isolates sales-specific numbers, but the pattern is consistent: displacement is concentrated at the transactional, process-driven end of the spectrum.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai&#34;&gt;McKinsey&amp;rsquo;s State of AI 2025 report&lt;/a&gt; found that 88% of companies report regular AI use in at least one business function. But only 23% have scaled an agentic AI system in even one function, and just 32% expect workforce decreases in the next year.&lt;/p&gt;
+&lt;p&gt;Translation: most companies are experimenting, not mass-replacing. The displacement is real but gradual. It looks like hiring freezes and attrition, not Friday afternoon layoff emails.&lt;/p&gt;
+&lt;h3 id=&#34;the-bureau-of-labor-statistics-view&#34;&gt;The Bureau of Labor Statistics View&lt;/h3&gt;
+&lt;p&gt;BLS projects overall employment in sales occupations will &lt;a href=&#34;https://www.bls.gov/ooh/sales/&#34;&gt;decline over 2024-2034&lt;/a&gt;. That projection predates the current AI wave and reflects e-commerce shifts, self-serve funnels, and changing buyer behavior on top of automation. But BLS still projects roughly 1.8 million sales openings per year due to replacement demand — people retiring, switching careers, or promoting up.&lt;/p&gt;
+&lt;p&gt;The World Economic Forum&amp;rsquo;s &lt;a href=&#34;https://www.weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/&#34;&gt;Future of Jobs 2025 report&lt;/a&gt; actually lists &amp;ldquo;salespersons&amp;rdquo; among roles expected to see the largest absolute growth. But read carefully — it means strategic, consultative, relationship-driven selling. Not email-blasting SDRs.&lt;/p&gt;
+&lt;h3 id=&#34;gartners-b2b-forecast&#34;&gt;Gartner&amp;rsquo;s B2B Forecast&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.digitalcommerce360.com/2025/11/28/gartner-ai-agents-15-trillion-in-b2b-purchases-by-2028/&#34;&gt;Gartner predicts&lt;/a&gt; that by 2028, AI agents will command $15 trillion in B2B purchases. They also forecast that by 2028, B2B organizations using AI agents for 80% of customer-facing processes will outperform competitors. Additionally, &lt;a href=&#34;https://www.gartner.com/en/sales/topics/sales-ai&#34;&gt;by 2027, 95% of seller research workflows will begin with AI&lt;/a&gt;, up from less than 20% in 2024.&lt;/p&gt;
+&lt;p&gt;The direction is clear. The timeline is the only debate.&lt;/p&gt;
+&lt;h2 id=&#34;whos-actually-getting-cut-and-whos-safe&#34;&gt;Who&amp;rsquo;s Actually Getting Cut (And Who&amp;rsquo;s Safe)&lt;/h2&gt;
+&lt;p&gt;Not all SDR roles are equally vulnerable. The displacement follows a clear pattern based on deal complexity and buyer behavior.&lt;/p&gt;
+&lt;h3 id=&#34;high-risk-transactional-outbound-sdrs&#34;&gt;High Risk: Transactional Outbound SDRs&lt;/h3&gt;
+&lt;p&gt;If your job is primarily sending templated cold emails to a purchased list, following up on marketing leads with a standard script, and booking discovery calls for AEs — you&amp;rsquo;re in the red zone. This is exactly what AI SDR tools do best. The combination of large language models for personalization, intent data for timing, and automated sequencing for follow-ups replicates 80-90% of this workflow at a fraction of the cost.&lt;/p&gt;
+&lt;p&gt;Companies selling products under $50K ACV with relatively simple buying processes are moving fastest here. The ROI math is too compelling to ignore.&lt;/p&gt;
+&lt;h3 id=&#34;medium-risk-inbound-sdrs-and-lead-qualifiers&#34;&gt;Medium Risk: Inbound SDRs and Lead Qualifiers&lt;/h3&gt;
+&lt;p&gt;Inbound SDR work — responding to demo requests, qualifying marketing leads, routing to the right AE — is partially automated but not fully replaced. AI chatbots handle initial qualification well, but complex routing decisions and judgment calls about lead quality still benefit from human involvement.&lt;/p&gt;
+&lt;p&gt;The likely evolution: teams shrink by 40-60%, with remaining SDRs handling exceptions and high-value inbound that AI flags for human review.&lt;/p&gt;
+&lt;h3 id=&#34;low-risk-enterprise-sdrs-working-named-accounts&#34;&gt;Low Risk: Enterprise SDRs Working Named Accounts&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re doing deep account research, building multi-threaded relationships within Fortune 500 accounts, navigating complex org charts, and coordinating with marketing on account-based campaigns — AI helps you work faster but doesn&amp;rsquo;t replace you. The strategic, relationship-driven work requires human judgment, political awareness, and authentic connection-building that AI can&amp;rsquo;t replicate.&lt;/p&gt;
+&lt;p&gt;These SDRs look more like junior AEs than traditional BDRs. They&amp;rsquo;re the ones who survive and thrive.&lt;/p&gt;
+&lt;h3 id=&#34;near-zero-risk-sales-engineers-and-solution-consultants&#34;&gt;Near Zero Risk: Sales Engineers and Solution Consultants&lt;/h3&gt;
+&lt;p&gt;The data from Emergence Capital confirms what we&amp;rsquo;d expect: Sales Engineers saw the lowest decrease rate (14%) of any sales role. Complex technical selling — running proof-of-concepts, architecting solutions, handling technical objections — requires deep domain expertise and real-time adaptability. AI augments this work significantly (faster research, automated demo environments) but doesn&amp;rsquo;t come close to replacing it.&lt;/p&gt;
+&lt;h2 id=&#34;the-real-org-chart-impact&#34;&gt;The Real Org Chart Impact&lt;/h2&gt;
+&lt;p&gt;The SDR downsizing isn&amp;rsquo;t just about individual roles. It&amp;rsquo;s restructuring entire sales organizations. Here&amp;rsquo;s how the typical B2B sales org is evolving:&lt;/p&gt;
+&lt;h3 id=&#34;the-old-model-2015-2023&#34;&gt;The Old Model (2015-2023)&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VP Sales
+├── Director, SDR Team (8-12 SDRs)
+│   ├── SDR Manager (1 per 6-8 SDRs)
+│   └── SDRs doing cold outbound + inbound qualification
+├── Director, AE Team (6-10 AEs)
+│   └── AEs running demos and closing
+├── Sales Engineer Team (2-4 SEs)
+│   └── SEs handling technical evaluation
+└── Sales Ops (2-3 people)
+    └── Reporting, forecasting, tool management
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;the-emerging-model-2025-2027&#34;&gt;The Emerging Model (2025-2027)&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VP Sales
+├── Revenue Operations + AI (3-4 people)
+│   ├── AI SDR platform management
+│   ├── Data quality and enrichment
+│   ├── Pipeline analytics
+│   └── Tool integration
+├── Strategic SDR Team (2-4 people)
+│   └── Named account outbound, high-value inbound exceptions
+├── AE Team (6-10 AEs, handling more of the funnel)
+│   └── AEs doing their own prospecting with AI tools
+├── Sales Engineer Team (3-6 SEs — growing)
+│   └── Technical selling, POCs, solution architecture
+└── Customer Success (growing)
+    └── Post-sale expansion, renewal
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The key shifts: SDR headcount drops 60-75%. Sales Engineering grows. Revenue Operations absorbs the AI tool management. AEs take on more of their own prospecting with AI assistance. Customer Success expands because keeping customers costs less than acquiring new ones.&lt;/p&gt;
+&lt;p&gt;The management layer also compresses. If you had an SDR Director managing two SDR Managers managing twelve SDRs, you now have one Revenue Operations lead managing an AI platform and three strategic SDRs. That&amp;rsquo;s three management layers becoming one.&lt;/p&gt;
+&lt;h2 id=&#34;what-smart-companies-are-doing-right-now&#34;&gt;What Smart Companies Are Doing Right Now&lt;/h2&gt;
+&lt;p&gt;The companies handling this transition well share several common patterns. They&amp;rsquo;re not just cutting SDR headcount — they&amp;rsquo;re thoughtfully rebuilding their go-to-market engine.&lt;/p&gt;
+&lt;h3 id=&#34;pattern-1-the-hybrid-model&#34;&gt;Pattern 1: The Hybrid Model&lt;/h3&gt;
+&lt;p&gt;Keep a small, elite SDR team (2-4 people) focused exclusively on strategic outbound to named accounts. Route everything else through AI SDR tools. The human SDRs become account-based specialists who do deep research, build relationships, and run creative outreach campaigns that AI handles poorly (sending handwritten notes, showing up at events, leveraging warm introductions).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Who&amp;rsquo;s doing this:&lt;/strong&gt; Mid-market SaaS companies ($10M-$100M ARR) selling deals in the $25K-$200K ACV range.&lt;/p&gt;
+&lt;h3 id=&#34;pattern-2-ae-led-prospecting-with-ai&#34;&gt;Pattern 2: AE-Led Prospecting with AI&lt;/h3&gt;
+&lt;p&gt;Eliminate the SDR function entirely. Give AEs AI prospecting tools and a reduced quota that accounts for self-sourcing. This works when your product has strong inbound demand and your AEs are experienced enough to manage their own pipeline.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Who&amp;rsquo;s doing this:&lt;/strong&gt; Product-led growth companies where most pipeline comes from free-to-paid conversion and inbound.&lt;/p&gt;
+&lt;h3 id=&#34;pattern-3-the-ai-first-stack&#34;&gt;Pattern 3: The AI-First Stack&lt;/h3&gt;
+&lt;p&gt;Deploy an AI SDR platform as the primary top-of-funnel engine from day one. No human SDRs at all. Route qualified meetings directly to AEs. Staff a small RevOps team to manage the AI platform, tune targeting, and maintain data quality.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Who&amp;rsquo;s doing this:&lt;/strong&gt; Seed to Series A startups that never built an SDR team in the first place. They&amp;rsquo;re starting with AI-native go-to-market.&lt;/p&gt;
+&lt;h3 id=&#34;pattern-4-sdr-to-se-conversion&#34;&gt;Pattern 4: SDR-to-SE Conversion&lt;/h3&gt;
+&lt;p&gt;Retrain your best SDRs as Sales Engineers or Solution Consultants. They already know your product, your buyers, and your sales process. Investing $10K-$20K in technical training for a proven performer costs far less than hiring an experienced SE at $150K+ base.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Who&amp;rsquo;s doing this:&lt;/strong&gt; Enterprise software companies that need more technical selling capacity and have SDRs with engineering backgrounds.&lt;/p&gt;
+&lt;h2 id=&#34;the-career-impact-what-sdrs-should-do-now&#34;&gt;The Career Impact: What SDRs Should Do Now&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re currently an SDR, or thinking about entering tech sales through the SDR path, the landscape has fundamentally changed. Here&amp;rsquo;s honest guidance:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If you&amp;rsquo;re currently an SDR:&lt;/strong&gt; Start moving up or moving sideways immediately. The 12-18 month SDR stint before promoting to AE is no longer a reliable career path if the SDR function is shrinking. Push hard for AE promotion. Alternatively, pivot toward Sales Engineering, Customer Success, or Revenue Operations — all functions that are growing.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If you&amp;rsquo;re considering an SDR role:&lt;/strong&gt; Evaluate whether the company is investing in AI SDR tools. If they are, your role may not exist in 18 months. Look for companies where the SDR role involves strategic account work, not high-volume outbound. Better yet, target Associate AE or Junior SE roles directly.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For any sales professional:&lt;/strong&gt; Develop skills that AI can&amp;rsquo;t replicate. Complex negotiation. Multi-stakeholder deal management. Executive relationship building. Industry expertise. Technical depth. These are the moats that keep you valuable as AI handles the transactional work.&lt;/p&gt;
+&lt;h2 id=&#34;the-uncomfortable-questions-nobodys-asking&#34;&gt;The Uncomfortable Questions Nobody&amp;rsquo;s Asking&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s what bothers me about this transition: the SDR role was the primary entry point for diverse talent entering tech sales. It didn&amp;rsquo;t require a CS degree. It didn&amp;rsquo;t require connections. It was a meritocratic on-ramp where hustle and persistence could launch a career.&lt;/p&gt;
+&lt;p&gt;If we eliminate 60-75% of SDR positions, where does the next generation of AEs come from? Where do people without traditional tech backgrounds break in? The companies cutting SDR teams are solving a short-term efficiency problem while potentially creating a long-term talent pipeline crisis.&lt;/p&gt;
+&lt;p&gt;Nobody&amp;rsquo;s talking about this at sales leadership conferences. They should be.&lt;/p&gt;
+&lt;p&gt;The other uncomfortable question: if AI can handle top-of-funnel sales activities, what happens when it gets good enough to handle mid-funnel qualification? Demo automation is already improving rapidly. AI-generated proposals are increasingly viable. The &amp;ldquo;safe&amp;rdquo; AE jobs of today might face the same pressure in 3-5 years.&lt;/p&gt;
+&lt;p&gt;The ceiling for AI capability in sales keeps rising. That should make everyone in the profession think harder about where genuine human value lies.&lt;/p&gt;
+&lt;h2 id=&#34;what-comes-next&#34;&gt;What Comes Next&lt;/h2&gt;
+&lt;p&gt;Based on the trajectory of AI SDR tools, the hiring data, and conversations with dozens of sales leaders, here&amp;rsquo;s my best estimate for the next 24 months:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;By end of 2026:&lt;/strong&gt; 50%+ of venture-backed B2B companies will have deployed some form of AI SDR tool. Median SDR team size at Series B+ companies drops from 8 to 4. AI SDR platforms consolidate — expect 2-3 dominant players.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;By end of 2027:&lt;/strong&gt; The standalone &amp;ldquo;SDR&amp;rdquo; title starts disappearing from job boards at smaller companies. Replaced by &amp;ldquo;Revenue Development,&amp;rdquo; &amp;ldquo;Strategic Outbound,&amp;rdquo; or folded into AE responsibilities. Enterprise companies maintain small SDR teams but rebrand them as account-based specialists.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The permanent shift:&lt;/strong&gt; Sales organizations become smaller, more technical, and higher-paid per head. The total sales compensation pool at a company might stay the same, but it&amp;rsquo;s distributed among fewer people doing more complex work. Entry-level sales roles still exist, but they look more like apprentice AEs than email-blasting SDRs.&lt;/p&gt;
+&lt;p&gt;The SDR isn&amp;rsquo;t dead yet. But the version of the role that existed from 2015-2024 — high-volume, activity-metric-driven, templated outbound — is on life support. What emerges in its place will be smaller, more strategic, and fundamentally different.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is Part 5 of the &lt;a href=&#34;https://www.mypodcastlistening.com/categories/org-management/&#34;&gt;AI Is Reshaping Your Org Chart&lt;/a&gt; series. Previously: &lt;a href=&#34;https://www.mypodcastlistening.com/posts/org-management/04-ai-killing-project-manager-role/&#34;&gt;AI Is Killing the Project Manager Role&lt;/a&gt;. Next up: AI Is Dissolving the Legal Department — how AI contract review, compliance automation, and litigation prediction are reshaping in-house legal teams.&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Execution Prompt:&lt;/strong&gt; Want to evaluate whether your SDR team should transition to an AI-hybrid model? Start here:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;You are a B2B sales operations consultant. I&amp;#39;m going to describe my current SDR team
+structure and I want you to:
+
+1. Calculate my fully-loaded cost per meeting booked (include salary, benefits,
+   tools, management overhead, office costs)
+2. Compare against current AI SDR platform pricing for my deal complexity level
+3. Recommend a transition plan: which activities to automate first, which to keep human,
+   and what the 6-month org chart should look like
+4. Identify the biggest risks in the transition and mitigation strategies
+
+My current setup:
+- [Number] SDRs, [base salary] base + [variable] variable
+- Average [number] meetings booked per SDR per month
+- Average deal size: $[ACV]
+- Sales cycle: [length]
+- Primary channels: [email/phone/LinkedIn/events]
+- Current tools: [list CRM, sequencing, data tools]
+- Target market: [industry/company size/geography]
+&lt;/code&gt;&lt;/pre&gt;</content:encoded>
     </item>
     <item>
       <title>Daily Trading Log — March 16, 2026: Monday Markets Open With BTC Surging Past $73K, Board Says &#39;Hold the Line,&#39; and Week 16 R&amp;D Kicks Off</title>
