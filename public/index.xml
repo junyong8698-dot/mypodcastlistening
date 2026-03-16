@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Mon, 16 Mar 2026 13:04:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 00:01:34 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From BTC Bot to AI Stock Firm: Why I Built BlackJyong</title>
@@ -1536,6 +1536,314 @@ Next Rebalance: March 8
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;This is Part 2 of a 10-part series on building an autonomous BTC trading system. &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/01-why-i-built-a-btc-trading-bot/&#34;&gt;Start from Part 1&lt;/a&gt; if you haven&amp;rsquo;t read it.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;If you&amp;rsquo;re evaluating agent frameworks for your own automation project, I&amp;rsquo;d love to hear what you chose and why. Every use case is different.&lt;/em&gt;&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>The AI Benefit Scoring Model: Rating Every Stock&#39;s AI Upside</title>
+      <link>https://www.mypodcastlistening.com/posts/series/blackjyong/03-ai-benefit-scoring-model/</link>
+      <pubDate>Tue, 17 Mar 2026 00:01:34 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/series/blackjyong/03-ai-benefit-scoring-model/</guid>
+      <description>&lt;h2 id=&#34;the-question-that-breaks-most-ai-investment-strategies&#34;&gt;The Question That Breaks Most AI Investment Strategies&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s the problem with &amp;ldquo;investing in AI&amp;rdquo;: everyone agrees AI will transform the economy, but nobody agrees on which companies actually benefit.&lt;/p&gt;
+&lt;p&gt;NVIDIA is obvious. Microsoft, sure. But what about a Korean steel company that supplies materials for data center construction? What about an insurance company that deploys AI underwriting and cuts costs by 30%? What about a semiconductor equipment maker three tiers deep in the supply chain?&lt;/p&gt;</description>
+      <content:encoded>&lt;h2 id=&#34;the-question-that-breaks-most-ai-investment-strategies&#34;&gt;The Question That Breaks Most AI Investment Strategies&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s the problem with &amp;ldquo;investing in AI&amp;rdquo;: everyone agrees AI will transform the economy, but nobody agrees on which companies actually benefit.&lt;/p&gt;
+&lt;p&gt;NVIDIA is obvious. Microsoft, sure. But what about a Korean steel company that supplies materials for data center construction? What about an insurance company that deploys AI underwriting and cuts costs by 30%? What about a semiconductor equipment maker three tiers deep in the supply chain?&lt;/p&gt;
+&lt;p&gt;When I built &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/blackjyong/02-21-agents-tilted-index/&#34;&gt;BlackJyong&amp;rsquo;s 21-agent architecture&lt;/a&gt;, the organizational structure was just the container. The actual intelligence lives in the scoring model — a system that takes any publicly traded company and outputs a number representing how much it benefits from the AI revolution.&lt;/p&gt;
+&lt;p&gt;This post covers the AI Benefit Scoring Model v2.1: the three-layer architecture, the dynamic weighting system that adapts to market conditions, the data quality framework that keeps the model honest, and the prompts I use to make AI agents produce institutional-grade research.&lt;/p&gt;
+&lt;h2 id=&#34;why-a-scoring-model-instead-of-just-picking-winners&#34;&gt;Why a Scoring Model Instead of Just Picking Winners&lt;/h2&gt;
+&lt;p&gt;The tilted-index strategy I described in &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/blackjyong/02-21-agents-tilted-index/&#34;&gt;Part 2&lt;/a&gt; needs a continuous, comparable score for every stock in the universe. You can&amp;rsquo;t tilt an index without knowing &lt;em&gt;how much&lt;/em&gt; to tilt each position.&lt;/p&gt;
+&lt;p&gt;Most retail AI investment strategies boil down to conviction calls: &amp;ldquo;I think NVIDIA will keep growing&amp;rdquo; or &amp;ldquo;I&amp;rsquo;m bullish on AI infrastructure.&amp;rdquo; That works until it doesn&amp;rsquo;t, because conviction-based investing has three fatal flaws:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It doesn&amp;rsquo;t scale.&lt;/strong&gt; You can hold strong opinions about 10 stocks. You can&amp;rsquo;t hold strong opinions about 200.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It can&amp;rsquo;t compare across sectors.&lt;/strong&gt; Is NVIDIA&amp;rsquo;s AI exposure better than Samsung&amp;rsquo;s? Is Palantir&amp;rsquo;s AI revenue more durable than ServiceNow&amp;rsquo;s? Without a common scoring framework, you&amp;rsquo;re comparing vibes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It can&amp;rsquo;t adapt.&lt;/strong&gt; Markets shift. A scoring model with dynamic weights adjusts automatically. Your gut feeling from six months ago doesn&amp;rsquo;t update itself.&lt;/p&gt;
+&lt;p&gt;The scoring model solves all three. Every stock gets a number between 0 and 100. That number determines how much overweight or underweight it gets relative to the benchmark. The number updates as new data arrives. No vibes required.&lt;/p&gt;
+&lt;h2 id=&#34;the-three-layer-architecture&#34;&gt;The Three-Layer Architecture&lt;/h2&gt;
+&lt;p&gt;The model uses three layers that capture different dimensions of AI benefit. Each layer answers a different question:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Layer 1 (Revenue Exposure):&lt;/strong&gt; How much money does this company make from AI right now?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Layer 2 (Operational Integration):&lt;/strong&gt; How much does AI improve this company&amp;rsquo;s operations and competitive position?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Layer 3 (Ecosystem Positioning):&lt;/strong&gt; Where does this company sit in the AI value chain, and how defensible is that position?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The final score combines all three:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Final_Score = AI_Benefit_Score (60%) + Quant_Score (40%)
+
+AI_Benefit_Score = L1 × W1 + L2 × W2 + L3 × W3
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The weights (W1, W2, W3) aren&amp;rsquo;t fixed — they shift based on market conditions. More on that later. But the base case splits them roughly equally: 30% / 30% / 40%, with a slight emphasis on Layer 3 because ecosystem positioning tends to be the most predictive of long-term returns.&lt;/p&gt;
+&lt;h3 id=&#34;layer-1-revenue-exposure-the-receipts&#34;&gt;Layer 1: Revenue Exposure (The Receipts)&lt;/h3&gt;
+&lt;p&gt;Layer 1 is the most concrete. It asks: what percentage of this company&amp;rsquo;s revenue comes directly from AI products, services, or infrastructure?&lt;/p&gt;
+&lt;p&gt;This sounds simple until you try to calculate it. Most companies don&amp;rsquo;t break out &amp;ldquo;AI revenue&amp;rdquo; in their earnings reports. NVIDIA does — their data center segment is essentially an AI revenue proxy. But for a company like Microsoft, AI revenue is spread across Azure AI services, Copilot subscriptions, GitHub Copilot, and dozens of smaller products. None of these get their own line item in the 10-K.&lt;/p&gt;
+&lt;p&gt;The model breaks AI revenue into four categories:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Direct AI Revenue:&lt;/strong&gt; Products or services where AI is the core value proposition. NVIDIA&amp;rsquo;s H100 GPUs, OpenAI&amp;rsquo;s API, Palantir&amp;rsquo;s AIP platform.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AI-Enabled Revenue:&lt;/strong&gt; Existing products enhanced by AI features. Adobe&amp;rsquo;s Creative Cloud with Firefly, Salesforce with Einstein, Microsoft 365 with Copilot. The product existed before AI, but AI meaningfully increases its value (and price).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AI-Adjacent Revenue:&lt;/strong&gt; Products that benefit from AI adoption without containing AI themselves. Data center REITs, semiconductor equipment makers, cloud infrastructure providers. They sell shovels during the gold rush.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AI-Defensive Revenue:&lt;/strong&gt; Revenue protected because AI makes the company&amp;rsquo;s moat deeper. A logistics company using AI for route optimization doesn&amp;rsquo;t sell AI — but AI makes it harder for competitors to match its efficiency.&lt;/p&gt;
+&lt;p&gt;Each category gets a different multiplier when calculating the Layer 1 score:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;category_weights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;direct_ai&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;      &lt;span class=&#34;c1&#34;&gt;# Full credit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;ai_enabled&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;# Partial — AI enhances but isn&amp;#39;t core&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;ai_adjacent&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;# Indirect benefit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;ai_defensive&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.3&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;# Protective moat only&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;L1_score&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;revenue_pct&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;category_weights&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cat&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;categories&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A company with 50% direct AI revenue scores 50. A company with 80% AI-adjacent revenue scores 40. This prevents the model from overweighting companies that sell tangential products to AI buyers while underweighting companies building the core technology.&lt;/p&gt;
+&lt;h3 id=&#34;getting-the-data-right&#34;&gt;Getting the Data Right&lt;/h3&gt;
+&lt;p&gt;Here&amp;rsquo;s where most scoring models fall apart: garbage in, garbage out. Companies don&amp;rsquo;t report AI revenue breakdowns, so every number involves some estimation. The research agents use a data quality grading system that forces transparency about uncertainty.&lt;/p&gt;
+&lt;p&gt;Every data point in a research report gets a letter grade:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Grade&lt;/th&gt;
+          &lt;th&gt;Source&lt;/th&gt;
+          &lt;th&gt;Reliability&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;A&lt;/td&gt;
+          &lt;td&gt;SEC filings, audited financials, government statistics&lt;/td&gt;
+          &lt;td&gt;Legal verification, manipulation-resistant&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;B&lt;/td&gt;
+          &lt;td&gt;IR materials, earnings calls, official management statements&lt;/td&gt;
+          &lt;td&gt;Company-official, periodically updated&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;C&lt;/td&gt;
+          &lt;td&gt;Reputable industry reports (Gartner, IDC), major news outlets&lt;/td&gt;
+          &lt;td&gt;Third-party research, some estimation&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;D&lt;/td&gt;
+          &lt;td&gt;Analyst estimates, industry insider commentary&lt;/td&gt;
+          &lt;td&gt;Expert opinion, uncertainty exists&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;F&lt;/td&gt;
+          &lt;td&gt;Rumors, unverified reports, speculation&lt;/td&gt;
+          &lt;td&gt;Cannot confirm, weak evidence&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The model enforces minimum quality thresholds:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Core investment thesis: Only Grade A or B data&lt;/li&gt;
+&lt;li&gt;AI scoring layers: At least 50% Grade C or above per layer&lt;/li&gt;
+&lt;li&gt;Financial analysis: 80%+ Grade A data&lt;/li&gt;
+&lt;li&gt;Risk analysis: Grade D allowed but must be labeled&lt;/li&gt;
+&lt;li&gt;Grade F data: Capped at 10% of total inputs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This isn&amp;rsquo;t academic perfectionism. During testing, I found that research agents without quality constraints would confidently cite &amp;ldquo;AI revenue growth of 40%&amp;rdquo; based on a single analyst&amp;rsquo;s blog post. The grading system forces them to admit when they&amp;rsquo;re guessing — and the scoring model discounts uncertain inputs accordingly.&lt;/p&gt;
+&lt;p&gt;The weighted reliability score for each research report:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Reliability = (A_share × 1.0) + (B_share × 0.9) + (C_share × 0.8) + 
+              (D_share × 0.7) + (F_share × 0.5)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Reports scoring below 0.75 get flagged for additional verification. Below 0.65, the report gets rejected and the agent has to start over with better sources.&lt;/p&gt;
+&lt;h3 id=&#34;layer-2-operational-integration-the-competitive-edge&#34;&gt;Layer 2: Operational Integration (The Competitive Edge)&lt;/h3&gt;
+&lt;p&gt;Layer 2 measures how deeply AI is embedded in a company&amp;rsquo;s operations and whether that creates sustainable competitive advantages.&lt;/p&gt;
+&lt;p&gt;Revenue exposure (Layer 1) captures the demand side — &amp;ldquo;people want to buy AI from this company.&amp;rdquo; Operational integration captures the supply side — &amp;ldquo;this company uses AI to operate better than competitors.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;The distinction matters because some of the biggest AI beneficiaries won&amp;rsquo;t sell AI products at all. A retail company that uses AI for demand forecasting, inventory optimization, and personalized marketing doesn&amp;rsquo;t appear in any &amp;ldquo;AI stocks&amp;rdquo; ETF. But if AI reduces its operating costs by 15% while competitors are still running on spreadsheets, the stock is absolutely an AI beneficiary.&lt;/p&gt;
+&lt;p&gt;Layer 2 evaluates five dimensions:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Process Automation Depth.&lt;/strong&gt; How many core business processes use AI, and how mission-critical are they? A company using AI for customer service chatbots scores lower than one using AI for core manufacturing quality control.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data Advantage.&lt;/strong&gt; Does the company have proprietary data that makes its AI better than competitors&amp;rsquo;? This is the real moat. Anyone can fine-tune a model. Not everyone has 20 years of proprietary transaction data to train it on.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AI Talent Density.&lt;/strong&gt; What percentage of the engineering team works on AI/ML? Are they publishing research? Winning Kaggle competitions? Getting poached by OpenAI? (That last one is actually a bullish signal — it means the talent is real.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Integration Maturity.&lt;/strong&gt; Is AI a pilot project or production infrastructure? Companies in the &amp;ldquo;we&amp;rsquo;re exploring AI&amp;rdquo; phase score near zero. Companies running AI in production at scale across multiple business units score high.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Competitive Gap.&lt;/strong&gt; How far ahead is this company versus peers in AI adoption? Being early matters, but only if it translates to measurable operational superiority.&lt;/p&gt;
+&lt;p&gt;Each dimension scores 0-20, and the sum gives the Layer 2 score (0-100).&lt;/p&gt;
+&lt;h3 id=&#34;layer-3-ecosystem-positioning-the-strategic-view&#34;&gt;Layer 3: Ecosystem Positioning (The Strategic View)&lt;/h3&gt;
+&lt;p&gt;Layer 3 is the most forward-looking and the hardest to quantify. It asks: where does this company sit in the AI ecosystem, and how does that position evolve over the next 2-5 years?&lt;/p&gt;
+&lt;p&gt;The AI ecosystem has a clear value chain, and position in that chain determines pricing power, margin structure, and vulnerability to disruption:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Infrastructure Layer (highest margins, highest capital requirements):&lt;/strong&gt; Chip designers (NVIDIA, AMD, custom silicon), foundries (TSMC, Samsung), cloud providers (AWS, Azure, GCP). These companies set prices because everything else depends on them.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Platform Layer (strong network effects, winner-take-most):&lt;/strong&gt; Model providers (OpenAI, Anthropic, Google DeepMind), development frameworks (Hugging Face, LangChain), deployment platforms. Network effects create natural monopolies.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Application Layer (largest market, most competition):&lt;/strong&gt; Vertical AI solutions, AI-enhanced SaaS, AI-native startups. Huge addressable market but lower barriers to entry.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Enabler Layer (indirect but essential):&lt;/strong&gt; Data providers, consulting firms, integration specialists, security companies. They don&amp;rsquo;t build AI but they&amp;rsquo;re necessary for AI adoption.&lt;/p&gt;
+&lt;p&gt;Layer 3 scoring evaluates:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Value chain position&lt;/strong&gt; — Higher in the stack generally means more pricing power&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Switching costs&lt;/strong&gt; — How painful is it for customers to leave?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Network effects&lt;/strong&gt; — Does usage by one customer make the product better for others?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data flywheel&lt;/strong&gt; — Does the product generate data that improves the AI, creating a compounding advantage?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Platform dependency risk&lt;/strong&gt; — How vulnerable is the company to platform changes? (Building on OpenAI&amp;rsquo;s API is a dependency risk. Building on open-source models is less so.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This layer was originally the most subjective part of the model. In v2.1, I added explicit calculation formulas for each sub-dimension to reduce analyst discretion. For example, switching cost scores are now derived from measurable factors like contract length, data migration complexity, and integration depth — not an analyst&amp;rsquo;s gut feeling about &amp;ldquo;stickiness.&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;dynamic-weighting-the-model-that-adapts&#34;&gt;Dynamic Weighting: The Model That Adapts&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s where the model gets interesting. The layer weights aren&amp;rsquo;t static. They shift based on market conditions, because what matters most about AI exposure changes depending on the economic environment.&lt;/p&gt;
+&lt;p&gt;During an AI bubble, when AI stocks are trading at 40x earnings on growth promises alone, you want to emphasize Layer 1 (actual revenue) and discount Layer 3 (future positioning). The market is already pricing in the future; you want to anchor on the present.&lt;/p&gt;
+&lt;p&gt;During a recession, current profitability matters most. Layer 2 (operational efficiency from AI) becomes the key differentiator because companies that use AI to cut costs survive downturns better.&lt;/p&gt;
+&lt;p&gt;During a recovery, the future opens up again. Layer 3 (ecosystem positioning) gets maximum weight because the market rewards companies positioned for the next growth cycle.&lt;/p&gt;
+&lt;p&gt;The regime detection system:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;detect_market_regime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;vix&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;get_current_vix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ai_sector_pe&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;get_ai_sector_valuation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;gdp_growth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;get_gdp_growth_rate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ai_sector_pe&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;AI_BUBBLE&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gdp_growth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;RECESSION&amp;#34;&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vix&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;HIGH_VOLATILITY&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gdp_growth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;RECOVERY&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;NORMAL&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the corresponding weight adjustments:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Regime&lt;/th&gt;
+          &lt;th&gt;L1 Weight&lt;/th&gt;
+          &lt;th&gt;L2 Weight&lt;/th&gt;
+          &lt;th&gt;L3 Weight&lt;/th&gt;
+          &lt;th&gt;Logic&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Normal&lt;/td&gt;
+          &lt;td&gt;0.30&lt;/td&gt;
+          &lt;td&gt;0.30&lt;/td&gt;
+          &lt;td&gt;0.40&lt;/td&gt;
+          &lt;td&gt;Balanced, slight future tilt&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;AI Bubble&lt;/td&gt;
+          &lt;td&gt;0.45&lt;/td&gt;
+          &lt;td&gt;0.30&lt;/td&gt;
+          &lt;td&gt;0.25&lt;/td&gt;
+          &lt;td&gt;Show me the revenue&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Recession&lt;/td&gt;
+          &lt;td&gt;0.35&lt;/td&gt;
+          &lt;td&gt;0.40&lt;/td&gt;
+          &lt;td&gt;0.25&lt;/td&gt;
+          &lt;td&gt;Efficiency saves you&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Recovery&lt;/td&gt;
+          &lt;td&gt;0.20&lt;/td&gt;
+          &lt;td&gt;0.25&lt;/td&gt;
+          &lt;td&gt;0.55&lt;/td&gt;
+          &lt;td&gt;Position for growth&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;High Volatility&lt;/td&gt;
+          &lt;td&gt;0.40&lt;/td&gt;
+          &lt;td&gt;0.35&lt;/td&gt;
+          &lt;td&gt;0.25&lt;/td&gt;
+          &lt;td&gt;Certainty premium&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;This means the same company can have meaningfully different scores depending on the macro environment. NVIDIA in a normal market might score 85. In an AI bubble regime, if its revenue justifies the valuation, it might score 88. If the revenue growth slows while the sector PE stays at 45, it might drop to 72 as the model demands more concrete evidence and discounts positioning.&lt;/p&gt;
+&lt;p&gt;The regime detection runs automatically. When VIX spikes above 30, the model doesn&amp;rsquo;t wait for a human to decide &amp;ldquo;we should be more conservative.&amp;rdquo; It just shifts the weights.&lt;/p&gt;
+&lt;h2 id=&#34;the-quant-score-the-other-40&#34;&gt;The Quant Score (The Other 40%)&lt;/h2&gt;
+&lt;p&gt;The AI Benefit Score only accounts for 60% of the final score. The remaining 40% comes from a quantitative overlay that captures factors the AI-specific layers miss:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Momentum (multi-horizon).&lt;/strong&gt; The momentum model uses three time horizons — 1-month, 3-month, and 12-month — with cross-asset signals and regime sensitivity. In backtesting over 10 years, this model produced a &lt;a href=&#34;https://github.com/openclaw/openclaw&#34;&gt;CAGR of 15.52% with a Sharpe ratio of 0.91&lt;/a&gt;. Those numbers aren&amp;rsquo;t cherry-picked; they include the 2020 crash, the 2022 bear market, and the 2024-2025 AI rally.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Valuation Sanity Check.&lt;/strong&gt; A company can score 95 on AI benefit and still be a terrible investment if it&amp;rsquo;s trading at 100x forward earnings. The quant score includes relative valuation metrics — P/E vs. sector, P/S vs. growth rate, EV/EBITDA vs. history — that penalize overvaluation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Quality Factors.&lt;/strong&gt; Return on equity, free cash flow margins, debt ratios. AI positioning means nothing if the company goes bankrupt before the AI thesis plays out.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Liquidity and Tradability.&lt;/strong&gt; Average daily volume, bid-ask spreads, market cap floors. The model doesn&amp;rsquo;t score companies we can&amp;rsquo;t actually trade efficiently.&lt;/p&gt;
+&lt;p&gt;The quant score ensures that the portfolio doesn&amp;rsquo;t become a &amp;ldquo;buy the most AI-exposed stocks at any price&amp;rdquo; strategy. It forces discipline: AI exposure gets you on the list, but valuation and quality determine how much capital you get.&lt;/p&gt;
+&lt;h2 id=&#34;the-research-pipeline-how-agents-actually-score-stocks&#34;&gt;The Research Pipeline: How Agents Actually Score Stocks&lt;/h2&gt;
+&lt;p&gt;The scoring model is a framework. The research agents are the ones who actually fill in the numbers. Here&amp;rsquo;s how that pipeline works in practice.&lt;/p&gt;
+&lt;p&gt;Each research session focuses on one or two stocks maximum. The research agents operate under strict rules derived from institutional research standards:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Depth over breadth.&lt;/strong&gt; Every stock analysis must be equivalent to at least two pages of A4 content. Surface-level analysis (&amp;ldquo;NVIDIA is the leader in AI chips&amp;rdquo;) gets rejected. The agent has to dig into specific product lines, customer concentration, supply chain dependencies, and competitive dynamics.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mandatory bear cases.&lt;/strong&gt; Every stock requires at least three bear case scenarios with probability estimates and impact assessments. Each AI scoring layer needs at least one counter-argument. A research report without bear cases is considered incomplete and can&amp;rsquo;t be submitted to the investment team.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Steel-manning.&lt;/strong&gt; Before presenting the bull case, the agent must construct the strongest possible bear case and then explain why the bull case survives it. This was added in v2.2 after I noticed agents producing uniformly bullish research — classic confirmation bias, but automated.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a simplified version of the research prompt that produces this output:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;## Research Task
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Analyze [STOCK] for AI benefit scoring.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gu&#34;&gt;### Requirements
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt; Layer 1: Calculate AI revenue exposure using the 4-category framework
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Direct AI, AI-Enabled, AI-Adjacent, AI-Defensive
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Source every number. Grade every data point (A-F).
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;2.&lt;/span&gt; Layer 2: Evaluate operational AI integration
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Process automation, data advantage, AI talent, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     integration maturity, competitive gap
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Score each dimension 0-20 with evidence
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;3.&lt;/span&gt; Layer 3: Map ecosystem positioning
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Value chain position, switching costs, network effects,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     data flywheel, platform dependency
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Use quantified formulas from v2.1 specification
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;4.&lt;/span&gt; Bear Cases (MANDATORY — report rejected without these)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Minimum 3 bear scenarios with probability + impact
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; 1 counter-argument per AI layer minimum
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Early warning signal for each bear case
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;5.&lt;/span&gt; Data Quality
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Grade every data point A through F
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Calculate report reliability score
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Flag if below 0.75 threshold
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When this prompt runs, the research agent typically produces 3,000-5,000 words of analysis per stock. The scoring dimensions get explicit numerical values with sourced justifications. The investment team agents then validate the scores against their own models before anything enters the portfolio.&lt;/p&gt;
+&lt;h2 id=&#34;early-warning-signals-knowing-when-scores-go-stale&#34;&gt;Early Warning Signals: Knowing When Scores Go Stale&lt;/h2&gt;
+&lt;p&gt;A scoring model is only useful if it stays current. The v2.1 model includes real-time accuracy tracking that monitors whether past scores predicted actual stock performance.&lt;/p&gt;
+&lt;p&gt;Every quarter, the system runs a retrospective:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Did high-scoring stocks outperform low-scoring stocks?&lt;/li&gt;
+&lt;li&gt;Which layer had the best predictive power?&lt;/li&gt;
+&lt;li&gt;Were there systematic biases (e.g., consistently overscoring semiconductor companies)?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If the model&amp;rsquo;s hit rate drops below threshold, the system flags it and the quant agent investigates. This feedback loop is what distinguishes a scoring model from a one-time ranking. Rankings go stale. Models with feedback loops improve.&lt;/p&gt;
+&lt;p&gt;The early warning signals for individual stocks are even more practical. Each bear case in a research report specifies a &amp;ldquo;tripwire&amp;rdquo; — a specific, measurable event that would invalidate the bull thesis. For example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;If NVIDIA&amp;rsquo;s data center revenue growth drops below 20% YoY for two consecutive quarters, the L1 score drops by 15 points.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;If this company&amp;rsquo;s AI talent retention falls below 80% (measured by LinkedIn data), the L2 score needs immediate review.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;If the primary customer represents more than 50% of AI revenue, the L3 platform dependency risk increases by 10 points.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These tripwires get monitored automatically. When one fires, the stock gets flagged for re-research before the next rebalancing cycle.&lt;/p&gt;
+&lt;h2 id=&#34;what-this-looks-like-in-practice&#34;&gt;What This Looks Like in Practice&lt;/h2&gt;
+&lt;p&gt;Let me walk through a concrete example. Say the system is evaluating a Korean semiconductor company — let&amp;rsquo;s call it Company K.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Layer 1 Analysis:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Direct AI revenue: 25% (HBM memory chips for AI training) — sourced from Q3 earnings call [Grade B]&lt;/li&gt;
+&lt;li&gt;AI-enabled revenue: 10% (conventional memory with AI-optimized specifications) — estimated from product catalog analysis [Grade C]&lt;/li&gt;
+&lt;li&gt;AI-adjacent revenue: 15% (legacy chips used in data center infrastructure) [Grade C]&lt;/li&gt;
+&lt;li&gt;L1 Score: (0.25 × 1.0 + 0.10 × 0.7 + 0.15 × 0.5) × 100 = 39.5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Layer 2 Analysis:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Process automation: 14/20 (AI-driven quality control in fabs, predictive maintenance)&lt;/li&gt;
+&lt;li&gt;Data advantage: 16/20 (decades of proprietary manufacturing yield data)&lt;/li&gt;
+&lt;li&gt;AI talent density: 12/20 (growing AI division but competing with hyperscalers for talent)&lt;/li&gt;
+&lt;li&gt;Integration maturity: 15/20 (AI in production for yield optimization, expanding to design)&lt;/li&gt;
+&lt;li&gt;Competitive gap: 13/20 (ahead of domestic peers, behind TSMC in AI-driven manufacturing)&lt;/li&gt;
+&lt;li&gt;L2 Score: 70&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Layer 3 Analysis:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Value chain position: High (memory is essential infrastructure)&lt;/li&gt;
+&lt;li&gt;Switching costs: Moderate (qualification cycles are long but not unique)&lt;/li&gt;
+&lt;li&gt;Network effects: Low (memory is a commodity with limited network effects)&lt;/li&gt;
+&lt;li&gt;Data flywheel: Moderate (manufacturing data improves yield, which improves margins)&lt;/li&gt;
+&lt;li&gt;Platform dependency: Low (sells to all major customers)&lt;/li&gt;
+&lt;li&gt;L3 Score: 62&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;In a normal regime (W1=0.30, W2=0.30, W3=0.40):&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;AI_Benefit_Score = 39.5 × 0.30 + 70 × 0.30 + 62 × 0.40 = 57.7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;In a recovery regime (W1=0.20, W2=0.25, W3=0.55):&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;AI_Benefit_Score = 39.5 × 0.20 + 70 × 0.25 + 62 × 0.55 = 59.5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The score shifts by less than 2 points between regimes because this company has relatively balanced exposure. A pure-play AI company with high L3 but low L1 would see much larger swings — exactly the kind of volatility the dynamic weighting is designed to manage.&lt;/p&gt;
+&lt;p&gt;Add the quant score (let&amp;rsquo;s say 28/40 based on strong momentum and reasonable valuation), and the final score is 85.7 in normal conditions. That&amp;rsquo;s well above the 65-point threshold for inclusion in the portfolio, meaning the investment team would consider an overweight position.&lt;/p&gt;
+&lt;h2 id=&#34;lessons-from-building-the-model&#34;&gt;Lessons from Building the Model&lt;/h2&gt;
+&lt;p&gt;Three things I learned that weren&amp;rsquo;t obvious when I started:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Layer separation prevents double-counting.&lt;/strong&gt; Early versions of the model had overlapping criteria between layers. A company&amp;rsquo;s &amp;ldquo;AI revenue&amp;rdquo; (L1) and &amp;ldquo;AI product competitiveness&amp;rdquo; (L3) were measuring similar things from different angles, inflating scores for pure-play AI companies. Strict layer definitions with non-overlapping criteria fixed this.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data quality enforcement is the most important feature.&lt;/strong&gt; Without the grading system, research agents produce confidently wrong analysis. They&amp;rsquo;ll cite a two-year-old market share estimate as current fact, or treat an analyst&amp;rsquo;s speculative price target as a data point. The quality grades don&amp;rsquo;t eliminate errors, but they make errors visible.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dynamic weighting prevents the model from being a one-trick pony.&lt;/strong&gt; A static model that always prioritized AI revenue would have underperformed during the 2025 correction when high-revenue AI stocks sold off hardest. The regime-adaptive weights would have shifted toward operational efficiency (L2) and penalized overvalued pure-play names.&lt;/p&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;p&gt;The scoring model is the brain of BlackJyong. But a brain without hands can&amp;rsquo;t do anything. In Part 4, I&amp;rsquo;ll cover the &lt;strong&gt;research agent pipeline in detail&lt;/strong&gt; — the actual prompt engineering, the workflow from initial screening to final score submission, and the quality control system that catches bad analysis before it reaches the investment team.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re building any kind of AI-driven analysis system, the research pipeline post will be the most directly actionable one in this series. The prompts are real, the failure modes are documented, and the iteration process is something you can replicate.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is Part 3 of the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-blackjyong/&#34;&gt;Building BlackJyong&lt;/a&gt; series. Previous: &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/blackjyong/02-21-agents-tilted-index/&#34;&gt;Part 2 — 21 Agents, One Portfolio&lt;/a&gt;. The system described here is a real project running on &lt;a href=&#34;https://github.com/openclaw/openclaw&#34;&gt;OpenClaw&lt;/a&gt; with automated research agents executing daily via Telegram.&lt;/em&gt;&lt;/p&gt;
 </content:encoded>
     </item>
     <item>

@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Mon, 16 Mar 2026 13:04:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 00:01:34 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Investing</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-investing/</link>
+      <pubDate>Tue, 17 Mar 2026 00:01:34 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-investing/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>AI Scoring Model</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-scoring-model/</link>
+      <pubDate>Tue, 17 Mar 2026 00:01:34 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-scoring-model/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>BlackJyong</title>
+      <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
+      <pubDate>Tue, 17 Mar 2026 00:01:34 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Factor Investing</title>
+      <link>https://www.mypodcastlistening.com/tags/factor-investing/</link>
+      <pubDate>Tue, 17 Mar 2026 00:01:34 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/factor-investing/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Quantitative Analysis</title>
+      <link>https://www.mypodcastlistening.com/tags/quantitative-analysis/</link>
+      <pubDate>Tue, 17 Mar 2026 00:01:34 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/quantitative-analysis/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Stock Scoring</title>
+      <link>https://www.mypodcastlistening.com/tags/stock-scoring/</link>
+      <pubDate>Tue, 17 Mar 2026 00:01:34 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/stock-scoring/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Tilted Index</title>
+      <link>https://www.mypodcastlistening.com/tags/tilted-index/</link>
+      <pubDate>Tue, 17 Mar 2026 00:01:34 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/tilted-index/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Bear-Market</title>
       <link>https://www.mypodcastlistening.com/tags/bear-market/</link>
@@ -147,7 +203,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
       <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
@@ -387,22 +443,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>AI Investing</title>
-      <link>https://www.mypodcastlistening.com/tags/ai-investing/</link>
-      <pubDate>Thu, 12 Mar 2026 00:00:34 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/ai-investing/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>BlackJyong</title>
-      <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
-      <pubDate>Thu, 12 Mar 2026 00:00:34 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Multi-Agent Systems</title>
       <link>https://www.mypodcastlistening.com/tags/multi-agent-systems/</link>
       <pubDate>Thu, 12 Mar 2026 00:00:34 +0900</pubDate>
@@ -415,22 +455,6 @@
       <link>https://www.mypodcastlistening.com/tags/portfolio-architecture/</link>
       <pubDate>Thu, 12 Mar 2026 00:00:34 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/portfolio-architecture/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Stock Scoring</title>
-      <link>https://www.mypodcastlistening.com/tags/stock-scoring/</link>
-      <pubDate>Thu, 12 Mar 2026 00:00:34 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/stock-scoring/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Tilted Index</title>
-      <link>https://www.mypodcastlistening.com/tags/tilted-index/</link>
-      <pubDate>Thu, 12 Mar 2026 00:00:34 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/tilted-index/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -891,7 +915,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Llm</title>
+      <title>LLM</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>

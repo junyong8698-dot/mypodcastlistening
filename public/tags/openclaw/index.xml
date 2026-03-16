@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>OpenClaw on Multi-Agent Future</title>
+    <title>Openclaw on Multi-Agent Future</title>
     <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
     <description>Real stories of building AI multi-agent systems — from automated trading bots to AI-managed organizations. No hype, just code and lessons.</description>
     <generator>Hugo -- gohugo.io</generator>
