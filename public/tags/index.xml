@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Tue, 17 Mar 2026 13:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2026 06:20:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://www.mypodcastlistening.com/tags/ai/</link>
+      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Automation</title>
+      <link>https://www.mypodcastlistening.com/tags/automation/</link>
+      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/automation/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Corporate Training</title>
+      <link>https://www.mypodcastlistening.com/tags/corporate-training/</link>
+      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/corporate-training/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Instructional Design</title>
+      <link>https://www.mypodcastlistening.com/tags/instructional-design/</link>
+      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/instructional-design/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>L&amp;D</title>
+      <link>https://www.mypodcastlistening.com/tags/ld/</link>
+      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ld/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Organizational Change</title>
+      <link>https://www.mypodcastlistening.com/tags/organizational-change/</link>
+      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/organizational-change/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Workforce Development</title>
+      <link>https://www.mypodcastlistening.com/tags/workforce-development/</link>
+      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/workforce-development/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Btc</title>
       <link>https://www.mypodcastlistening.com/tags/btc/</link>
@@ -131,7 +187,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Blackjyong</title>
+      <title>BlackJyong</title>
       <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
       <pubDate>Tue, 17 Mar 2026 00:01:34 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
@@ -475,7 +531,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Telegram Bot</title>
+      <title>Telegram-Bot</title>
       <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
@@ -959,14 +1015,6 @@
       <link>https://www.mypodcastlistening.com/tags/ai-writing/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-writing/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Automation</title>
-      <link>https://www.mypodcastlistening.com/tags/automation/</link>
-      <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/automation/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
