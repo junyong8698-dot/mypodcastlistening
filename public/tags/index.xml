@@ -8,8 +8,56 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Sat, 21 Mar 2026 12:55:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2026 01:00:21 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Agents</title>
+      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
+      <pubDate>Sun, 22 Mar 2026 01:00:21 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Funding</title>
+      <link>https://www.mypodcastlistening.com/tags/funding/</link>
+      <pubDate>Sun, 22 Mar 2026 01:00:21 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/funding/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Multi-Agent</title>
+      <link>https://www.mypodcastlistening.com/tags/multi-agent/</link>
+      <pubDate>Sun, 22 Mar 2026 01:00:21 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/multi-agent/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>NVIDIA</title>
+      <link>https://www.mypodcastlistening.com/tags/nvidia/</link>
+      <pubDate>Sun, 22 Mar 2026 01:00:21 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/nvidia/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>OpenClaw</title>
+      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
+      <pubDate>Sun, 22 Mar 2026 01:00:21 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Weekly Roundup</title>
+      <link>https://www.mypodcastlistening.com/tags/weekly-roundup/</link>
+      <pubDate>Sun, 22 Mar 2026 01:00:21 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/weekly-roundup/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Blackjyong</title>
       <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
@@ -63,14 +111,6 @@
       <link>https://www.mypodcastlistening.com/tags/ai-cfo/</link>
       <pubDate>Sat, 21 Mar 2026 06:20:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-cfo/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Ai-Agents</title>
-      <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
-      <pubDate>Sat, 21 Mar 2026 06:20:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -395,14 +435,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Openclaw</title>
-      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
-      <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Quantitative Trading</title>
       <link>https://www.mypodcastlistening.com/tags/quantitative-trading/</link>
       <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
@@ -423,30 +455,6 @@
       <link>https://www.mypodcastlistening.com/tags/strategy-optimization/</link>
       <pubDate>Mon, 16 Mar 2026 00:00:05 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/strategy-optimization/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Funding</title>
-      <link>https://www.mypodcastlistening.com/tags/funding/</link>
-      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/funding/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Multi-Agent</title>
-      <link>https://www.mypodcastlistening.com/tags/multi-agent/</link>
-      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/multi-agent/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Weekly Roundup</title>
-      <link>https://www.mypodcastlistening.com/tags/weekly-roundup/</link>
-      <pubDate>Sun, 15 Mar 2026 08:30:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/weekly-roundup/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -587,7 +595,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Telegram-Bot</title>
+      <title>Telegram Bot</title>
       <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
@@ -1075,7 +1083,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Llm</title>
+      <title>LLM</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>
