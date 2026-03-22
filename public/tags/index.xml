@@ -8,8 +8,56 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Sun, 22 Mar 2026 06:20:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2026 13:00:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blackjyong</title>
+      <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
+      <pubDate>Sun, 22 Mar 2026 13:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Btc</title>
+      <link>https://www.mypodcastlistening.com/tags/btc/</link>
+      <pubDate>Sun, 22 Mar 2026 13:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/btc/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Daily-Log</title>
+      <link>https://www.mypodcastlistening.com/tags/daily-log/</link>
+      <pubDate>Sun, 22 Mar 2026 13:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/daily-log/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Owuw-Beat</title>
+      <link>https://www.mypodcastlistening.com/tags/owuw-beat/</link>
+      <pubDate>Sun, 22 Mar 2026 13:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/owuw-beat/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Trading</title>
+      <link>https://www.mypodcastlistening.com/tags/trading/</link>
+      <pubDate>Sun, 22 Mar 2026 13:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/trading/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Weekend</title>
+      <link>https://www.mypodcastlistening.com/tags/weekend/</link>
+      <pubDate>Sun, 22 Mar 2026 13:00:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/weekend/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Agentic AI</title>
       <link>https://www.mypodcastlistening.com/tags/agentic-ai/</link>
@@ -103,54 +151,6 @@
       <link>https://www.mypodcastlistening.com/tags/weekly-roundup/</link>
       <pubDate>Sun, 22 Mar 2026 01:00:21 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/weekly-roundup/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>BlackJyong</title>
-      <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
-      <pubDate>Sat, 21 Mar 2026 12:55:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Btc</title>
-      <link>https://www.mypodcastlistening.com/tags/btc/</link>
-      <pubDate>Sat, 21 Mar 2026 12:55:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/btc/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Daily-Log</title>
-      <link>https://www.mypodcastlistening.com/tags/daily-log/</link>
-      <pubDate>Sat, 21 Mar 2026 12:55:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/daily-log/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Owuw-Beat</title>
-      <link>https://www.mypodcastlistening.com/tags/owuw-beat/</link>
-      <pubDate>Sat, 21 Mar 2026 12:55:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/owuw-beat/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Trading</title>
-      <link>https://www.mypodcastlistening.com/tags/trading/</link>
-      <pubDate>Sat, 21 Mar 2026 12:55:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/trading/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Weekend</title>
-      <link>https://www.mypodcastlistening.com/tags/weekend/</link>
-      <pubDate>Sat, 21 Mar 2026 12:55:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/weekend/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -635,7 +635,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Telegram Bot</title>
+      <title>Telegram-Bot</title>
       <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
