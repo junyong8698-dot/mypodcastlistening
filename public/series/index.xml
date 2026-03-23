@@ -8,8 +8,16 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Mon, 23 Mar 2026 06:20:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2026 06:20:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Is Killing Your Org Chart</title>
+      <link>https://www.mypodcastlistening.com/series/ai-is-killing-your-org-chart/</link>
+      <pubDate>Tue, 24 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/series/ai-is-killing-your-org-chart/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Industry Deep Dives</title>
       <link>https://www.mypodcastlistening.com/series/industry-deep-dives/</link>
@@ -31,14 +39,6 @@
       <link>https://www.mypodcastlistening.com/series/startup-ideas/</link>
       <pubDate>Sat, 21 Mar 2026 06:20:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/series/startup-ideas/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>AI Is Killing Your Org Chart</title>
-      <link>https://www.mypodcastlistening.com/series/ai-is-killing-your-org-chart/</link>
-      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/series/ai-is-killing-your-org-chart/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>

@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Mon, 23 Mar 2026 12:59:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2026 06:20:00 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://www.mypodcastlistening.com/tags/ai/</link>
+      <pubDate>Tue, 24 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/ai/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Contract Review</title>
+      <link>https://www.mypodcastlistening.com/tags/contract-review/</link>
+      <pubDate>Tue, 24 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/contract-review/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Corporate Counsel</title>
+      <link>https://www.mypodcastlistening.com/tags/corporate-counsel/</link>
+      <pubDate>Tue, 24 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/corporate-counsel/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>In-House Legal</title>
+      <link>https://www.mypodcastlistening.com/tags/in-house-legal/</link>
+      <pubDate>Tue, 24 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/in-house-legal/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Legal Automation</title>
+      <link>https://www.mypodcastlistening.com/tags/legal-automation/</link>
+      <pubDate>Tue, 24 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/legal-automation/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Legal Department</title>
+      <link>https://www.mypodcastlistening.com/tags/legal-department/</link>
+      <pubDate>Tue, 24 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/legal-department/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Organizational Change</title>
+      <link>https://www.mypodcastlistening.com/tags/organizational-change/</link>
+      <pubDate>Tue, 24 Mar 2026 06:20:00 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/organizational-change/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Bear-Regime</title>
       <link>https://www.mypodcastlistening.com/tags/bear-regime/</link>
@@ -19,7 +75,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>BlackJyong</title>
+      <title>Blackjyong</title>
       <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
       <pubDate>Mon, 23 Mar 2026 12:59:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
@@ -75,7 +131,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Ai-Agents</title>
+      <title>AI Agents</title>
       <link>https://www.mypodcastlistening.com/tags/ai-agents/</link>
       <pubDate>Mon, 23 Mar 2026 06:20:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ai-agents/</guid>
@@ -307,14 +363,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>AI</title>
-      <link>https://www.mypodcastlistening.com/tags/ai/</link>
-      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/ai/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Automation</title>
       <link>https://www.mypodcastlistening.com/tags/automation/</link>
       <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
@@ -343,14 +391,6 @@
       <link>https://www.mypodcastlistening.com/tags/ld/</link>
       <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/ld/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Organizational Change</title>
-      <link>https://www.mypodcastlistening.com/tags/organizational-change/</link>
-      <pubDate>Fri, 20 Mar 2026 06:20:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/organizational-change/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -723,7 +763,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Telegram-Bot</title>
+      <title>Telegram Bot</title>
       <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
@@ -1203,7 +1243,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Llm</title>
+      <title>LLM</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>
