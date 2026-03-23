@@ -44,6 +44,7 @@
 - [x] 06: AI Agents in Precision Agriculture (published 2026-03-15)
 - [x] 07: AI Agents in Energy Grid Management (published 2026-03-16)
 - [x] 08: AI Agents in Construction (published 2026-03-22)
+- [x] 09: AI Agents in Real Estate (published 2026-03-23)
 
 ### ⑥ Org Management
 - [x] 01: AI Flattening the Org Chart — Middle Management (published 2026-03-03)
