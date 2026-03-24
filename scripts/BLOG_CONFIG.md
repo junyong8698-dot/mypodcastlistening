@@ -16,7 +16,7 @@
 - [x] Part 4: Data collection pipeline (published 2026-03-11)
 - [x] Part 5: R&D agent (published 2026-03-16)
 - [x] Part 6: AI board of directors (published 2026-03-23)
-- [ ] Part 7: Dashboard
+- [x] Part 7: Dashboard (published 2026-03-25)
 - [ ] Part 8: Rebalancing + Earn
 - [ ] Part 9: Failures and bugs
 - [ ] Part 10: 60-day results
