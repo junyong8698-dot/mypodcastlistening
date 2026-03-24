@@ -8,8 +8,64 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Tue, 24 Mar 2026 13:00:44 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 25 Mar 2026 00:00:05 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BTC Trading</title>
+      <link>https://www.mypodcastlistening.com/tags/btc-trading/</link>
+      <pubDate>Wed, 25 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/btc-trading/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Data Visualization</title>
+      <link>https://www.mypodcastlistening.com/tags/data-visualization/</link>
+      <pubDate>Wed, 25 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/data-visualization/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Electron</title>
+      <link>https://www.mypodcastlistening.com/tags/electron/</link>
+      <pubDate>Wed, 25 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/electron/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Flask API</title>
+      <link>https://www.mypodcastlistening.com/tags/flask-api/</link>
+      <pubDate>Wed, 25 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/flask-api/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Openclaw</title>
+      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
+      <pubDate>Wed, 25 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>React</title>
+      <link>https://www.mypodcastlistening.com/tags/react/</link>
+      <pubDate>Wed, 25 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/react/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Trading Dashboard</title>
+      <link>https://www.mypodcastlistening.com/tags/trading-dashboard/</link>
+      <pubDate>Wed, 25 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/trading-dashboard/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Bitcoin</title>
       <link>https://www.mypodcastlistening.com/tags/bitcoin/</link>
@@ -115,7 +171,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Blackjyong</title>
+      <title>BlackJyong</title>
       <link>https://www.mypodcastlistening.com/tags/blackjyong/</link>
       <pubDate>Mon, 23 Mar 2026 12:59:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/blackjyong/</guid>
@@ -227,26 +283,10 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>BTC Trading</title>
-      <link>https://www.mypodcastlistening.com/tags/btc-trading/</link>
-      <pubDate>Mon, 23 Mar 2026 00:00:05 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/btc-trading/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Decision Making</title>
       <link>https://www.mypodcastlistening.com/tags/decision-making/</link>
       <pubDate>Mon, 23 Mar 2026 00:00:05 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/decision-making/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Openclaw</title>
-      <link>https://www.mypodcastlistening.com/tags/openclaw/</link>
-      <pubDate>Mon, 23 Mar 2026 00:00:05 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/openclaw/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -779,7 +819,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Telegram-Bot</title>
+      <title>Telegram Bot</title>
       <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
@@ -1243,7 +1283,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>LLM</title>
+      <title>Llm</title>
       <link>https://www.mypodcastlistening.com/tags/llm/</link>
       <pubDate>Fri, 06 Mar 2026 09:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/llm/</guid>

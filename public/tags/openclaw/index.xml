@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Mon, 23 Mar 2026 00:00:05 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 25 Mar 2026 00:00:05 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/openclaw/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From BTC Bot to AI Stock Firm: Why I Built BlackJyong</title>
@@ -1622,6 +1622,365 @@ NEXT DIRECTIONS:
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;In the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/&#34;&gt;next post&lt;/a&gt;, I&amp;rsquo;ll cover the dashboard — how I built a real-time monitoring interface that connects all of these components (regime detection, R&amp;amp;D, board governance, live performance tracking) into a single view. Including the Electron desktop app, the Flask backend with 36 API endpoints, and the resource deadlock bug that deleted the entire application three times.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is Part 6 of the &lt;a href=&#34;https://www.mypodcastlistening.com/series/building-owuw-beat/&#34;&gt;Building OWUW Beat&lt;/a&gt; series.&lt;/em&gt;&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>Building a Real-Time Trading Dashboard with Flask, React, and Electron</title>
+      <link>https://www.mypodcastlistening.com/posts/series/owuw-beat/07-building-the-dashboard/</link>
+      <pubDate>Wed, 25 Mar 2026 00:00:05 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/posts/series/owuw-beat/07-building-the-dashboard/</guid>
+      <description>&lt;h2 id=&#34;why-a-dashboard-matters-more-than-you-think&#34;&gt;Why a Dashboard Matters More Than You Think&lt;/h2&gt;
+&lt;p&gt;In the &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/owuw-beat/06-ai-board-of-directors/&#34;&gt;previous post&lt;/a&gt;, I described the governance system — a 9-member AI board that debates and votes on model changes every Sunday. By this point, OWUW Beat had a working regime detection model, an R&amp;amp;D agent generating experiments, and a governance layer deciding which changes ship. The system was functional.&lt;/p&gt;
+&lt;p&gt;But I couldn&amp;rsquo;t &lt;em&gt;see&lt;/em&gt; it.&lt;/p&gt;
+&lt;p&gt;Every time I wanted to check the current regime, I&amp;rsquo;d ask the Telegram bot. Want to know my portfolio allocation? Telegram. Crash defense status? Telegram. Macro signal? Telegram. Each question required a separate message, a separate response, a separate mental context switch.&lt;/p&gt;</description>
+      <content:encoded>&lt;h2 id=&#34;why-a-dashboard-matters-more-than-you-think&#34;&gt;Why a Dashboard Matters More Than You Think&lt;/h2&gt;
+&lt;p&gt;In the &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/owuw-beat/06-ai-board-of-directors/&#34;&gt;previous post&lt;/a&gt;, I described the governance system — a 9-member AI board that debates and votes on model changes every Sunday. By this point, OWUW Beat had a working regime detection model, an R&amp;amp;D agent generating experiments, and a governance layer deciding which changes ship. The system was functional.&lt;/p&gt;
+&lt;p&gt;But I couldn&amp;rsquo;t &lt;em&gt;see&lt;/em&gt; it.&lt;/p&gt;
+&lt;p&gt;Every time I wanted to check the current regime, I&amp;rsquo;d ask the Telegram bot. Want to know my portfolio allocation? Telegram. Crash defense status? Telegram. Macro signal? Telegram. Each question required a separate message, a separate response, a separate mental context switch.&lt;/p&gt;
+&lt;p&gt;This is the problem nobody warns you about when building autonomous trading systems: &lt;strong&gt;the information density problem&lt;/strong&gt;. You end up with an agent that knows everything about your portfolio, but the only interface is a chat window that shows one answer at a time.&lt;/p&gt;
+&lt;p&gt;I needed a dashboard. Not a Grafana instance with generic charts. Not a Jupyter notebook I&amp;rsquo;d forget to run. A purpose-built, always-on display that showed me the complete state of the trading system at a glance.&lt;/p&gt;
+&lt;p&gt;This is the story of building it — twice.&lt;/p&gt;
+&lt;h2 id=&#34;version-1-the-1400-line-monolith&#34;&gt;Version 1: The 1,400-Line Monolith&lt;/h2&gt;
+&lt;p&gt;The first dashboard was born out of desperation. I told the OWUW Beat agent to build a web dashboard, and it did what any agent would do with an open-ended request: it crammed everything into a single HTML file.&lt;/p&gt;
+&lt;p&gt;The result was &lt;code&gt;dashboard/static/index.html&lt;/code&gt; — 1,400 lines of HTML, CSS, and JavaScript, served by a Flask backend. It had seven tabs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Dashboard&lt;/strong&gt; — regime, price, allocation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Investment Memo&lt;/strong&gt; — the formal IM document&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;R&amp;amp;D Research&lt;/strong&gt; — experiment results&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Market Report&lt;/strong&gt; — daily analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt; — portfolio tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Timeline&lt;/strong&gt; — event history&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Blog&lt;/strong&gt; — English report generation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The Flask backend (&lt;code&gt;dashboard/app.py&lt;/code&gt;) served both the static files and a set of API endpoints:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Core API endpoints in app.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.route&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/api/signal&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;      &lt;span class=&#34;c1&#34;&gt;# Regime, macro score, allocation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.route&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/api/performance_live&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# TWR-based performance tracking&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.route&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/api/research&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;# R&amp;amp;D experiment results&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.route&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/api/daily_reports&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Daily market reports&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.route&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/api/im&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;          &lt;span class=&#34;c1&#34;&gt;# Investment memo (markdown)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.route&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/api/model_profile&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Model parameters&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.route&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/api/blog_reports&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;# English blog reports&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.route&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/api/timeline&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;# Timeline events&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For external access, I ran &lt;a href=&#34;https://developers.cloudflare.com/cloudflare-tunnel/&#34;&gt;Cloudflare Tunnel&lt;/a&gt; (&lt;code&gt;cloudflared&lt;/code&gt;) to expose the local Flask server:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cloudflared tunnel --url http://localhost:5555
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This gave me a public URL I could access from my phone. The dashboard was accessible. It worked.&lt;/p&gt;
+&lt;p&gt;And it was terrible.&lt;/p&gt;
+&lt;h3 id=&#34;what-went-wrong&#34;&gt;What Went Wrong&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Dark theme was the only option.&lt;/strong&gt; I wanted to screenshot charts for reports and print them. Dark backgrounds with colored charts look awful on paper. The CEO (me) explicitly wanted a light theme option. The single HTML file had colors hardcoded everywhere.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mobile was broken.&lt;/strong&gt; Tables overflowed. Charts didn&amp;rsquo;t resize. The seven-tab navigation was unusable on a phone screen. Given that I check the dashboard from my phone 80% of the time, this was a serious problem.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Loading was slow.&lt;/strong&gt; All seven tabs loaded simultaneously, even though you only look at one at a time. Every Chart.js instance initialized on page load. The market report tab alone pulled down megabytes of daily report data.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;No real-time updates.&lt;/strong&gt; The dashboard polled the API on a timer, but if you left it open for hours, the data got stale. There was no WebSocket connection, no push updates, no visual indicator of data freshness.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The authentication was inline.&lt;/strong&gt; The login page was literally an HTML string hardcoded inside &lt;code&gt;app.py&lt;/code&gt;. Password hashing used &lt;code&gt;werkzeug.security&lt;/code&gt;, which was fine, but the whole thing felt held together with tape.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;One file meant zero maintainability.&lt;/strong&gt; Want to change the chart colors on the performance tab? Good luck finding which of the 1,400 lines controls that, without breaking the regime factors display three hundred lines away.&lt;/p&gt;
+&lt;h2 id=&#34;the-v2-rewrite-react--electron&#34;&gt;The V2 Rewrite: React + Electron&lt;/h2&gt;
+&lt;p&gt;After two weeks of squinting at the monolith, I decided to rewrite. Not refactor — rewrite. The agent and I agreed on a plan:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stack:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.electronjs.org/&#34;&gt;Electron&lt;/a&gt; v28+ for desktop wrapping&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://react.dev/&#34;&gt;React 18&lt;/a&gt; + &lt;a href=&#34;https://vitejs.dev/&#34;&gt;Vite&lt;/a&gt; for the frontend&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tailwindcss.com/&#34;&gt;Tailwind CSS 3&lt;/a&gt; for styling&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://recharts.org/&#34;&gt;Recharts&lt;/a&gt; for interactive charts&lt;/li&gt;
+&lt;li&gt;Flask backend (kept and refactored)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://flask-socketio.readthedocs.io/&#34;&gt;flask-socketio&lt;/a&gt; for WebSocket real-time updates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Why Electron instead of just a better web app?&lt;/strong&gt; Three reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Always-on display.&lt;/strong&gt; I wanted the dashboard running on a dedicated screen on my desk. A desktop app stays open. A browser tab gets closed, refreshed, or lost among fifty other tabs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;System tray integration.&lt;/strong&gt; The app sits in the macOS menu bar. Red icon means crash defense is active. Green means normal. I see the regime status without even looking at the dashboard.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Local-first.&lt;/strong&gt; The Flask API runs on the same machine. Electron connects to &lt;code&gt;localhost:5555&lt;/code&gt;. No internet required, no Cloudflare tunnel needed for the primary use case.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;task-force-structure&#34;&gt;Task Force Structure&lt;/h3&gt;
+&lt;p&gt;The agent organized the rewrite into three parallel work streams — it called them &amp;ldquo;Task Forces,&amp;rdquo; which I found both amusing and effective:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;TF-1 (UX/Design):&lt;/strong&gt; Screen layouts, color system, component hierarchy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TF-2 (Frontend):&lt;/strong&gt; React components, state management, API hooks&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TF-3 (Backend):&lt;/strong&gt; Flask API refactoring, data migration, Electron packaging&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The sprint plan was aggressive: 15 sprints across a single day, from 07:15 to 20:00 KST, with 20-minute intervals. The agent ran through them methodically, tracking progress in a &lt;code&gt;PROGRESS.md&lt;/code&gt; file.&lt;/p&gt;
+&lt;h2 id=&#34;anatomy-of-the-dashboard&#34;&gt;Anatomy of the Dashboard&lt;/h2&gt;
+&lt;p&gt;The final V2 dashboard has 10 pages, each as a separate React component in &lt;code&gt;src/pages/&lt;/code&gt;. Let me walk through the main one.&lt;/p&gt;
+&lt;h3 id=&#34;the-main-dashboard-page&#34;&gt;The Main Dashboard Page&lt;/h3&gt;
+&lt;p&gt;This is what I look at most. It&amp;rsquo;s a single-screen overview of the entire trading system state.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Row 1: Core KPIs&lt;/strong&gt; — six cards across the top:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Card&lt;/th&gt;
+          &lt;th&gt;Data Source&lt;/th&gt;
+          &lt;th&gt;Refresh&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;BTC Price + 24h/3d change&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;/api/signal&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;30s&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Regime (BULL/BEAR/NEUTRAL)&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;/api/signal&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;30s&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Recommended Allocation %&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;/api/signal&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;30s&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Total Assets (Spot + Earn)&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;/api/account&lt;/code&gt; + &lt;code&gt;/api/earn&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;60s&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Model Return + Sharpe + MDD&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;/api/backtest_perf&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;10min&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Fear &amp;amp; Greed Index gauge&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;/api/fng&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;5min&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Row 2: Three panels&lt;/strong&gt; — the detailed view:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Regime Factors Panel.&lt;/strong&gt; Shows all six factors that determine the regime score:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;MA50 Slope        🟢 +1    (50-day moving average direction)
+MA200 Cross       🟢 +1    (price vs 200-day MA)
+Net Liquidity     🔴 -1    (US Fed balance sheet - TGA - RRP)
+NFCI              🟢 +1    (Financial conditions index)
+Cu/Au Ratio       ⚪  0    (Copper/Gold ratio, leading indicator)
+DXY Momentum      🟢 +1    (Dollar strength)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Each factor is +1, 0, or -1. Sum them up, and you get the regime score (range: -6 to +6). Score &amp;gt; 2 = BULL. Score &amp;lt; -2 = BEAR. Everything else = NEUTRAL.&lt;/p&gt;
+&lt;p&gt;This panel was critical for debugging. When the regime changed unexpectedly, I could immediately see which factor flipped. Before the dashboard, I&amp;rsquo;d have to ask the bot, wait for a response, parse the text, and mentally reconstruct the state.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Crash Defense Panel.&lt;/strong&gt; Shows the V5.3 defense system status:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Crash Defense: Active/Normal (the -5% in 3 days trigger)&lt;/li&gt;
+&lt;li&gt;Recovery Step: 0/2 (two-stage recovery after crash)&lt;/li&gt;
+&lt;li&gt;RSI (14d): current momentum&lt;/li&gt;
+&lt;li&gt;Volatility (20d): for bear vol-targeting&lt;/li&gt;
+&lt;li&gt;MA50/MA200: the actual values&lt;/li&gt;
+&lt;li&gt;Model Version: confirms we&amp;rsquo;re running V5.3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Macro Signal Panel.&lt;/strong&gt; A visual bar showing the composite macro score (-85 to +85), plus portfolio composition (BTC vs USDT split), and Binance Earn APR with estimated daily yield.&lt;/p&gt;
+&lt;h3 id=&#34;the-custom-hook-that-powers-everything&#34;&gt;The Custom Hook That Powers Everything&lt;/h3&gt;
+&lt;p&gt;Every data panel uses a custom React hook called &lt;code&gt;useApi&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// src/hooks/useApi.js
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useEffect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useRef&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;react&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useApi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fetchFn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;intervalMs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;loading&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setLoading&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;mountedRef&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useRef&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;useEffect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;mountedRef&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;timer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;load&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fetchFn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mountedRef&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nx&#34;&gt;setData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nx&#34;&gt;setError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mountedRef&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;finally&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mountedRef&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setLoading&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;timer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setInterval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;intervalMs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nx&#34;&gt;mountedRef&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nx&#34;&gt;clearInterval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;timer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fetchFn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;intervalMs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;loading&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Simple polling with configurable intervals. The signal endpoint (regime, allocation) refreshes every 30 seconds. Performance data every 60 seconds. Backtest results every 10 minutes. News every 5 minutes.&lt;/p&gt;
+&lt;p&gt;I considered WebSocket for everything but decided against it. The Flask backend calculates most values on-demand from files on disk (research results, daily reports). Push notifications would require the backend to watch file changes and emit events. Polling at sensible intervals is simpler and good enough.&lt;/p&gt;
+&lt;h3 id=&#34;the-fear--greed-gauge&#34;&gt;The Fear &amp;amp; Greed Gauge&lt;/h3&gt;
+&lt;p&gt;One of the more satisfying components to build was the Fear &amp;amp; Greed Index gauge. It&amp;rsquo;s a half-circle SVG with a needle:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;FngGauge&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;label&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;angle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;90&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;180&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;color&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#ef4444&amp;#39;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// Extreme Fear - red
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;45&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#f97316&amp;#39;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// Fear - orange
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;55&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#eab308&amp;#39;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// Neutral - yellow
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;75&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#84cc16&amp;#39;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// Greed - lime
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#22c55e&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;// Extreme Greed - green
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;svg&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;viewBox&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0 0 120 70&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Background arc */&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;M10 65 A50 50 0 0 1 110 65&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;na&#34;&gt;fill&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;stroke&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;#1e293b&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;strokeWidth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;8&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Colored arc */&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;M10 65 A50 50 0 0 1 110 65&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;na&#34;&gt;fill&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;stroke&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;url(#fng)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;strokeWidth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;8&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;na&#34;&gt;strokeDasharray&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;157&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt; 157`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Needle */&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;line&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;60&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;y1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;65&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;na&#34;&gt;x2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;60&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;40&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;angle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;180&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;na&#34;&gt;y2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;65&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;40&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;sin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;angle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;180&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;na&#34;&gt;stroke&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;strokeWidth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2.5&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;svg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The important insight from our research: Fear &amp;amp; Greed is a lagging indicator for BTC. Our &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/owuw-beat/04-data-collection-pipeline/&#34;&gt;Granger causality tests&lt;/a&gt; showed BTC price movements &lt;em&gt;cause&lt;/em&gt; FNG changes, not the other way around. The gauge is there for context, not for trading signals.&lt;/p&gt;
+&lt;p&gt;But at extremes (FNG &amp;gt; 90 = Extreme Greed), the data tells a counterintuitive story: it&amp;rsquo;s actually a momentum signal, not a contrarian one. BTC averaged +32% in the month following extreme greed readings, with an 85% win rate. The gauge helps me spot those moments.&lt;/p&gt;
+&lt;h2 id=&#34;the-flask-api-lessons-from-production&#34;&gt;The Flask API: Lessons From Production&lt;/h2&gt;
+&lt;p&gt;The backend taught me more about production resilience than any textbook.&lt;/p&gt;
+&lt;h3 id=&#34;the-env-deadlock-disaster&#34;&gt;The .env Deadlock Disaster&lt;/h3&gt;
+&lt;p&gt;The most painful bug was a file deadlock. The original code called &lt;code&gt;load_dotenv()&lt;/code&gt; on every API request — five different endpoints, each reopening the &lt;code&gt;.env&lt;/code&gt; file. On macOS, when the file was being written by another process (the agent updating API keys), &lt;code&gt;load_dotenv()&lt;/code&gt; would hang. Indefinitely.&lt;/p&gt;
+&lt;p&gt;One deadlocked call would hold the Flask worker. Another request would hit the same lock. Within minutes, all workers were frozen. The dashboard showed a loading spinner forever.&lt;/p&gt;
+&lt;p&gt;The fix was embarrassingly simple:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# BEFORE: Called on every request (5 places!)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.route&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/api/signal&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;load_dotenv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# ← potential deadlock&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getenv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;BINANCE_API_KEY&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# AFTER: Load once at startup with hardcoded fallbacks&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_ENV_DEFAULTS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;BINANCE_API_KEY&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;...&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;BINANCE_API_SECRET&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;...&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;FRED_API_KEY&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;...&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ENV_PATH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;load_dotenv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ENV_PATH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;except&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;OSError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;[STARTUP] .env file deadlocked, using defaults&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_v&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_ENV_DEFAULTS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;items&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getenv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;environ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_v&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Load the &lt;code&gt;.env&lt;/code&gt; once at startup. If it fails, use hardcoded defaults. Never touch the file again during runtime. This pattern — &lt;strong&gt;fail-safe defaults with one-time file reads&lt;/strong&gt; — should be standard for any always-on service.&lt;/p&gt;
+&lt;h3 id=&#34;authentication-that-doesnt-embarrass-you&#34;&gt;Authentication That Doesn&amp;rsquo;t Embarrass You&lt;/h3&gt;
+&lt;p&gt;The original login was an HTML string inside a Python route. The V2 version uses proper session-based auth with rate limiting:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_login_attempts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MAX_ATTEMPTS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;LOCKOUT_SECONDS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;_is_locked&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;rec&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_login_attempts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;count&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MAX_ATTEMPTS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;first&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;LOCKOUT_SECONDS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;_login_attempts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Five failed attempts from an IP triggers a 5-minute lockout. Passwords are hashed with &lt;code&gt;scrypt&lt;/code&gt; via Werkzeug. Session cookies use &lt;code&gt;SameSite=Lax&lt;/code&gt;. It&amp;rsquo;s not Fort Knox, but it&amp;rsquo;s appropriate for a trading dashboard that&amp;rsquo;s primarily accessed via localhost or Cloudflare Tunnel with its own authentication layer.&lt;/p&gt;
+&lt;h3 id=&#34;performance-tracking-twr-not-simple-returns&#34;&gt;Performance Tracking: TWR, Not Simple Returns&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;/api/performance_live&lt;/code&gt; endpoint calculates Time-Weighted Returns (TWR), which matters because I make deposits over time. Simple return calculation would be distorted by new capital.&lt;/p&gt;
+&lt;p&gt;The performance tracker (&lt;code&gt;research/performance_tracker.py&lt;/code&gt;) snapshots daily at 07:30 KST via a cron job. The live endpoint calculates returns from the last snapshot to the current moment, combining:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spot balance from Binance API&lt;/li&gt;
+&lt;li&gt;Earn positions (flexible savings) from Binance Earn API&lt;/li&gt;
+&lt;li&gt;Historical snapshots from the tracker database&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This gives accurate portfolio performance even with irregular deposits — which is exactly what happens when you&amp;rsquo;re funding a trading account gradually.&lt;/p&gt;
+&lt;h2 id=&#34;the-design-system&#34;&gt;The Design System&lt;/h2&gt;
+&lt;p&gt;The V2 dashboard uses a custom Tailwind theme that I&amp;rsquo;m genuinely proud of. The agent created a cohesive design system from scratch:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// tailwind.config.js (simplified)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;theme&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;extend&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nx&#34;&gt;colors&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;owuw-bg&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#0a0e17&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;owuw-card&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#111827&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;owuw-border&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#1e293b&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;owuw-accent&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#3b82f6&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;bull&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#22c55e&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;bear&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#ef4444&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s1&#34;&gt;&amp;#39;neutral&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;#eab308&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Three semantic colors — bull (green), bear (red), neutral (yellow) — used consistently everywhere. Regime is BULL? Green. Portfolio down? Red. Macro signal near zero? Yellow. You never have to read the label; the color tells you the story.&lt;/p&gt;
+&lt;p&gt;The card component pattern is consistent across all pages: dark background (&lt;code&gt;owuw-card&lt;/code&gt;), subtle border (&lt;code&gt;owuw-border&lt;/code&gt;), border highlight on hover (&lt;code&gt;owuw-border-hover&lt;/code&gt;). Every number uses &lt;code&gt;tabular-nums&lt;/code&gt; for proper alignment in columns.&lt;/p&gt;
+&lt;h2 id=&#34;pages-beyond-the-main-dashboard&#34;&gt;Pages Beyond the Main Dashboard&lt;/h2&gt;
+&lt;p&gt;The V2 dashboard has nine additional pages:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Performance Analysis&lt;/strong&gt; — Portfolio return chart with benchmark overlay (buy-and-hold BTC). Shows TWR, excess return, Sharpe ratio, and maximum drawdown with interactive tooltips. The chart uses &lt;a href=&#34;https://recharts.org/&#34;&gt;Recharts&lt;/a&gt; &lt;code&gt;AreaChart&lt;/code&gt; with a gradient fill — green when above benchmark, red when below.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Market Report&lt;/strong&gt; — Renders the daily market analysis that the agent generates every morning at 07:00 KST. Markdown rendered to HTML. Includes regime analysis, macro factor breakdown, and allocation recommendation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Investment Memo&lt;/strong&gt; — The formal investment memorandum document. This is what an institutional investor would expect: strategy description, risk parameters, backtest results, governance process. Generated and updated automatically after each board meeting.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;R&amp;amp;D Research&lt;/strong&gt; — Experiment results from the (now shutdown) R&amp;amp;D agent. Each experiment shows the hypothesis, methodology, backtest results, and the agent&amp;rsquo;s recommendation. Historical record of all 200+ experiments.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Board Minutes&lt;/strong&gt; — Full transcripts of the AI board meetings. Nine directors debating model changes, with votes recorded. Each meeting includes the proposal, discussion points, voting results, and implementation plan.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Timeline&lt;/strong&gt; — Chronological event log. Model version changes, board decisions, deposit events, rebalancing executions. A complete audit trail.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Periodic Reports&lt;/strong&gt; — Weekly and monthly summaries generated automatically.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Blog&lt;/strong&gt; — The English-language report that gets published to the external blog. Generated daily at 10:00 KST.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Model Profile&lt;/strong&gt; — Technical specification of the current model (V5.3): parameters, allocation rules, defense triggers, backtest statistics.&lt;/p&gt;
+&lt;h2 id=&#34;practical-prompts-building-your-own&#34;&gt;Practical Prompts: Building Your Own&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re building a trading dashboard for your own system, here are prompts that actually work:&lt;/p&gt;
+&lt;h3 id=&#34;prompt-initialize-the-dashboard-project&#34;&gt;Prompt: Initialize the Dashboard Project&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Create a trading dashboard with this stack:
+- Electron for desktop app
+- React 18 + Vite for frontend
+- Tailwind CSS for styling
+- Recharts for charts
+
+The dashboard connects to a Flask API at localhost:5555 with these endpoints:
+- GET /api/signal → {regime, regime_score, btc_price, allocation_pct, macro_signal, factors: {}}
+- GET /api/performance_live → {annualized_return_pct, sharpe, mdd, chart_data: [{date, value}]}
+- GET /api/account → {total_usd, positions: []}
+
+Create a main dashboard page with:
+1. Top row: 6 KPI cards (price, regime, allocation, total assets, model return, fear &amp;amp; greed)
+2. Middle row: 3 panels (regime factors detail, defense system status, macro signal bar)
+3. Bottom: performance chart with benchmark overlay
+
+Use a dark theme with semantic colors: green for bullish, red for bearish, yellow for neutral.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;prompt-add-polling-with-custom-hook&#34;&gt;Prompt: Add Polling with Custom Hook&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Create a useApi custom React hook that:
+1. Takes a fetch function and polling interval (default 30s)
+2. Calls the function immediately on mount
+3. Sets up interval polling
+4. Handles cleanup on unmount (no state updates after unmount)
+5. Returns {data, error, loading}
+
+Then use it in Dashboard.jsx like:
+const { data: signal } = useApi(() =&amp;gt; api.signal(), 30000);
+const { data: perf } = useApi(() =&amp;gt; api.performance(), 60000);
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;prompt-flask-api-with-fail-safe-environment-loading&#34;&gt;Prompt: Flask API with Fail-Safe Environment Loading&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Refactor this Flask API to:
+1. Load .env ONCE at startup (not per-request)
+2. Include hardcoded fallback values for all API keys
+3. If .env read fails (OSError/deadlock), use fallbacks silently
+4. Add IP-based rate limiting for login (5 attempts, 5-min lockout)
+5. Use scrypt password hashing via werkzeug
+6. Add CORS support for localhost Electron app
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;what-id-do-differently&#34;&gt;What I&amp;rsquo;d Do Differently&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Start with the API contract.&lt;/strong&gt; I built the Flask endpoints organically as features were needed. If I started over, I&amp;rsquo;d define the API schema first — request/response types, refresh semantics, error formats — and build both frontend and backend against that contract.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Use Server-Sent Events instead of polling.&lt;/strong&gt; WebSocket is overkill for a dashboard that primarily displays data. SSE would give me push updates with simpler infrastructure: the Flask backend watches for file changes and streams updates. No bidirectional communication needed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Build mobile-first.&lt;/strong&gt; The V2 dashboard is primarily a desktop app (Electron), but I still check it from my phone via Cloudflare Tunnel. The responsive design works, but it&amp;rsquo;s an afterthought. A mobile-first approach would have saved time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Add alerting.&lt;/strong&gt; The dashboard shows state but doesn&amp;rsquo;t notify me of state changes. I rely on the Telegram bot for alerts (regime changes, rebalancing events). Integrating push notifications into the Electron app — especially for crash defense activation — would close the loop.&lt;/p&gt;
+&lt;h2 id=&#34;the-bigger-picture&#34;&gt;The Bigger Picture&lt;/h2&gt;
+&lt;p&gt;The dashboard seems like a nice-to-have. It&amp;rsquo;s not. It changed how I interact with the entire trading system.&lt;/p&gt;
+&lt;p&gt;Before the dashboard, I operated through conversation. Every check was a question, every answer was text. The information was accurate but sequential — I could only process one thing at a time.&lt;/p&gt;
+&lt;p&gt;After the dashboard, I operate through observation. I glance at the screen and absorb the complete system state in seconds. Regime is BULL, macro score is +35, allocation is 90%, crash defense is inactive, portfolio is up 12% vs benchmark. All of that in one look.&lt;/p&gt;
+&lt;p&gt;This is the difference between managing a system and monitoring a system. Managing requires active engagement — asking, interpreting, deciding. Monitoring requires passive awareness — seeing, recognizing, intervening only when necessary.&lt;/p&gt;
+&lt;p&gt;For an autonomous trading system, monitoring is the right paradigm. The system makes its own decisions (regime detection, allocation, rebalancing). My job is to watch for anomalies and intervene when something looks wrong. A dashboard is the right tool for that job.&lt;/p&gt;
+&lt;p&gt;In the &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/owuw-beat/08-rebalancing-and-earn/&#34;&gt;next post&lt;/a&gt;, I&amp;rsquo;ll cover the rebalancing engine — how the system automatically adjusts positions every 10 days based on the regime signal, and how it manages idle USDT through Binance Earn to generate yield while waiting for the next allocation change.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is Part 7 of the &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/owuw-beat/&#34;&gt;Building OWUW Beat&lt;/a&gt; series. Start from &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/owuw-beat/01-why-i-built-a-btc-trading-bot/&#34;&gt;Part 1: Why I Built a BTC Trading Bot&lt;/a&gt; or go back to &lt;a href=&#34;https://www.mypodcastlistening.com/posts/series/owuw-beat/06-ai-board-of-directors/&#34;&gt;Part 6: AI Board of Directors&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </content:encoded>
     </item>
     <item>
