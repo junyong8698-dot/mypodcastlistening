@@ -8,21 +8,21 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Tue, 24 Mar 2026 06:20:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2026 13:00:44 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Daily Trading Log</title>
+      <link>https://www.mypodcastlistening.com/categories/daily-trading-log/</link>
+      <pubDate>Tue, 24 Mar 2026 13:00:44 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/categories/daily-trading-log/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>Org Management</title>
       <link>https://www.mypodcastlistening.com/categories/org-management/</link>
       <pubDate>Tue, 24 Mar 2026 06:20:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/categories/org-management/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Daily Trading Log</title>
-      <link>https://www.mypodcastlistening.com/categories/daily-trading-log/</link>
-      <pubDate>Mon, 23 Mar 2026 12:59:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/categories/daily-trading-log/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>

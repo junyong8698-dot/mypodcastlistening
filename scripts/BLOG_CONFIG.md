@@ -53,6 +53,7 @@
 - [x] 04: AI Is Killing the Project Manager Role (published 2026-03-13)
 - [x] 05: AI Is Killing the SDR (published 2026-03-17)
 - [x] 06: AI Is Killing the Corporate L&D Department (published 2026-03-20)
+- [x] 07: AI Is Killing the Corporate Legal Department (published 2026-03-24)
 
 ### ⑦ Startup Ideas
 - [x] 01: Vertical AI Agents — Solo Founder's Best Shot at $1M (published 2026-03-04)

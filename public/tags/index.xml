@@ -8,8 +8,48 @@
     <language>en-us</language>
     <managingEditor>JY</managingEditor>
     <webMaster>JY</webMaster>
-    <lastBuildDate>Tue, 24 Mar 2026 06:20:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2026 13:00:44 +0900</lastBuildDate>
     <atom:link href="https://www.mypodcastlistening.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bitcoin</title>
+      <link>https://www.mypodcastlistening.com/tags/bitcoin/</link>
+      <pubDate>Tue, 24 Mar 2026 13:00:44 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/bitcoin/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Daily-Log</title>
+      <link>https://www.mypodcastlistening.com/tags/daily-log/</link>
+      <pubDate>Tue, 24 Mar 2026 13:00:44 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/daily-log/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Multi-Agent</title>
+      <link>https://www.mypodcastlistening.com/tags/multi-agent/</link>
+      <pubDate>Tue, 24 Mar 2026 13:00:44 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/multi-agent/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Owuw</title>
+      <link>https://www.mypodcastlistening.com/tags/owuw/</link>
+      <pubDate>Tue, 24 Mar 2026 13:00:44 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/owuw/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
+    <item>
+      <title>Trading</title>
+      <link>https://www.mypodcastlistening.com/tags/trading/</link>
+      <pubDate>Tue, 24 Mar 2026 13:00:44 +0900</pubDate>
+      <guid>https://www.mypodcastlistening.com/tags/trading/</guid>
+      <description></description>
+      <content:encoded></content:encoded>
+    </item>
     <item>
       <title>AI</title>
       <link>https://www.mypodcastlistening.com/tags/ai/</link>
@@ -91,14 +131,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Daily-Log</title>
-      <link>https://www.mypodcastlistening.com/tags/daily-log/</link>
-      <pubDate>Mon, 23 Mar 2026 12:59:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/daily-log/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>Owuw-Beat</title>
       <link>https://www.mypodcastlistening.com/tags/owuw-beat/</link>
       <pubDate>Mon, 23 Mar 2026 12:59:00 +0900</pubDate>
@@ -111,14 +143,6 @@
       <link>https://www.mypodcastlistening.com/tags/stocks/</link>
       <pubDate>Mon, 23 Mar 2026 12:59:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/stocks/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Trading</title>
-      <link>https://www.mypodcastlistening.com/tags/trading/</link>
-      <pubDate>Mon, 23 Mar 2026 12:59:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/trading/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -287,14 +311,6 @@
       <link>https://www.mypodcastlistening.com/tags/funding/</link>
       <pubDate>Sun, 22 Mar 2026 01:00:21 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/funding/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Multi-Agent</title>
-      <link>https://www.mypodcastlistening.com/tags/multi-agent/</link>
-      <pubDate>Sun, 22 Mar 2026 01:00:21 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/multi-agent/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
@@ -763,7 +779,7 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Telegram Bot</title>
+      <title>Telegram-Bot</title>
       <link>https://www.mypodcastlistening.com/tags/telegram-bot/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/telegram-bot/</guid>
@@ -915,14 +931,6 @@
       <content:encoded></content:encoded>
     </item>
     <item>
-      <title>Bitcoin</title>
-      <link>https://www.mypodcastlistening.com/tags/bitcoin/</link>
-      <pubDate>Tue, 10 Mar 2026 13:03:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/bitcoin/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
       <title>AI HR Automation</title>
       <link>https://www.mypodcastlistening.com/tags/ai-hr-automation/</link>
       <pubDate>Tue, 10 Mar 2026 06:24:00 +0900</pubDate>
@@ -1007,14 +1015,6 @@
       <link>https://www.mypodcastlistening.com/tags/infrastructure/</link>
       <pubDate>Mon, 09 Mar 2026 13:00:00 +0900</pubDate>
       <guid>https://www.mypodcastlistening.com/tags/infrastructure/</guid>
-      <description></description>
-      <content:encoded></content:encoded>
-    </item>
-    <item>
-      <title>Owuw</title>
-      <link>https://www.mypodcastlistening.com/tags/owuw/</link>
-      <pubDate>Mon, 09 Mar 2026 13:00:00 +0900</pubDate>
-      <guid>https://www.mypodcastlistening.com/tags/owuw/</guid>
       <description></description>
       <content:encoded></content:encoded>
     </item>
