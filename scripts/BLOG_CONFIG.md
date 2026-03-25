@@ -60,6 +60,7 @@
 - [x] 02: AI Compliance Is a $23B Market — Here's How to Build In It (published 2026-03-07)
 - [x] 03: Voice AI Agents Are a $10B Market — How to Build One (published 2026-03-11)
 - [x] 04: The AI CFO Is a $100B Opportunity — How to Build One (published 2026-03-21)
+- [x] 05: AI Agent Observability Is the New DevOps — A $10B Startup Opportunity (published 2026-03-25)
 
 ## Content Rules
 - Language: English
